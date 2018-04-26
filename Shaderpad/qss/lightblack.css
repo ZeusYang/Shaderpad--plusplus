@@ -5,6 +5,11 @@ border:1px solid #738393;
 border-radius:0px;
 }
 
+*{
+background-color: #404244;
+font: 11pt "Lobster";
+}
+
 QWidget[form="bottom"]{
 background:#667481;
 }

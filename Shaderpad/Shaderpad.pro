@@ -25,10 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    textchild.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    textchild.h
 
 FORMS += \
         mainwindow.ui
+
+RESOURCES += \
+    resource.qrc
+
+RC_ICONS = shader.ico
+
+TARGET = Shaderpad++
