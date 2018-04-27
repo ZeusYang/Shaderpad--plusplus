@@ -54,6 +54,8 @@ public:
     QAction *actionAboutQt;
     QAction *actionNext;
     QAction *actionPrevious;
+    QAction *actionPrintView;
+    QAction *actionPDFExport;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QTabWidget *tabWidget;
@@ -82,7 +84,7 @@ public:
 "\n"
 "*{\n"
 "background-color: #404244;\n"
-"font: 11pt \"Lobster\";\n"
+"font: 11pt \"Andalus\";\n"
 "}\n"
 "\n"
 "QMessageBox{\n"
@@ -873,6 +875,16 @@ public:
         QIcon icon25;
         icon25.addFile(QStringLiteral(":/icon/previous.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionPrevious->setIcon(icon25);
+        actionPrintView = new QAction(MainWindow);
+        actionPrintView->setObjectName(QStringLiteral("actionPrintView"));
+        QIcon icon26;
+        icon26.addFile(QStringLiteral(":/icon/view.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPrintView->setIcon(icon26);
+        actionPDFExport = new QAction(MainWindow);
+        actionPDFExport->setObjectName(QStringLiteral("actionPDFExport"));
+        QIcon icon27;
+        icon27.addFile(QStringLiteral(":/icon/pdf.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPDFExport->setIcon(icon27);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -893,7 +905,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 572, 31));
+        menuBar->setGeometry(QRect(0, 0, 572, 37));
         menu_F = new QMenu(menuBar);
         menu_F->setObjectName(QStringLiteral("menu_F"));
         menu_E = new QMenu(menuBar);
@@ -927,6 +939,8 @@ public:
         menu_F->addAction(actionCloseAll);
         menu_F->addSeparator();
         menu_F->addAction(actionPrint);
+        menu_F->addAction(actionPrintView);
+        menu_F->addAction(actionPDFExport);
         menu_F->addSeparator();
         menu_F->addAction(actionExit);
         menu_E->addAction(actionUndo);
@@ -1038,6 +1052,8 @@ public:
         actionAboutQt->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216Qt(&Q)", nullptr));
         actionNext->setText(QApplication::translate("MainWindow", "\344\270\213\344\270\200\344\270\252\346\226\207\346\241\243(&N)", nullptr));
         actionPrevious->setText(QApplication::translate("MainWindow", "\345\211\215\344\270\200\344\270\252\346\226\207\346\241\243(&P)", nullptr));
+        actionPrintView->setText(QApplication::translate("MainWindow", "\346\211\223\345\215\260\351\242\204\350\247\210(&V)", nullptr));
+        actionPDFExport->setText(QApplication::translate("MainWindow", "\345\257\274\345\207\272PDF\346\226\207\344\273\266(&E)", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", nullptr));
         menu_F->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266(&F)", nullptr));

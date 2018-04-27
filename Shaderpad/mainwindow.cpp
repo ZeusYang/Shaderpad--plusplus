@@ -1,8 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "textchild.h"
+#include "themedialog.h"
 #include <QFileDialog>
 #include <QSignalMapper>
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QFile>
+#include <QPrintPreviewDialog>
+#include <QFileInfo>
+#include <QTextStream>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -35,6 +42,18 @@ MainWindow::MainWindow(QWidget *parent) :
     updateFileItemsMenu();
     connect(ui->menu_File,&QMenu::aboutToShow,
             this,&MainWindow::updateFileItemsMenu);
+
+    //主题窗口
+    themeDlg = new ThemeDialog(this);
+    themeDlg->setWindowModality(Qt::WindowModal);
+    //将确认修改主题的信号与函数链接起来
+    connect(themeDlg,&ThemeDialog::ThemeChanged,this,&MainWindow::changeTheme);
+
+//    QFile file(":/qss/darkblue.css",this);
+//    file.open(QFile::ReadOnly);
+//    QString styleSheet = tr(file.readAll());
+//    this->setStyleSheet(styleSheet);
+//    file.close();
 }
 
 MainWindow::~MainWindow()
@@ -96,6 +115,9 @@ void MainWindow::updateMenus(int index)
     ui->actionSaveAll->setEnabled(hasTextChild);
     ui->actionSelectAll->setEnabled(hasTextChild);
     ui->actionSearch->setEnabled(hasTextChild);
+    ui->actionPrint->setEnabled(hasTextChild);
+    ui->actionPrintView->setEnabled(hasTextChild);
+    ui->actionPDFExport->setEnabled(hasTextChild);
 
     //设置间隔期是否显示
     actionSeparator->setVisible(hasTextChild);
@@ -180,7 +202,8 @@ TextChild *MainWindow::activeTextChild()
     //返回当前活动窗口
     if(ui->tabWidget->currentIndex() != -1)
         return qobject_cast<TextChild*>(ui->tabWidget->currentWidget());
-    return nullptr;
+    else
+        return nullptr;
 }
 
 TextChild *MainWindow::findTextChild(const QString &fileName)
@@ -279,4 +302,76 @@ void MainWindow::on_actionAboutQt_triggered()
 void MainWindow::on_actionAbout_triggered()
 {
 
+}
+
+void MainWindow::printPreview(QPrinter *printer)
+{
+    activeTextChild()->print(printer);
+}
+
+void MainWindow::on_actionPrint_triggered()
+{
+    QPrinter printer;
+    QPrintDialog dlg(&printer,this);
+    //如果有选中区域，则对选中区域进行打印，否则打印整个页面
+    if(activeTextChild() && activeTextChild()->textCursor().hasSelection()){
+        dlg.setEnabled(QAbstractPrintDialog::PrintSelection);
+    }
+    if(dlg.exec() == QDialog::Accepted){
+        if(activeTextChild())activeTextChild()->print(&printer);
+    }
+}
+
+void MainWindow::on_actionPrintView_triggered()
+{
+    QPrinter printer;
+    QPrintPreviewDialog preview(&printer,this);
+    //要生成预览页面时，发射paintRequested信号
+    connect(&preview,&QPrintPreviewDialog::paintRequested,
+            this,&MainWindow::printPreview);
+    preview.exec();
+}
+
+void MainWindow::on_actionPDFExport_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,tr("导出PDF文件"),QString(),"*.pdf");
+    if(!fileName.isEmpty()&& activeTextChild()){
+        //补上后缀为空的情况
+        if(QFileInfo(fileName).suffix().isEmpty())
+            fileName.append(".pdf");
+        QPrinter printer;
+        //指定输出格式为pdf
+        printer.setOutputFormat(QPrinter::PdfFormat);
+        printer.setOutputFileName(fileName);
+        activeTextChild()->print(&printer);
+    }
+}
+
+void MainWindow::on_actionTheme_triggered()
+{
+    themeDlg->exec();
+}
+
+void MainWindow::changeTheme(QString theme, float alpha, QFont font)
+{
+    qDebug() << "come here";
+    //修改皮肤
+    theme = ":/qss/" + theme + ".css";
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    QFile styleFile(theme);
+    styleFile.open(QFile::ReadOnly);
+    QString styleSheet = tr(styleFile.readAll());
+    this->setStyleSheet(styleSheet);
+    styleFile.close();
+    qDebug() << font;
+    //修改字体
+    for(auto x = 0;x < ui->tabWidget->count();++x){
+        TextChild* child = qobject_cast<TextChild*>(ui->tabWidget->widget(x));
+        //child->setCurrentFont(font);
+        child->setFont(font);
+    }
+
+    //窗体透明度
+    Q_UNUSED(alpha);
+    QApplication::restoreOverrideCursor();
 }

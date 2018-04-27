@@ -237,6 +237,7 @@ Makefile: ../Shaderpad/Shaderpad.pro E:/Qt5.10.0/5.10.0/mingw53_32/mkspecs/win32
 		E:/Qt5.10.0/5.10.0/mingw53_32/mkspecs/features/lex.prf \
 		../Shaderpad/Shaderpad.pro \
 		E:/Qt5.10.0/5.10.0/mingw53_32/lib/qtmaind.prl \
+		E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5PrintSupport.prl \
 		E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5Widgets.prl \
 		E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5Gui.prl \
 		E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5Core.prl
@@ -417,6 +418,7 @@ E:/Qt5.10.0/5.10.0/mingw53_32/mkspecs/features/yacc.prf:
 E:/Qt5.10.0/5.10.0/mingw53_32/mkspecs/features/lex.prf:
 ../Shaderpad/Shaderpad.pro:
 E:/Qt5.10.0/5.10.0/mingw53_32/lib/qtmaind.prl:
+E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5PrintSupport.prl:
 E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5Widgets.prl:
 E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5Gui.prl:
 E:/Qt5.10.0/5.10.0/mingw53_32/lib/Qt5Core.prl:

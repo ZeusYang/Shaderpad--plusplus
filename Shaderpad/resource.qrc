@@ -136,7 +136,6 @@
         <file>icon/saveall.png</file>
         <file>icon/selectall.png</file>
         <file>icon/theme.png</file>
-        <file>icon/Windows Live Mesh_mirror.png</file>
         <file>icon/open.png</file>
         <file>icon/saveAs.png</file>
         <file>icon/close.png</file>
@@ -144,5 +143,7 @@
         <file>icon/Qt.png</file>
         <file>icon/next.png</file>
         <file>icon/previous.png</file>
+        <file>icon/pdf.png</file>
+        <file>icon/view.png</file>
     </qresource>
 </RCC>

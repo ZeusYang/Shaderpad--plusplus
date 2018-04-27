@@ -23,7 +23,7 @@ border-radius:0px;
 
 *{
 background-color: #404244;
-font: 11pt &quot;Lobster&quot;;
+font: 11pt &quot;Andalus&quot;;
 }
 
 QMessageBox{
@@ -695,7 +695,7 @@ border-color:#242629;
      <x>0</x>
      <y>0</y>
      <width>572</width>
-     <height>31</height>
+     <height>37</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_F">
@@ -712,6 +712,8 @@ border-color:#242629;
     <addaction name="actionCloseAll"/>
     <addaction name="separator"/>
     <addaction name="actionPrint"/>
+    <addaction name="actionPrintView"/>
+    <addaction name="actionPDFExport"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -1053,6 +1055,24 @@ border-color:#242629;
    </property>
    <property name="text">
     <string>前一个文档(&amp;P)</string>
+   </property>
+  </action>
+  <action name="actionPrintView">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/icon/view.png</normaloff>:/icon/view.png</iconset>
+   </property>
+   <property name="text">
+    <string>打印预览(&amp;V)</string>
+   </property>
+  </action>
+  <action name="actionPDFExport">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/icon/pdf.png</normaloff>:/icon/pdf.png</iconset>
+   </property>
+   <property name="text">
+    <string>导出PDF文件(&amp;E)</string>
    </property>
   </action>
  </widget>

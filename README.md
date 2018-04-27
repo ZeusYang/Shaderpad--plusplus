@@ -10,16 +10,23 @@ Finish some basic file operations including newfile,openfile,save,saveAs,close,c
 
 Therefore, we could edit the file for basic demand.
 
+2018.4.27
+
+continue to finish some basic demand for the editor. Print，print review, export pdf file, change the theme and font.
+
+
 Todo:
 
-1.printer dialog
+- code comment
 
-2.code comment
+- basic shader code highlight
 
-3.basic shader code highlight
+- provide several choices to change the theme
 
-4.provide several choices to change the theme
+- change the current page by the shortcut
 
-5.change the current page by the shortcut
+- search and replace
+
+- code template
 
 ...

@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,14 +27,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    textchild.cpp
+    textchild.cpp \
+    themedialog.cpp
 
 HEADERS += \
         mainwindow.h \
-    textchild.h
+    textchild.h \
+    themedialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    themedialog.ui
 
 RESOURCES += \
     resource.qrc

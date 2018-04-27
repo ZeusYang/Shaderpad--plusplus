@@ -8,6 +8,8 @@ class MainWindow;
 }
 class TextChild;
 class QSignalMapper;
+class QPrinter;
+class ThemeDialog;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -60,10 +62,25 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    //打印有关操作
+    void printPreview(QPrinter *printer);
+
+    void on_actionPrint_triggered();
+
+    void on_actionPrintView_triggered();
+
+    void on_actionPDFExport_triggered();
+
+    void on_actionTheme_triggered();
+
+    //修改皮肤主题
+    void changeTheme(QString theme,float alpha,QFont font);
+
 private:
     Ui::MainWindow *ui;
     QAction *actionSeparator;                       //间隔器
     QSignalMapper *windowMapper;                    //信号映射器
+    ThemeDialog *themeDlg;                          //主题对话框
 
     TextChild *activeTextChild();                   //当前活动窗口
     TextChild *findTextChild(const QString &fileName);//查找子窗口
