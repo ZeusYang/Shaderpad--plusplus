@@ -14,8 +14,9 @@ ThemeDialog::ThemeDialog(QWidget *parent) :
     alpha_tmp = alpha;
     theme_tmp = theme;
     font_tmp = font;
-    qDebug() << theme << font << alpha;
-    qDebug() << ui->ComboBoxFont->currentText();
+
+    setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);    // 禁止最大化按钮
+    setFixedSize(this->width(),this->height());                     // 禁止拖动窗口大小
 }
 
 ThemeDialog::~ThemeDialog()
@@ -63,13 +64,13 @@ void ThemeDialog::on_horizontalSliderAlpha_valueChanged(int value)
 
 void ThemeDialog::on_ComboBoxFont_currentFontChanged(const QFont &f)
 {
-    font_tmp = f;
+    font_tmp.setFamily(f.family());
 }
 
 void ThemeDialog::on_comboBoxFontSize_currentIndexChanged(int index)
 {
     Q_UNUSED(index);
-    font.setPointSize((ui->comboBoxFontSize->currentText()).toInt());
+    font_tmp.setPointSize((ui->comboBoxFontSize->currentText()).toInt());
 }
 
 void ThemeDialog::on_pushButtonCancel_clicked()
@@ -79,4 +80,14 @@ void ThemeDialog::on_pushButtonCancel_clicked()
     alpha_tmp = alpha;
     theme_tmp = theme;
     close();
+}
+
+void ThemeDialog::on_pushButtonApply_clicked()
+{
+    sendSignalsChanged();
+    updateContent();
+}
+
+void ThemeDialog::on_checkBox_stateChanged(int arg1)
+{
 }

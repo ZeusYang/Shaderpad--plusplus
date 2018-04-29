@@ -2,14 +2,18 @@
 #include "ui_mainwindow.h"
 #include "textchild.h"
 #include "themedialog.h"
+#include "bgimagedialog.h"
 #include <QFileDialog>
 #include <QSignalMapper>
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QFile>
+#include <QPainter>
 #include <QPrintPreviewDialog>
 #include <QFileInfo>
-#include <QTextStream>
+#include <QLabel>
+#include <QPixmap>
+#include <QHBoxLayout>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -48,17 +52,65 @@ MainWindow::MainWindow(QWidget *parent) :
     themeDlg->setWindowModality(Qt::WindowModal);
     //将确认修改主题的信号与函数链接起来
     connect(themeDlg,&ThemeDialog::ThemeChanged,this,&MainWindow::changeTheme);
+    setAttribute(Qt::WA_TranslucentBackground);
 
-//    QFile file(":/qss/darkblue.css",this);
-//    file.open(QFile::ReadOnly);
-//    QString styleSheet = tr(file.readAll());
-//    this->setStyleSheet(styleSheet);
-//    file.close();
+    //背景选择窗口
+    bgImage = ":/icons/1.jpg";
+    bgimageDlg = new BgImageDialog(this);
+    bgimageDlg->setWindowModality(Qt::WindowModal);
+    connect(bgimageDlg,&BgImageDialog::ImageChanged,this,&MainWindow::changeBgImage);
+
+    //加载样式表
+    changeTheme("darkblack",themeDlg->alpha,themeDlg->font);
+
+    //状态栏显示行列号等相关信息
+    col = new QLabel(this);
+    row = new QLabel(this);
+    length = new QLabel(this);
+    selection = new QLabel(this);
+    lines = new QLabel(this);
+    col->setMinimumWidth(100);
+    row->setMinimumWidth(100);
+    length->setMinimumWidth(200);
+    lines->setMinimumWidth(100);
+    selection->setMinimumWidth(100);
+    col->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
+    row->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
+    length->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
+    selection->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
+    lines->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);
+    col->setText("Col:");
+    row->setText("Row:");
+    length->setText("Length:");
+    selection->setText("Sel:");
+    lines->setText("Lines:");
+    QWidget *statusWidget = new QWidget();
+    QHBoxLayout *statusLayout = new QHBoxLayout;
+    statusLayout->addWidget(length);
+    statusLayout->addWidget(lines);
+    statusLayout->addWidget(row);
+    statusLayout->addWidget(col);
+    statusLayout->addWidget(selection);
+    statusLayout->setSpacing(30);
+    statusWidget->setLayout(statusLayout);
+    ui->statusBar->addPermanentWidget(statusWidget);
+    //把变化的信号与这些信息显示联系起来
+    connect(ui->tabWidget,&QTabWidget::currentChanged,
+            this,&MainWindow::modifyActiveWindow);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event);
+    //画背景图片
+    QPainter painter(this);
+    painter.drawPixmap(0,0,width(),height(),QPixmap(bgImage));
 }
 
 void MainWindow::on_actionNew_triggered()
@@ -118,7 +170,8 @@ void MainWindow::updateMenus(int index)
     ui->actionPrint->setEnabled(hasTextChild);
     ui->actionPrintView->setEnabled(hasTextChild);
     ui->actionPDFExport->setEnabled(hasTextChild);
-
+    ui->actionZoomIn->setEnabled(hasTextChild);
+    ui->actionZoomOut->setEnabled(hasTextChild);
     //设置间隔期是否显示
     actionSeparator->setVisible(hasTextChild);
 
@@ -141,10 +194,10 @@ void MainWindow::updateMenus(int index)
 TextChild *MainWindow::createTextChild()
 {
     TextChild *child = new TextChild;
-
     //是否可以复制
     connect(child,&TextChild::copyAvailable,ui->actionCut,&QAction::setEnabled);
     connect(child,&TextChild::copyAvailable,ui->actionCopy,&QAction::setEnabled);
+    connect(child,&TextChild::copyAvailable,ui->actionComment,&QAction::setEnabled);
     //是否可以撤销
     connect(child,&TextChild::redoAvailable,ui->actionRedo,&QAction::setEnabled);
     connect(child,&TextChild::undoAvailable,ui->actionUndo,&QAction::setEnabled);
@@ -217,6 +270,23 @@ TextChild *MainWindow::findTextChild(const QString &fileName)
         }
     }
     return nullptr;
+}
+
+void MainWindow::pairOperationToText(QString &target, const QString &begin, const QString &end)
+{
+    bool hasBegin = false,hasEnd = false;
+    if(target.length() >= 4){
+        hasBegin = (target.left(2) == begin);
+        hasEnd = (target.right(2) == end);
+    }
+    //取消之前的符号
+    if(hasBegin && hasEnd){
+        target.remove(target.length()-2,2);
+        target.remove(0,2);
+    }
+    else{//加上需要的符号
+        target = begin + target + end;
+    }
 }
 
 void MainWindow::on_actionSave_triggered()
@@ -354,24 +424,127 @@ void MainWindow::on_actionTheme_triggered()
 
 void MainWindow::changeTheme(QString theme, float alpha, QFont font)
 {
-    qDebug() << "come here";
+
+    //修改字体和透明度
+    int red,green,blue;
+    if(theme == "black"){
+        red = green = blue = 70;
+    }else if(theme == "blue"){
+        red = 207;green = 221;blue = 238;
+    }else if(theme == "darkblack"){
+        red = 36;green = 38;blue = 41;
+    }else if(theme == "darkblue"){
+        red = 14;green = 26;blue = 50;
+    }else if(theme == "lightblack"){
+        red = 97;green = 111;blue = 118;
+    }else if(theme == "lightblue"){
+        red = 234;green = 247;blue = 255;
+    }else{
+        red = 36;green = 38;blue = 41;
+    }
+    QString fontAndAlpha = tr("TextChild{"
+                           "background-color:rgba(%1,%2,%3,%4);"
+                           "color:rgba(255,255,255,255);"
+                           "font: %5pt \"%6\";"
+                           "}").arg(red).arg(green).arg(blue)
+                            .arg(alpha*255).arg(font.pointSize()).arg(font.family());
     //修改皮肤
     theme = ":/qss/" + theme + ".css";
     QApplication::setOverrideCursor(Qt::WaitCursor);
     QFile styleFile(theme);
     styleFile.open(QFile::ReadOnly);
     QString styleSheet = tr(styleFile.readAll());
+    styleSheet += fontAndAlpha;
     this->setStyleSheet(styleSheet);
     styleFile.close();
-    qDebug() << font;
-    //修改字体
-    for(auto x = 0;x < ui->tabWidget->count();++x){
-        TextChild* child = qobject_cast<TextChild*>(ui->tabWidget->widget(x));
-        //child->setCurrentFont(font);
-        child->setFont(font);
-    }
-
-    //窗体透明度
-    Q_UNUSED(alpha);
     QApplication::restoreOverrideCursor();
+}
+
+void MainWindow::modifyStatusInfo()
+{
+    int srow = 0,scol = 0,slines = 0,slength = 0,sselection = 0;
+    if(activeTextChild()){
+        TextChild* cur = activeTextChild();
+        srow = cur->textCursor().blockNumber()+1;
+        scol = cur->textCursor().columnNumber()+1;
+        slines = cur->document()->lineCount();
+        slength = cur->toPlainText().length();
+        sselection = cur->textCursor().selectedText().length();
+    }
+    col->setText(tr("Col: %1").arg(scol));
+    row->setText(tr("Row: %1").arg(srow));
+    length->setText(tr("Length: %1").arg(slength));
+    selection->setText(tr("Sel: %1").arg(sselection));
+    lines->setText(tr("Lines: %1").arg(slines));
+}
+
+void MainWindow::modifyActiveWindow()
+{
+    connect(activeTextChild(),&TextChild::textChanged,
+            this,&MainWindow::modifyStatusInfo);
+    connect(activeTextChild(),&TextChild::cursorPositionChanged,
+            this,&MainWindow::modifyStatusInfo);
+    modifyStatusInfo();
+    connect(activeTextChild(),&TextChild::cursorPositionChanged,
+            this,&MainWindow::onCurrentLineHighLight);
+}
+
+void MainWindow::changeBgImage(QString target)
+{
+    bgImage = target;
+    this->repaint();
+}
+
+void MainWindow::on_actionBackground_triggered()
+{
+    bgimageDlg->exec();
+}
+
+void MainWindow::on_actionPrevious_triggered()
+{
+    int previous = (ui->tabWidget->currentIndex()-1 >= 0)?
+                (ui->tabWidget->currentIndex()-1):(ui->tabWidget->count()-1);
+    ui->tabWidget->setCurrentIndex(previous);
+}
+
+void MainWindow::on_actionNext_triggered()
+{
+    int next = (ui->tabWidget->currentIndex()+1)%ui->tabWidget->count();
+    ui->tabWidget->setCurrentIndex(next);
+}
+
+void MainWindow::on_actionComment_triggered()
+{
+    TextChild* child = activeTextChild();
+    QString selectedText = child->textCursor().selectedText();
+    QString begin = "/*",end = "*/";
+    pairOperationToText(selectedText,begin,end);
+    child->textCursor().removeSelectedText();
+    child->insertPlainText(selectedText);
+}
+
+void MainWindow::onCurrentLineHighLight()
+{
+    //对光标行进行高亮
+    TextChild *edit = activeTextChild();
+    QList<QTextEdit::ExtraSelection> extraSelection;
+    QTextEdit::ExtraSelection selection;
+    QColor lineColor = QColor(60,179,113).lighter(50);
+    selection.format.setBackground(lineColor);
+    selection.format.setProperty(QTextFormat::FullWidthSelection,true);
+    selection.cursor = edit->textCursor();
+    selection.cursor.clearSelection();
+    //将刚设置的 selection追加到链表当中`
+    extraSelection.append(selection);
+    edit->setExtraSelections(extraSelection);
+}
+
+void MainWindow::on_actionZoomIn_triggered()
+{
+    activeTextChild()->zoomIn(5);
+}
+
+void MainWindow::on_actionZoomOut_triggered()
+{
+    activeTextChild()->zoomOut(5);
 }

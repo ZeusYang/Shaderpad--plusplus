@@ -6,8 +6,11 @@ border-radius:0px;
 }
 
 *{
-background-color: #404244;
 font: 11pt "Andalus";
+}
+
+QDialog{
+border-image:url(:/icons/dialog.jpg);
 }
 
 QWidget[form="bottom"]{
@@ -630,6 +633,23 @@ border-radius:0px;
 
 QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit{
 background:#0E1A32;
+}
+
+QTextEdit{
+background-color:rgba(14, 26, 50,100);
+color:rgba(255,255,255,255);
+}
+
+QStatusBar QWidget QLabel{
+border:3px solid #242629;
+border-radius:3px;
+font: bold 13pt "Consolas";
+color:#D6B668;
+}
+
+BgImageDialog QLabel#labelImage{
+border:5px solid #132743;
+border-radius:10px;
 }
 
 *:disabled{

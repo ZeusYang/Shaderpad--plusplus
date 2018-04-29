@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\textchild.o
+./debug\themedialog.o
+./debug\bgimagedialog.o
+./debug\qrc_resource.o
+./debug\moc_mainwindow.o
+./debug\moc_textchild.o
+./debug\moc_themedialog.o
+./debug\moc_bgimagedialog.o
+);

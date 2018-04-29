@@ -19,8 +19,10 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *event);        //关闭事件
+    void keyPressEvent(QKeyEvent *e);           //键盘事件
 private slots:
     void documentWasModified();                 //文档被更改时，窗口显示更改标志
+    void returnIndent();                        //回车自动缩进一个
 private:
     bool maybeSave();                           //是否需要保存
     void setCurrentFile(const QString& fileName);//保存当前文件路径

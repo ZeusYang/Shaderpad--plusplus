@@ -41,6 +41,10 @@ private slots:
 
     void on_pushButtonCancel_clicked();
 
+    void on_pushButtonApply_clicked();
+
+    void on_checkBox_stateChanged(int arg1);
+
 private:
     Ui::ThemeDialog *ui;
 

@@ -6,13 +6,15 @@
 #include <QFileInfo>
 #include <QApplication>
 #include <QDebug>
-#include <QTextStream>
+#include <QKeyEvent>
 
 TextChild::TextChild(QWidget *parent)
     :QTextEdit(parent),isUntitled(true)
 {
     //关闭窗口时销毁对象
     setAttribute(Qt::WA_DeleteOnClose);
+    this->setWordWrapMode(QTextOption::WordWrap);
+    this->document()->setIndentWidth(20);
 }
 
 TextChild::~TextChild()
@@ -98,9 +100,23 @@ void TextChild::closeEvent(QCloseEvent *event)
     else event->ignore();
 }
 
+void TextChild::keyPressEvent(QKeyEvent *e)
+{
+    if(e->key() == Qt::Key_Tab){
+        this->textCursor().insertText(tr("    "));
+    }else{
+        QTextEdit::keyPressEvent(e);
+    }
+}
+
 void TextChild::documentWasModified()
 {//文档被更改时，窗口显示更改标志
     setWindowModified(document()->isModified());
+}
+
+void TextChild::returnIndent()
+{
+
 }
 
 bool TextChild::maybeSave()
