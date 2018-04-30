@@ -14,6 +14,8 @@ public:
     explicit ThemeDialog(QWidget *parent = 0);
     ~ThemeDialog();
 
+    void changeFontSize(bool tag);      //修改字号
+
     //数据
     float   alpha;      //透明度
     QString theme;      //肤色主题

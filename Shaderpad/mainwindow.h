@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTextDocument>
 
 namespace Ui {
 class MainWindow;
@@ -12,6 +13,7 @@ class QPrinter;
 class ThemeDialog;
 class QLabel;
 class BgImageDialog;
+class SearchDialog;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -98,9 +100,21 @@ private slots:
     //对光标所在行进行高亮
     void onCurrentLineHighLight();
 
+    //改变字体大小
     void on_actionZoomIn_triggered();
 
     void on_actionZoomOut_triggered();
+
+    //触发查找器
+    void on_actionSearch_triggered();
+    //查找
+    bool searchFind(QString target,QTextDocument::FindFlags options, bool regExp);
+    //替换
+    bool searchReplace(QString to, QString from, QTextDocument::FindFlags options, bool regExp);
+    //全部替换
+    void searchReplaceAll(QString to,QString from, bool caseSen, bool whole);
+    //计数
+    void searchCount(QString from, bool caseSen,bool whole, QLabel *display);
 
 private:
     Ui::MainWindow *ui;
@@ -108,6 +122,7 @@ private:
     QSignalMapper *windowMapper;                    //信号映射器
     ThemeDialog *themeDlg;                          //主题对话框
     BgImageDialog *bgimageDlg;                      //背景图片选择对话框
+    SearchDialog *searchDlg;                        //查找/替换对话框
     QString bgImage;                                //当前背景图片
     QLabel *col,*row,*length,*selection,*lines;     //状态栏信息
 

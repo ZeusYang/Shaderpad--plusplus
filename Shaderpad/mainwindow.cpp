@@ -3,6 +3,7 @@
 #include "textchild.h"
 #include "themedialog.h"
 #include "bgimagedialog.h"
+#include "searchdialog.h"
 #include <QFileDialog>
 #include <QSignalMapper>
 #include <QPrinter>
@@ -11,9 +12,12 @@
 #include <QPainter>
 #include <QPrintPreviewDialog>
 #include <QFileInfo>
+#include <QRegularExpression>
+#include <QMessageBox>
 #include <QLabel>
 #include <QPixmap>
 #include <QHBoxLayout>
+#include <QTextBlock>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -47,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->menu_File,&QMenu::aboutToShow,
             this,&MainWindow::updateFileItemsMenu);
 
-    //主题窗口
+    //主题选择窗口
     themeDlg = new ThemeDialog(this);
     themeDlg->setWindowModality(Qt::WindowModal);
     //将确认修改主题的信号与函数链接起来
@@ -59,6 +63,14 @@ MainWindow::MainWindow(QWidget *parent) :
     bgimageDlg = new BgImageDialog(this);
     bgimageDlg->setWindowModality(Qt::WindowModal);
     connect(bgimageDlg,&BgImageDialog::ImageChanged,this,&MainWindow::changeBgImage);
+
+   //查找对话框
+    searchDlg = new SearchDialog(this);
+    searchDlg->setModal(false);
+    connect(searchDlg,&SearchDialog::searchFindSignal,this,&MainWindow::searchFind);
+    connect(searchDlg,&SearchDialog::searchReplaceSignal,this,&MainWindow::searchReplace);
+    connect(searchDlg,&SearchDialog::searchReplaceAllSignal,this,&MainWindow::searchReplaceAll);
+    connect(searchDlg,&SearchDialog::searchCountSignal,this,&MainWindow::searchCount);
 
     //加载样式表
     changeTheme("darkblack",themeDlg->alpha,themeDlg->font);
@@ -149,7 +161,6 @@ void MainWindow::on_actionOpen_triggered()
         else{
             existing->close();
         }
-
     }
 }
 
@@ -541,10 +552,106 @@ void MainWindow::onCurrentLineHighLight()
 
 void MainWindow::on_actionZoomIn_triggered()
 {
-    activeTextChild()->zoomIn(5);
+    themeDlg->changeFontSize(true);
 }
 
 void MainWindow::on_actionZoomOut_triggered()
 {
-    activeTextChild()->zoomOut(5);
+    themeDlg->changeFontSize(false);
+}
+
+void MainWindow::on_actionSearch_triggered()
+{
+    searchDlg->show();
+}
+
+bool MainWindow::searchFind(QString target, QTextDocument::FindFlags options, bool regExp)
+{
+    //查找
+    TextChild* child = activeTextChild();
+    if(!regExp){
+         QTextCursor loc = child->document()->find(target,child->textCursor(),options);
+         if(!loc.isNull()){
+             child->setTextCursor(loc);
+         }
+         else{
+             QMessageBox::information(this,tr("提示"),tr("没有了"));
+             return false;
+         }
+    }
+    else{
+        QRegularExpression pattern(target);
+        QTextCursor loc = child->document()->find(pattern,child->textCursor(),options);
+        if(!loc.isNull()){
+            child->setTextCursor(loc);
+        }
+        else{
+            QMessageBox::information(this,tr("提示"),tr("没有了"));
+            return false;
+        }
+    }
+    return true;
+}
+
+bool MainWindow::searchReplace(QString to, QString from,
+                               QTextDocument::FindFlags options, bool regExp)
+{
+    //替换当前词，兼具查找功能
+    TextChild* child = activeTextChild();
+    if(child->textCursor().hasSelection()
+            && child->textCursor().selectedText().toUpper() == from.toUpper()){
+        child->textCursor().removeSelectedText();
+        child->textCursor().insertText(to);
+        return true;
+    }
+    else{
+        if(searchFind(from,options,regExp)){
+            child->textCursor().removeSelectedText();
+            child->textCursor().insertText(to);
+            return true;
+        }
+    }
+    return false;
+}
+
+void MainWindow::searchReplaceAll(QString to, QString from, bool caseSen, bool whole)
+{
+    //全部替换
+    TextChild* child = activeTextChild();
+    QString content = child->toPlainText();
+    if(whole)from = "\\b" + from + "\\b";
+    QRegularExpression reg(from);
+    if(caseSen){
+        reg.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
+    }
+    content.replace(reg,to);
+    child->setPlainText(content);
+    //发射内容被修改了的信号
+    child->document()->setModified(true);
+    child->documentWasModified();
+}
+
+void MainWindow::searchCount(QString from, bool caseSen, bool whole, QLabel *display)
+{
+    TextChild* child = activeTextChild();
+    QString content = child->toPlainText();
+    //全词匹配
+    if(whole)from = "\\b" + from + "\\b";
+    QRegularExpression reg(from);
+    QRegularExpressionMatch match;
+    //不区分大小写
+    if(caseSen){
+        reg.setPatternOptions(QRegularExpression::CaseInsensitiveOption);
+    }
+    int count = 0, index = 0;
+    do{//计数
+        match = reg.match(content,index);
+        if(match.hasMatch()){
+            index = match.capturedEnd();
+            ++count;
+        }
+        else break;
+    }
+    while(index < content.size());
+    display->setText(tr("共有%1个").arg(count));
 }

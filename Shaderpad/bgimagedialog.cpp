@@ -7,6 +7,7 @@ BgImageDialog::BgImageDialog(QWidget *parent) :
     ui(new Ui::BgImageDialog)
 {
     ui->setupUi(this);
+    setWindowTitle(tr("背景图片"));
     bgImage = ui->comboBoxSelect->currentText();
     on_comboBoxSelect_currentTextChanged(bgImage);
     setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);    // 禁止最大化按钮

@@ -34,7 +34,7 @@ public:
     QPushButton *pushButtonSure;
     QPushButton *pushButtonCancel;
     QPushButton *pushButtonApply;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QFormLayout *formLayout;
     QLabel *label_theme;
     QComboBox *comboBoxTheme;
@@ -77,19 +77,19 @@ public:
         pushButtonApply->setGeometry(QRect(290, 240, 80, 24));
         sizePolicy.setHeightForWidth(pushButtonApply->sizePolicy().hasHeightForWidth());
         pushButtonApply->setSizePolicy(sizePolicy);
-        widget = new QWidget(ThemeDialog);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(18, 14, 349, 211));
-        formLayout = new QFormLayout(widget);
+        layoutWidget = new QWidget(ThemeDialog);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(18, 14, 349, 211));
+        formLayout = new QFormLayout(layoutWidget);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         formLayout->setVerticalSpacing(22);
         formLayout->setContentsMargins(0, 0, 0, 0);
-        label_theme = new QLabel(widget);
+        label_theme = new QLabel(layoutWidget);
         label_theme->setObjectName(QStringLiteral("label_theme"));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_theme);
 
-        comboBoxTheme = new QComboBox(widget);
+        comboBoxTheme = new QComboBox(layoutWidget);
         comboBoxTheme->addItem(QString());
         comboBoxTheme->addItem(QString());
         comboBoxTheme->addItem(QString());
@@ -106,12 +106,12 @@ public:
 
         formLayout->setWidget(0, QFormLayout::FieldRole, comboBoxTheme);
 
-        label_cur = new QLabel(widget);
+        label_cur = new QLabel(layoutWidget);
         label_cur->setObjectName(QStringLiteral("label_cur"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_cur);
 
-        lineEdit = new QLineEdit(widget);
+        lineEdit = new QLineEdit(layoutWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
         lineEdit->setSizePolicy(sizePolicy);
@@ -119,14 +119,14 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, lineEdit);
 
-        label_alpha = new QLabel(widget);
+        label_alpha = new QLabel(layoutWidget);
         label_alpha->setObjectName(QStringLiteral("label_alpha"));
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_alpha);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalSliderAlpha = new QSlider(widget);
+        horizontalSliderAlpha = new QSlider(layoutWidget);
         horizontalSliderAlpha->setObjectName(QStringLiteral("horizontalSliderAlpha"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
@@ -140,7 +140,7 @@ public:
 
         horizontalLayout->addWidget(horizontalSliderAlpha);
 
-        label_alpha_show = new QLabel(widget);
+        label_alpha_show = new QLabel(layoutWidget);
         label_alpha_show->setObjectName(QStringLiteral("label_alpha_show"));
         QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy3.setHorizontalStretch(0);
@@ -153,13 +153,13 @@ public:
 
         formLayout->setLayout(2, QFormLayout::FieldRole, horizontalLayout);
 
-        label_codefont = new QLabel(widget);
+        label_codefont = new QLabel(layoutWidget);
         label_codefont->setObjectName(QStringLiteral("label_codefont"));
         label_codefont->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         formLayout->setWidget(3, QFormLayout::LabelRole, label_codefont);
 
-        ComboBoxFont = new QFontComboBox(widget);
+        ComboBoxFont = new QFontComboBox(layoutWidget);
         ComboBoxFont->setObjectName(QStringLiteral("ComboBoxFont"));
         sizePolicy2.setHeightForWidth(ComboBoxFont->sizePolicy().hasHeightForWidth());
         ComboBoxFont->setSizePolicy(sizePolicy2);
@@ -173,7 +173,7 @@ public:
 
         formLayout->setWidget(3, QFormLayout::FieldRole, ComboBoxFont);
 
-        label_fontsize = new QLabel(widget);
+        label_fontsize = new QLabel(layoutWidget);
         label_fontsize->setObjectName(QStringLiteral("label_fontsize"));
         label_fontsize->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
@@ -182,7 +182,20 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(12);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        comboBoxFontSize = new QComboBox(widget);
+        comboBoxFontSize = new QComboBox(layoutWidget);
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
+        comboBoxFontSize->addItem(QString());
         comboBoxFontSize->addItem(QString());
         comboBoxFontSize->addItem(QString());
         comboBoxFontSize->addItem(QString());
@@ -205,7 +218,7 @@ public:
 
         horizontalLayout_2->addWidget(comboBoxFontSize);
 
-        checkBox = new QCheckBox(widget);
+        checkBox = new QCheckBox(layoutWidget);
         checkBox->setObjectName(QStringLiteral("checkBox"));
         checkBox->setEnabled(false);
         checkBox->setChecked(true);
@@ -267,9 +280,22 @@ public:
         comboBoxFontSize->setItemText(12, QApplication::translate("ThemeDialog", "24", nullptr));
         comboBoxFontSize->setItemText(13, QApplication::translate("ThemeDialog", "26", nullptr));
         comboBoxFontSize->setItemText(14, QApplication::translate("ThemeDialog", "28", nullptr));
-        comboBoxFontSize->setItemText(15, QApplication::translate("ThemeDialog", "36", nullptr));
-        comboBoxFontSize->setItemText(16, QApplication::translate("ThemeDialog", "48", nullptr));
-        comboBoxFontSize->setItemText(17, QApplication::translate("ThemeDialog", "72", nullptr));
+        comboBoxFontSize->setItemText(15, QApplication::translate("ThemeDialog", "30", nullptr));
+        comboBoxFontSize->setItemText(16, QApplication::translate("ThemeDialog", "32", nullptr));
+        comboBoxFontSize->setItemText(17, QApplication::translate("ThemeDialog", "34", nullptr));
+        comboBoxFontSize->setItemText(18, QApplication::translate("ThemeDialog", "36", nullptr));
+        comboBoxFontSize->setItemText(19, QApplication::translate("ThemeDialog", "38", nullptr));
+        comboBoxFontSize->setItemText(20, QApplication::translate("ThemeDialog", "40", nullptr));
+        comboBoxFontSize->setItemText(21, QApplication::translate("ThemeDialog", "42", nullptr));
+        comboBoxFontSize->setItemText(22, QApplication::translate("ThemeDialog", "44", nullptr));
+        comboBoxFontSize->setItemText(23, QApplication::translate("ThemeDialog", "46", nullptr));
+        comboBoxFontSize->setItemText(24, QApplication::translate("ThemeDialog", "48", nullptr));
+        comboBoxFontSize->setItemText(25, QApplication::translate("ThemeDialog", "50", nullptr));
+        comboBoxFontSize->setItemText(26, QApplication::translate("ThemeDialog", "52", nullptr));
+        comboBoxFontSize->setItemText(27, QApplication::translate("ThemeDialog", "54", nullptr));
+        comboBoxFontSize->setItemText(28, QApplication::translate("ThemeDialog", "56", nullptr));
+        comboBoxFontSize->setItemText(29, QApplication::translate("ThemeDialog", "58", nullptr));
+        comboBoxFontSize->setItemText(30, QApplication::translate("ThemeDialog", "72", nullptr));
 
         comboBoxFontSize->setCurrentText(QApplication::translate("ThemeDialog", "14", nullptr));
         checkBox->setText(QApplication::translate("ThemeDialog", "\346\212\227\351\224\257\351\275\277(&P)", nullptr));

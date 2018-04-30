@@ -4,9 +4,11 @@ INPUT(
 ./debug\textchild.o
 ./debug\themedialog.o
 ./debug\bgimagedialog.o
+./debug\searchdialog.o
 ./debug\qrc_resource.o
 ./debug\moc_mainwindow.o
 ./debug\moc_textchild.o
 ./debug\moc_themedialog.o
 ./debug\moc_bgimagedialog.o
+./debug\moc_searchdialog.o
 );

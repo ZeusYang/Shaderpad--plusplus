@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[52];
-    char stringdata0[971];
+    QByteArrayData data[66];
+    char stringdata0[1129];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -82,7 +82,21 @@ QT_MOC_LITERAL(47, 844, 23), // "on_actionNext_triggered"
 QT_MOC_LITERAL(48, 868, 26), // "on_actionComment_triggered"
 QT_MOC_LITERAL(49, 895, 22), // "onCurrentLineHighLight"
 QT_MOC_LITERAL(50, 918, 25), // "on_actionZoomIn_triggered"
-QT_MOC_LITERAL(51, 944, 26) // "on_actionZoomOut_triggered"
+QT_MOC_LITERAL(51, 944, 26), // "on_actionZoomOut_triggered"
+QT_MOC_LITERAL(52, 971, 25), // "on_actionSearch_triggered"
+QT_MOC_LITERAL(53, 997, 10), // "searchFind"
+QT_MOC_LITERAL(54, 1008, 24), // "QTextDocument::FindFlags"
+QT_MOC_LITERAL(55, 1033, 7), // "options"
+QT_MOC_LITERAL(56, 1041, 6), // "regExp"
+QT_MOC_LITERAL(57, 1048, 13), // "searchReplace"
+QT_MOC_LITERAL(58, 1062, 2), // "to"
+QT_MOC_LITERAL(59, 1065, 4), // "from"
+QT_MOC_LITERAL(60, 1070, 16), // "searchReplaceAll"
+QT_MOC_LITERAL(61, 1087, 7), // "caseSen"
+QT_MOC_LITERAL(62, 1095, 5), // "whole"
+QT_MOC_LITERAL(63, 1101, 11), // "searchCount"
+QT_MOC_LITERAL(64, 1113, 7), // "QLabel*"
+QT_MOC_LITERAL(65, 1121, 7) // "display"
 
     },
     "MainWindow\0on_actionNew_triggered\0\0"
@@ -112,7 +126,12 @@ QT_MOC_LITERAL(51, 944, 26) // "on_actionZoomOut_triggered"
     "on_actionNext_triggered\0"
     "on_actionComment_triggered\0"
     "onCurrentLineHighLight\0on_actionZoomIn_triggered\0"
-    "on_actionZoomOut_triggered"
+    "on_actionZoomOut_triggered\0"
+    "on_actionSearch_triggered\0searchFind\0"
+    "QTextDocument::FindFlags\0options\0"
+    "regExp\0searchReplace\0to\0from\0"
+    "searchReplaceAll\0caseSen\0whole\0"
+    "searchCount\0QLabel*\0display"
 };
 #undef QT_MOC_LITERAL
 
@@ -122,7 +141,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      38,   14, // methods
+      43,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -130,44 +149,49 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  204,    2, 0x08 /* Private */,
-       3,    1,  205,    2, 0x08 /* Private */,
-       5,    0,  208,    2, 0x08 /* Private */,
-       6,    1,  209,    2, 0x08 /* Private */,
-       7,    0,  212,    2, 0x08 /* Private */,
-       9,    1,  213,    2, 0x08 /* Private */,
-      12,    0,  216,    2, 0x08 /* Private */,
-      13,    0,  217,    2, 0x08 /* Private */,
-      14,    0,  218,    2, 0x08 /* Private */,
-      15,    0,  219,    2, 0x08 /* Private */,
-      16,    0,  220,    2, 0x08 /* Private */,
-      17,    1,  221,    2, 0x08 /* Private */,
-      20,    0,  224,    2, 0x08 /* Private */,
-      21,    0,  225,    2, 0x08 /* Private */,
-      22,    0,  226,    2, 0x08 /* Private */,
-      23,    0,  227,    2, 0x08 /* Private */,
-      24,    0,  228,    2, 0x08 /* Private */,
-      25,    0,  229,    2, 0x08 /* Private */,
-      26,    0,  230,    2, 0x08 /* Private */,
-      27,    0,  231,    2, 0x08 /* Private */,
-      28,    0,  232,    2, 0x08 /* Private */,
-      29,    0,  233,    2, 0x08 /* Private */,
-      30,    1,  234,    2, 0x08 /* Private */,
-      33,    0,  237,    2, 0x08 /* Private */,
-      34,    0,  238,    2, 0x08 /* Private */,
-      35,    0,  239,    2, 0x08 /* Private */,
-      36,    0,  240,    2, 0x08 /* Private */,
-      37,    3,  241,    2, 0x08 /* Private */,
-      41,    0,  248,    2, 0x08 /* Private */,
-      42,    0,  249,    2, 0x08 /* Private */,
-      43,    1,  250,    2, 0x08 /* Private */,
-      45,    0,  253,    2, 0x08 /* Private */,
-      46,    0,  254,    2, 0x08 /* Private */,
-      47,    0,  255,    2, 0x08 /* Private */,
-      48,    0,  256,    2, 0x08 /* Private */,
-      49,    0,  257,    2, 0x08 /* Private */,
-      50,    0,  258,    2, 0x08 /* Private */,
-      51,    0,  259,    2, 0x08 /* Private */,
+       1,    0,  229,    2, 0x08 /* Private */,
+       3,    1,  230,    2, 0x08 /* Private */,
+       5,    0,  233,    2, 0x08 /* Private */,
+       6,    1,  234,    2, 0x08 /* Private */,
+       7,    0,  237,    2, 0x08 /* Private */,
+       9,    1,  238,    2, 0x08 /* Private */,
+      12,    0,  241,    2, 0x08 /* Private */,
+      13,    0,  242,    2, 0x08 /* Private */,
+      14,    0,  243,    2, 0x08 /* Private */,
+      15,    0,  244,    2, 0x08 /* Private */,
+      16,    0,  245,    2, 0x08 /* Private */,
+      17,    1,  246,    2, 0x08 /* Private */,
+      20,    0,  249,    2, 0x08 /* Private */,
+      21,    0,  250,    2, 0x08 /* Private */,
+      22,    0,  251,    2, 0x08 /* Private */,
+      23,    0,  252,    2, 0x08 /* Private */,
+      24,    0,  253,    2, 0x08 /* Private */,
+      25,    0,  254,    2, 0x08 /* Private */,
+      26,    0,  255,    2, 0x08 /* Private */,
+      27,    0,  256,    2, 0x08 /* Private */,
+      28,    0,  257,    2, 0x08 /* Private */,
+      29,    0,  258,    2, 0x08 /* Private */,
+      30,    1,  259,    2, 0x08 /* Private */,
+      33,    0,  262,    2, 0x08 /* Private */,
+      34,    0,  263,    2, 0x08 /* Private */,
+      35,    0,  264,    2, 0x08 /* Private */,
+      36,    0,  265,    2, 0x08 /* Private */,
+      37,    3,  266,    2, 0x08 /* Private */,
+      41,    0,  273,    2, 0x08 /* Private */,
+      42,    0,  274,    2, 0x08 /* Private */,
+      43,    1,  275,    2, 0x08 /* Private */,
+      45,    0,  278,    2, 0x08 /* Private */,
+      46,    0,  279,    2, 0x08 /* Private */,
+      47,    0,  280,    2, 0x08 /* Private */,
+      48,    0,  281,    2, 0x08 /* Private */,
+      49,    0,  282,    2, 0x08 /* Private */,
+      50,    0,  283,    2, 0x08 /* Private */,
+      51,    0,  284,    2, 0x08 /* Private */,
+      52,    0,  285,    2, 0x08 /* Private */,
+      53,    3,  286,    2, 0x08 /* Private */,
+      57,    4,  293,    2, 0x08 /* Private */,
+      60,    4,  302,    2, 0x08 /* Private */,
+      63,    4,  311,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -208,6 +232,11 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Bool, QMetaType::QString, 0x80000000 | 54, QMetaType::Bool,   44,   55,   56,
+    QMetaType::Bool, QMetaType::QString, QMetaType::QString, 0x80000000 | 54, QMetaType::Bool,   58,   59,   55,   56,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::Bool, QMetaType::Bool,   58,   59,   61,   62,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool, QMetaType::Bool, 0x80000000 | 64,   59,   61,   62,   65,
 
        0        // eod
 };
@@ -257,6 +286,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 35: _t->onCurrentLineHighLight(); break;
         case 36: _t->on_actionZoomIn_triggered(); break;
         case 37: _t->on_actionZoomOut_triggered(); break;
+        case 38: _t->on_actionSearch_triggered(); break;
+        case 39: { bool _r = _t->searchFind((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QTextDocument::FindFlags(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 40: { bool _r = _t->searchReplace((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QTextDocument::FindFlags(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
+        case 41: _t->searchReplaceAll((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])),(*reinterpret_cast< bool(*)>(_a[4]))); break;
+        case 42: _t->searchCount((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2])),(*reinterpret_cast< bool(*)>(_a[3])),(*reinterpret_cast< QLabel*(*)>(_a[4]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -298,13 +334,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 38)
+        if (_id < 43)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 38;
+        _id -= 43;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 38)
+        if (_id < 43)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 38;
+        _id -= 43;
     }
     return _id;
 }

@@ -24,6 +24,18 @@ ThemeDialog::~ThemeDialog()
     delete ui;
 }
 
+void ThemeDialog::changeFontSize(bool tag)
+{
+    if(tag){
+        ui->comboBoxFontSize->setCurrentIndex(ui->comboBoxFontSize->currentIndex()+1);
+    }
+    else {
+        ui->comboBoxFontSize->setCurrentIndex(ui->comboBoxFontSize->currentIndex()-1);
+    }
+    sendSignalsChanged();
+    updateContent();
+}
+
 void ThemeDialog::on_pushButtonSure_clicked()
 {
     accept();

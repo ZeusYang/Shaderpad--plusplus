@@ -19,7 +19,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>160</x>
@@ -70,7 +70,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>43</x>
@@ -95,37 +95,37 @@
         </property>
         <item>
          <property name="text">
-          <string>droplet one</string>
+          <string>flower one</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>droplet two</string>
+          <string>flower two</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>glass one</string>
+          <string>aero one</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>glass two</string>
+          <string>aero two</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>glass three</string>
+          <string>science one</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>glass four</string>
+          <string>science two</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>glass five</string>
+          <string>glass</string>
          </property>
         </item>
        </widget>

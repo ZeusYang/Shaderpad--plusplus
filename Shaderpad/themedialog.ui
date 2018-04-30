@@ -79,7 +79,7 @@
     <string>应用</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>18</x>
@@ -367,12 +367,77 @@
         </item>
         <item>
          <property name="text">
+          <string>30</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>32</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>34</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>36</string>
          </property>
         </item>
         <item>
          <property name="text">
+          <string>38</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>40</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>42</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>44</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>46</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
           <string>48</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>50</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>52</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>54</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>56</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>58</string>
          </property>
         </item>
         <item>

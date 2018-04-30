@@ -29,18 +29,21 @@ SOURCES += \
         mainwindow.cpp \
     textchild.cpp \
     themedialog.cpp \
-    bgimagedialog.cpp
+    bgimagedialog.cpp \
+    searchdialog.cpp
 
 HEADERS += \
         mainwindow.h \
     textchild.h \
     themedialog.h \
-    bgimagedialog.h
+    bgimagedialog.h \
+    searchdialog.h
 
 FORMS += \
         mainwindow.ui \
     themedialog.ui \
-    bgimagedialog.ui
+    bgimagedialog.ui \
+    searchdialog.ui
 
 RESOURCES += \
     resource.qrc

@@ -14,7 +14,6 @@ TextChild::TextChild(QWidget *parent)
     //关闭窗口时销毁对象
     setAttribute(Qt::WA_DeleteOnClose);
     this->setWordWrapMode(QTextOption::WordWrap);
-    this->document()->setIndentWidth(20);
 }
 
 TextChild::~TextChild()
@@ -122,6 +121,7 @@ void TextChild::returnIndent()
 bool TextChild::maybeSave()
 {
     //文档被更改过
+    qDebug() << document()->isModified();
     if(document()->isModified()){
         QMessageBox *box = new QMessageBox(this);
         box->setWindowTitle(tr("Shaderpad++"));

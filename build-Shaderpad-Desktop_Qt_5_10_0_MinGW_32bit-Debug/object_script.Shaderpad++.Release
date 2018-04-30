@@ -4,9 +4,11 @@ INPUT(
 ./release\textchild.o
 ./release\themedialog.o
 ./release\bgimagedialog.o
+./release\searchdialog.o
 ./release\qrc_resource.o
 ./release\moc_mainwindow.o
 ./release\moc_textchild.o
 ./release\moc_themedialog.o
 ./release\moc_bgimagedialog.o
+./release\moc_searchdialog.o
 );
