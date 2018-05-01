@@ -646,7 +646,7 @@ border:5px solid #242629;
 border-radius:10px;
 }
 
-QTextEdit{
+QPlainTextEdit{
 background-color:rgba(36,38,41,100);
 color:rgba(255,255,255,255);
 }

@@ -5,15 +5,27 @@
 #include <QPushButton>
 #include <QFileInfo>
 #include <QApplication>
+#include <QTextBlock>
+#include <QPainter>
+#include <QFont>
 #include <QDebug>
 #include <QKeyEvent>
 
 TextChild::TextChild(QWidget *parent)
-    :QTextEdit(parent),isUntitled(true)
+    :QPlainTextEdit(parent),isUntitled(true)
 {
     //关闭窗口时销毁对象
     setAttribute(Qt::WA_DeleteOnClose);
     this->setWordWrapMode(QTextOption::WordWrap);
+    //行号区域
+    lineNumberArea = new LineNumberArea(this);
+    //更新显示行号的宽度
+    connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
+    //更新行号区域
+    connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
+    updateLineNumberAreaWidth(0);
+    //设置缩进宽度为四个空格的宽度
+    setTabStopDistance(50);
 }
 
 TextChild::~TextChild()
@@ -27,10 +39,7 @@ void TextChild::newFile()
     isUntitled = true;
     //给新建的文件按编号命名
     curFile = tr("new%1").arg(sequenceNumber++);
-    setWindowTitle(curFile+"[*]");
-    //文件被更改时，发射信号，窗口显示更改标志
-    connect(document(),&QTextDocument::contentsChanged,
-            this,&TextChild::documentWasModified);
+    setWindowTitle(curFile);
 }
 
 bool TextChild::loadFile(const QString &fileName)
@@ -48,9 +57,6 @@ bool TextChild::loadFile(const QString &fileName)
     setPlainText(in.readAll());
     QApplication::restoreOverrideCursor();
     setCurrentFile(fileName);
-    //关联修改信号
-    connect(document(),&QTextDocument::contentsChanged,
-            this,&TextChild::documentWasModified);
     return true;
 }
 
@@ -90,6 +96,54 @@ QString TextChild::userFriendlyCurrentFile()
     return QFileInfo(curFile).fileName();
 }
 
+void TextChild::lineNumberAreaPaintEvent(QPaintEvent *event)
+{
+    QPainter painter(lineNumberArea);
+    //行号区域的背景,透明背景
+    painter.fillRect(event->rect(), Qt::transparent);
+    //获取当前能够看到的第一行
+    QTextBlock block = firstVisibleBlock();
+    //总行数
+    int blockNumber = block.blockNumber();
+    //上、下
+    int top =
+            (int) blockBoundingGeometry(block).translated(contentOffset()).top();//top()就是y()
+    int bottom = top + (int) blockBoundingRect(block).height();
+    //设置字体大小
+    QFont font(tr("Consolas"));
+    font.setPointSize(fontMetrics().height()/2);
+    painter.setFont(font);
+    //一行一行绘制行号
+    while (block.isValid() && top <= event->rect().bottom()) {
+        if (block.isVisible() && bottom >= event->rect().top()) {
+            QString number = QString::number(blockNumber + 1);
+            painter.setPen(QColor(214,182,104));
+            painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),
+                             Qt::AlignRight, number);
+        }
+        block = block.next();
+        top = bottom;
+        bottom = top + (int) blockBoundingRect(block).height();
+        ++blockNumber;
+    }
+}
+
+int TextChild::lineNumberAreaWidth()
+{
+    //更新宽度
+    int digits = 1;
+    //获取最大行数
+    int max = qMax(1, blockCount());
+    //获取最大行数的位数
+    while (max >= 10) {
+        max /= 10;
+        ++digits;
+    }
+    //获取当前单个字体的宽度，再乘上位数，如此计算需要的宽度
+    int space = 3 + fontMetrics().width(QLatin1Char('9')) * digits;
+    return space;
+}
+
 void TextChild::closeEvent(QCloseEvent *event)
 {
     //关闭的时候判断是否需要保存
@@ -101,27 +155,36 @@ void TextChild::closeEvent(QCloseEvent *event)
 
 void TextChild::keyPressEvent(QKeyEvent *e)
 {
-    if(e->key() == Qt::Key_Tab){
-        this->textCursor().insertText(tr("    "));
-    }else{
-        QTextEdit::keyPressEvent(e);
-    }
+    QPlainTextEdit::keyPressEvent(e);
 }
 
-void TextChild::documentWasModified()
-{//文档被更改时，窗口显示更改标志
-    setWindowModified(document()->isModified());
-}
-
-void TextChild::returnIndent()
+void TextChild::resizeEvent(QResizeEvent *event)
 {
+    //改变大小时，行号区域也需要改变
+    QPlainTextEdit::resizeEvent(event);
+    QRect cr = contentsRect();
+    lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height()));
+}
 
+void TextChild::updateLineNumberAreaWidth(int newBlockCount)
+{
+    Q_UNUSED(newBlockCount);
+    //设置左边的margin，腾出地方用来显示行号
+    setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
+}
+
+void TextChild::updateLineNumberArea(const QRect &rect, int dy)
+{
+    //更新行号区域，这个函数当updateRequest信号发射时被调用
+    if (dy)lineNumberArea->scroll(0, dy);
+    else lineNumberArea->update(0, rect.y(), lineNumberArea->width(), rect.height());
+    if (rect.contains(viewport()->rect()))
+        updateLineNumberAreaWidth(0);
 }
 
 bool TextChild::maybeSave()
 {
     //文档被更改过
-    qDebug() << document()->isModified();
     if(document()->isModified()){
         QMessageBox *box = new QMessageBox(this);
         box->setWindowTitle(tr("Shaderpad++"));
@@ -139,7 +202,6 @@ bool TextChild::maybeSave()
             delete box;
             return false;
         }
-
     }
     return true;//文档未被更改过
 }
@@ -152,5 +214,5 @@ void TextChild::setCurrentFile(const QString &fileName)
     isUntitled = false;
     document()->setModified(false);
     setWindowModified(false);
-    setWindowTitle(userFriendlyCurrentFile()+"[*]");
+    setWindowTitle(userFriendlyCurrentFile());
 }

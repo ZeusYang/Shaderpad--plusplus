@@ -639,7 +639,7 @@ QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,Q
 background:#EAF7FF;
 }
 
-QTextEdit{
+QPlainTextEdit{
 background-color:rgba(234, 247, 255,100);
 color:rgba(255,255,255,255);
 }

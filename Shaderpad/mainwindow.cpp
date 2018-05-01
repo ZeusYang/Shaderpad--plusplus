@@ -453,9 +453,8 @@ void MainWindow::changeTheme(QString theme, float alpha, QFont font)
     }else{
         red = 36;green = 38;blue = 41;
     }
-    QString fontAndAlpha = tr("TextChild{"
+    QString fontAndAlpha = tr("QPlainTextEdit{"
                            "background-color:rgba(%1,%2,%3,%4);"
-                           "color:rgba(255,255,255,255);"
                            "font: %5pt \"%6\";"
                            "}").arg(red).arg(green).arg(blue)
                             .arg(alpha*255).arg(font.pointSize()).arg(font.family());
@@ -628,7 +627,7 @@ void MainWindow::searchReplaceAll(QString to, QString from, bool caseSen, bool w
     child->setPlainText(content);
     //发射内容被修改了的信号
     child->document()->setModified(true);
-    child->documentWasModified();
+    //child->documentWasModified();
 }
 
 void MainWindow::searchCount(QString from, bool caseSen, bool whole, QLabel *display)

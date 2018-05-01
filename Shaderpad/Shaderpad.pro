@@ -30,14 +30,16 @@ SOURCES += \
     textchild.cpp \
     themedialog.cpp \
     bgimagedialog.cpp \
-    searchdialog.cpp
+    searchdialog.cpp \
+    highlighter.cpp
 
 HEADERS += \
         mainwindow.h \
     textchild.h \
     themedialog.h \
     bgimagedialog.h \
-    searchdialog.h
+    searchdialog.h \
+    highlighter.h
 
 FORMS += \
         mainwindow.ui \

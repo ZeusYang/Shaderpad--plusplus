@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -61,7 +60,6 @@ public:
     QAction *actionZoomOut;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QListWidget *listWidget;
     QSplitter *splitter;
     QTabWidget *tabWidget;
     QWidget *tab;
@@ -234,68 +232,16 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        listWidget = new QListWidget(centralWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(listWidget->sizePolicy().hasHeightForWidth());
-        listWidget->setSizePolicy(sizePolicy);
-        listWidget->setMinimumSize(QSize(50, 0));
-        listWidget->setMaximumSize(QSize(50, 16777215));
-        listWidget->setFrameShadow(QFrame::Plain);
-        listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        listWidget->setProperty("isWrapping", QVariant(false));
-
-        gridLayout->addWidget(listWidget, 0, 0, 1, 1);
-
         splitter = new QSplitter(centralWidget);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setOrientation(Qt::Horizontal);
         tabWidget = new QTabWidget(splitter);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
-        tabWidget->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
+        tabWidget->setSizePolicy(sizePolicy);
         tabWidget->setTabBarAutoHide(false);
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
@@ -309,7 +255,7 @@ public:
         tabWidget->addTab(tab_2, QString());
         splitter->addWidget(tabWidget);
 
-        gridLayout->addWidget(splitter, 0, 1, 1, 1);
+        gridLayout->addWidget(splitter, 0, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -481,83 +427,6 @@ public:
 #ifndef QT_NO_SHORTCUT
         actionZoomOut->setShortcut(QApplication::translate("MainWindow", "Ctrl+-", nullptr));
 #endif // QT_NO_SHORTCUT
-
-        const bool __sortingEnabled = listWidget->isSortingEnabled();
-        listWidget->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listWidget->item(0);
-        ___qlistwidgetitem->setText(QApplication::translate("MainWindow", "111111111111111", nullptr));
-        QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
-        ___qlistwidgetitem1->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
-        ___qlistwidgetitem2->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
-        ___qlistwidgetitem3->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem4 = listWidget->item(4);
-        ___qlistwidgetitem4->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem5 = listWidget->item(5);
-        ___qlistwidgetitem5->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem6 = listWidget->item(6);
-        ___qlistwidgetitem6->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem7 = listWidget->item(7);
-        ___qlistwidgetitem7->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem8 = listWidget->item(8);
-        ___qlistwidgetitem8->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem9 = listWidget->item(9);
-        ___qlistwidgetitem9->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem10 = listWidget->item(10);
-        ___qlistwidgetitem10->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem11 = listWidget->item(11);
-        ___qlistwidgetitem11->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem12 = listWidget->item(12);
-        ___qlistwidgetitem12->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem13 = listWidget->item(13);
-        ___qlistwidgetitem13->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem14 = listWidget->item(14);
-        ___qlistwidgetitem14->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem15 = listWidget->item(15);
-        ___qlistwidgetitem15->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem16 = listWidget->item(16);
-        ___qlistwidgetitem16->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem17 = listWidget->item(17);
-        ___qlistwidgetitem17->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem18 = listWidget->item(18);
-        ___qlistwidgetitem18->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem19 = listWidget->item(19);
-        ___qlistwidgetitem19->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem20 = listWidget->item(20);
-        ___qlistwidgetitem20->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem21 = listWidget->item(21);
-        ___qlistwidgetitem21->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem22 = listWidget->item(22);
-        ___qlistwidgetitem22->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem23 = listWidget->item(23);
-        ___qlistwidgetitem23->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem24 = listWidget->item(24);
-        ___qlistwidgetitem24->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem25 = listWidget->item(25);
-        ___qlistwidgetitem25->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem26 = listWidget->item(26);
-        ___qlistwidgetitem26->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem27 = listWidget->item(27);
-        ___qlistwidgetitem27->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem28 = listWidget->item(28);
-        ___qlistwidgetitem28->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem29 = listWidget->item(29);
-        ___qlistwidgetitem29->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem30 = listWidget->item(30);
-        ___qlistwidgetitem30->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem31 = listWidget->item(31);
-        ___qlistwidgetitem31->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem32 = listWidget->item(32);
-        ___qlistwidgetitem32->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem33 = listWidget->item(33);
-        ___qlistwidgetitem33->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem34 = listWidget->item(34);
-        ___qlistwidgetitem34->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\351\241\271\347\233\256", nullptr));
-        QListWidgetItem *___qlistwidgetitem35 = listWidget->item(35);
-        ___qlistwidgetitem35->setText(QApplication::translate("MainWindow", "1111111111", nullptr));
-        listWidget->setSortingEnabled(__sortingEnabled);
-
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", nullptr));
         menu_F->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266(&F)", nullptr));
