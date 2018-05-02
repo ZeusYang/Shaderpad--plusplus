@@ -456,6 +456,7 @@ void MainWindow::changeTheme(QString theme, float alpha, QFont font)
     QString fontAndAlpha = tr("QPlainTextEdit{"
                            "background-color:rgba(%1,%2,%3,%4);"
                            "font: %5pt \"%6\";"
+                           "color: rgba(200,200,200,255);"
                            "}").arg(red).arg(green).arg(blue)
                             .arg(alpha*255).arg(font.pointSize()).arg(font.family());
     //修改皮肤

@@ -2,6 +2,7 @@
 #define TEXTCHILD_H
 #include <QPlainTextEdit>
 
+class Highlighter;
 class TextChild : public QPlainTextEdit
 {
     Q_OBJECT
@@ -34,6 +35,7 @@ private:
     QString curFile;                            //当前文件路径
     bool isUntitled;                            //是否被保存到硬盘上的标志未保存过为true
     QWidget *lineNumberArea;                    //行号显示器
+    Highlighter *highlighter;                   //语法高亮器
 };
 
 class LineNumberArea : public QWidget{//代码块旁边的行号显示器

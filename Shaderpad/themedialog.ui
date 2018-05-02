@@ -259,7 +259,7 @@
       <property name="currentFont">
        <font>
         <family>Consolas</family>
-        <pointsize>14</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
      </widget>
@@ -285,10 +285,10 @@
       <item>
        <widget class="QComboBox" name="comboBoxFontSize">
         <property name="currentText">
-         <string>14</string>
+         <string>16</string>
         </property>
         <property name="currentIndex">
-         <number>7</number>
+         <number>8</number>
         </property>
         <item>
          <property name="text">

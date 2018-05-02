@@ -1,0 +1,45 @@
+type{{
+\bdouble\b \bu?int\b \bmat[2-4]\b \b[diub]?vec[2-4]\b \bsampler[1-3]D\b \bsamplerCube\b
+\bbool\b \bvoid\b \bfloat\b
+}}
+preprocess{{
+\B\#((define)|(undef)|(if)|(ifdef)|(ifndef)|(else)|(elif)|(endif)|(error)|(pragma)|(extension)|(version)|(line))\b
+\B\-\d+.?\B
+\b\d+(u|U)?\b
+\B\-\d+\.(f|F|(lF)|(LF))?\b
+\B\-\d*\.\d+(f|F|(lF)|(LF))?\b
+\b\d+\.(f|F|(lF)|(LF))?\b
+\b\d*\.\d+(f|F|(lF)|(LF))?\b
+\B\.\d+(f|F|(lF)|(LF))?\b
+\bfalse\b \btrue\b
+}}
+modifier{{
+\blayout\b \blocation\b \bif\b \belse\b \bwhile\b \bcore\b
+\bfor\b \breturn\b \bstruct\b \bconst\b \bin\b \bout\b \buniform\b \bbuffer\b
+\bshared\b \bswitch\b \bcase\b \bdefault\b \bbreak\b \bcontinue\b \bdiscard\b
+\binout\b \binvariant\b \bprecise\b \bpacked\b \bstd140\b \bstd430\b \brow_major\b
+\bcolumn_major\b \bnone\b \battribute\b \bvarying\b \bhighp\b \bmediump\b \blowp\b
+\bdo\b \bprecision\b
+}}
+operators{{
+\+ \- \* \/ \% \^ \& \! \? \: \" \. \, \( \) \{ \} \[ \] \=
+\< \> \~ \|
+}}
+singleCom{{
+//[^\n]*
+}}
+multiCom{{
+/\* \*/
+}}
+qutation{{
+\".*\" \'.*\'
+}}
+function{{
+\b[A-Za-z0-9_]+(?=\()
+}}
+buildin{{
+\bgl_((Position)|(PointSize)|(FragCoord)|(FrontFacing)|(PointCoord)|(FragColor)|(FragData))\b
+\bgl_((MaxVertexAttribs)|(MaxVertexUniformVectors)|(MaxVaryingVectors)|(MaxVertexTextureImageUnits))\b
+\bgl_((MaxCombinedTextureImageUnits)|(MaxTextureImageUnits)|(MaxFragmentUniformVectors)|(MaxDrawBuffers))\b
+\bgl_(DepthRange)\b \b\_\_LINE\_\_\b \b\_\_VERSION\_\_\b \bGL\_ES\b \bGL\_FRAGMENT\_PRECISION\_HIGH\b
+}}

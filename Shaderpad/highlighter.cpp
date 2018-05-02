@@ -3,29 +3,28 @@
 #include <QRegularExpression>
 #include <QStringList>
 #include <QTextStream>
+#include <QDebug>
+#include <sstream>
 
-Highlighter::Highlighter(QTextDocument *parent = 0)
+Highlighter::Highlighter(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
 {
 }
 
 void Highlighter::highlightBlock(const QString &text){
     //遍历每个高亮规则
-    for(auto &elem : highlightingRules){
-        //直接全局匹配，返回迭代器
-        QRegularExpressionMatchIterator matchIterator = elem.pattern.globalMatch(text);
+    for(auto it = highlightingRules.begin();it != highlightingRules.end();++it){
+        QRegularExpressionMatchIterator matchIterator = it->pattern.globalMatch(text);
         while (matchIterator.hasNext()) {
             QRegularExpressionMatch match = matchIterator.next();
-            setFormat(match.capturedStart(), match.capturedLength(), elem.format);
+            setFormat(match.capturedStart(), match.capturedLength(), it->format);
         }
     }
     setCurrentBlockState(0);
-
     //多行注释的匹配
     int startIndex = 0;
     if (previousBlockState() != 1)
         startIndex = text.indexOf(commentStartExpression);
-
     while (startIndex >= 0) {
         QRegularExpressionMatch match = commentEndExpression.match(text, startIndex);
         int endIndex = match.capturedStart();
@@ -38,7 +37,7 @@ void Highlighter::highlightBlock(const QString &text){
             commentLength = endIndex - startIndex
                             + match.capturedLength();
         }
-        setFormat(startIndex, commentLength, multiLineCommentFormat);
+        setFormat(startIndex, commentLength, patternFormat[PatternWord::multiCom]);
         startIndex = text.indexOf(commentStartExpression, startIndex + commentLength);
     }
 }
@@ -47,6 +46,7 @@ void Highlighter::highlightBlock(const QString &text){
 /*规则为 name{{ words }} 其中name是相应的种类，words是要匹配正则表达式模式，不同的words空格或换行隔开
  *words有如下种类：
  * type 类型词
+ * preprocess 预处理宏
  * modifier 修饰词
  * operator 操作符
  * singleCom 单行注释
@@ -65,39 +65,32 @@ void Highlighter::loadPatternFile(QString path)
     QString patterns = file.readAll();
     file.close();
     //对文件内容解析，提取相应的词语
-    if(patterns.isEmpty())return;
-    int index = 0, multiIndex = 0;
-    QRegularExpression reg(tr("{{.*}}"));
-    QRegularExpressionMatch match;
+    int index = 0,from = 0,to = 0;
     for(auto x = 0;x < 8;++x){
-        //多行注释需要额外处理
-        if(patternWord[x] == tr("multiCom")){
-            multiIndex = index;
-            continue;
-        }
-        match = reg.match(patterns,index);
-        QStringList tmp = match.capturedTexts();
-        //分割
-        std::string context = tmp.takeFirst().toStdString();
-        std::stringstream str(context);
-        //获取每个pattern
-        while(str >> context){
+        index = patterns.indexOf(patternWord[patternPriority[x]]);
+        from = patterns.indexOf("{{",index);
+        to = patterns.indexOf("}}",index);
+        index = to;
+        QString tmp = patterns.mid(from + 2,to - from - 2);
+        std::string context = tmp.toStdString();
+        std::stringstream str(context);//分割
+        while(str >> context){//获取每个pattern
             HighlightingRule record;
-            record.pattern.setPattern(QString::fromStdString(context));
-            record.format = patternFormat[x];
+            record.pattern = QRegularExpression(QString::fromStdString(context));
+            record.format = patternFormat[patternPriority[x]];
+            highlightingRules.push_back(record);
         }
-        index = match.capturedEnd();
     }
     //对多行注释的模板处理
-    match = reg.match(patterns,multiIndex);
-    QStringList tmp = match.capturedTexts();
-    std::string context = tmp.takeFirst().toStdString();
+    index = patterns.indexOf("multiCom",0);
+    from = patterns.indexOf("{{",index);
+    to = patterns.indexOf("}}",index);
+    QString tmp = patterns.mid(from+2,to - from + 1);
+    std::string context = tmp.toStdString();//分割
     std::stringstream str(context);
-    //多行注释的起始符
-    str >> context;
+    str >> context;//多行注释的起始符
     commentStartExpression.setPattern(QString::fromStdString(context));
-    //多行注释的终止符
-    str >> context;
+    str >> context;//多行注释的终止符
     commentEndExpression.setPattern(QString::fromStdString(context));
 }
 
@@ -106,6 +99,7 @@ void Highlighter::loadPatternFile(QString path)
  * r与:有一个空格，rgb之间也有一个空格，每个元素是0-255
  *words有如下种类：
  * type 类型词
+ * preprocess 预处理宏
  * modifier 修饰词
  * operator 操作符
  * singleCom 单行注释
@@ -122,16 +116,13 @@ void Highlighter::loadThemeFile(QString path)
     QFile file(path);
     file.open(QFile::ReadOnly);
     QTextStream in(&file);
-    //对文件内容解析，提取相应的词语
-    if(patterns.isEmpty())return;
-    int index = 0;
-    for(auto x = 0;x < 8;++x){
+    for(auto x = 0;x < 9;++x){
         QString line = in.readLine();
         if(line.isNull())break;
         QStringList target = line.split(" ");
-        patternFormat[x].setForeground(QColor(QString::number(target.at(1)),
-                                              QString::number(target.at(2)),
-                                              QString::number(target.at(3)),
+        patternFormat[x].setForeground(QColor(target.at(1).toInt(),
+                                              target.at(2).toInt(),
+                                              target.at(3).toInt()
                                            ));
     }
     file.close();

@@ -1,7 +1,7 @@
 #ifndef HIGHLIGHTER_H
 #define HIGHLIGHTER_H
 #include <QSyntaxHighlighter>
-
+#include <QRegularExpression>
 //语法高亮器
 class Highlighter : public QSyntaxHighlighter
 {
@@ -26,11 +26,15 @@ private:
     QRegularExpression commentEndExpression;
     //规则
     std::vector<HighlightingRule> highlightingRules;
-    QTextCharFormat patternFormat[8];
-    const QString  patternWord[8] = {"type","modifier","operators","singleCom",
+    QTextCharFormat patternFormat[9];
+    const QString  patternWord[9] = {"type","preprocess","modifier","operators","singleCom",
                                     "multiCom","qutation","function","buildin"};
-    enum PatternWord{type=0,modifier=1,operators=2,singleCom=3,
-                    multiCom=4,qutation=5,function=6,buildin=7};
+    enum PatternWord{type=0,preprocess=1,modifier=2,operators=3,singleCom=4,
+                    multiCom=5,qutation=6,function=7,buildin=8};
+    //匹配的优先级,最后一个是多行匹配
+    const int patternPriority[8] = {PatternWord::function,PatternWord::modifier,PatternWord::operators,
+                                   PatternWord::buildin,PatternWord::type,PatternWord::preprocess,
+                                   PatternWord::qutation,PatternWord::singleCom};
     //模式文件规则
     /*规则为 name{words} 其中name是相应的种类，words是要匹配正则表达式模式，不同的words空格或换行隔开
      *words有如下种类：

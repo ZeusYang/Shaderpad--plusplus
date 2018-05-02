@@ -12,7 +12,7 @@ Therefore, we could edit the file for basic demand.
 
 2018.4.27
 
-continue to finish some basic demand for the editor. Print，print review, export pdf file, change the theme and font.
+continue 111 finish some basic demand for the editor. Print，print review, export pdf file, change the theme and font.
 
 
 Todo:
@@ -30,3 +30,5 @@ Todo:
 - code template
 
 ...
+
+\b\#((define)|(undef)|(if)|(ifdef)|(ifndef)|(else)|(elif)|(endif)|(error)|(pragma)|(extension)|(version)|(line))\b

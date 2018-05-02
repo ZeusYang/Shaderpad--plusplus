@@ -168,7 +168,7 @@ public:
         ComboBoxFont->setFontFilters(QFontComboBox::AllFonts);
         QFont font;
         font.setFamily(QStringLiteral("Consolas"));
-        font.setPointSize(14);
+        font.setPointSize(16);
         ComboBoxFont->setCurrentFont(font);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, ComboBoxFont);
@@ -239,7 +239,7 @@ public:
 
         retranslateUi(ThemeDialog);
 
-        comboBoxFontSize->setCurrentIndex(7);
+        comboBoxFontSize->setCurrentIndex(8);
 
 
         QMetaObject::connectSlotsByName(ThemeDialog);
@@ -297,7 +297,7 @@ public:
         comboBoxFontSize->setItemText(29, QApplication::translate("ThemeDialog", "58", nullptr));
         comboBoxFontSize->setItemText(30, QApplication::translate("ThemeDialog", "72", nullptr));
 
-        comboBoxFontSize->setCurrentText(QApplication::translate("ThemeDialog", "14", nullptr));
+        comboBoxFontSize->setCurrentText(QApplication::translate("ThemeDialog", "16", nullptr));
         checkBox->setText(QApplication::translate("ThemeDialog", "\346\212\227\351\224\257\351\275\277(&P)", nullptr));
     } // retranslateUi
 

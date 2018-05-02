@@ -1,4 +1,5 @@
 #include "textchild.h"
+#include "highlighter.h"
 #include <QFileDialog>
 #include <QCloseEvent>
 #include <QMessageBox>
@@ -16,7 +17,7 @@ TextChild::TextChild(QWidget *parent)
 {
     //关闭窗口时销毁对象
     setAttribute(Qt::WA_DeleteOnClose);
-    this->setWordWrapMode(QTextOption::WordWrap);
+//    this->setWordWrapMode(QTextOption::WordWrap);
     //行号区域
     lineNumberArea = new LineNumberArea(this);
     //更新显示行号的宽度
@@ -26,6 +27,11 @@ TextChild::TextChild(QWidget *parent)
     updateLineNumberAreaWidth(0);
     //设置缩进宽度为四个空格的宽度
     setTabStopDistance(50);
+
+    //语法高亮器
+    highlighter = new Highlighter(this->document());
+    highlighter->loadPatternAndTheme(tr(":/highlighter/glslPattern"),
+                                     tr(":/highlighter/glslTheme"));
 }
 
 TextChild::~TextChild()

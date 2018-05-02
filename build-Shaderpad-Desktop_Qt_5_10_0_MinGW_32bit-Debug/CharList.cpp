@@ -1,6 +1,6 @@
-#include "CHARList.h"
+#include "CharList.h"
 
-CHARList::CHARList(float zn, float zf, float ap, float fy)
+CharList::CharList(float zn, float zf, float ap, float fy)
 	:size(1.0f), znear(zn), zfar(zf), aspect(ap), fovy(fy){
 	//字符链的字符数量
 	num = 15 + rand() % 10;
@@ -24,7 +24,7 @@ CHARList::CHARList(float zn, float zf, float ap, float fy)
 	vel = glm::vec3(0.0, -0.1, 0.022);
 }
 
-void CHARList::Move(float dt) {
+void CharList::Move(float dt) {
 	//头部插入，删除尾部
 	Symbol tmp;
 	tmp.Color = glm::vec4(0.8, 0.8, 0.8, 1.0);
@@ -46,7 +46,7 @@ void CHARList::Move(float dt) {
 	pos = necklace.front().Pos;
 }
 
-bool CHARList::IsOufScreen() {
+bool CharList::IsOufScreen() {
 	//判断是否飘出屏幕
 	double range = tan(glm::radians(fovy))*pos.z;
 	float length = num * size;
@@ -56,7 +56,7 @@ bool CHARList::IsOufScreen() {
 	return false;
 }
 
-void CHARList::RndPos() {
+void CharList::RndPos() {
 	//随机位置生成
 	double range;
 	pos.z = -(Rand0_1()*(zfar - znear) + znear);
