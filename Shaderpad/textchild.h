@@ -4,7 +4,6 @@
 
 class Highlighter;
 class QCompleter;
-class QAbstractItemModel;
 class TextChild : public QPlainTextEdit
 {
     Q_OBJECT
@@ -21,12 +20,17 @@ public:
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);//行号区域重绘事件
     int lineNumberAreaWidth();                        //行号区域的宽度
-    void setupCompleter(QAbstractItemModel *);        //加载自动补齐器
+
+    void setCompleter(QCompleter *completern);       //设置自动补齐器
+    QCompleter *Completer() const{
+        return completer;
+    }
 
 protected:
     void closeEvent(QCloseEvent *event);        //关闭事件
     void keyPressEvent(QKeyEvent *e);           //键盘事件
     void resizeEvent(QResizeEvent *event) override;//resize事件，这与行号区域有关
+    void focusInEvent(QFocusEvent *event) override;//切换到此部件事件
 
 private slots:
     void updateLineNumberAreaWidth(int newBlockCount);//更新行号区域的宽度

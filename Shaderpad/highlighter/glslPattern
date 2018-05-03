@@ -38,8 +38,12 @@ function{{
 \b[A-Za-z0-9_]+(?=\()
 }}
 buildin{{
-\bgl_((Position)|(PointSize)|(FragCoord)|(FrontFacing)|(PointCoord)|(FragColor)|(FragData))\b
-\bgl_((MaxVertexAttribs)|(MaxVertexUniformVectors)|(MaxVaryingVectors)|(MaxVertexTextureImageUnits))\b
-\bgl_((MaxCombinedTextureImageUnits)|(MaxTextureImageUnits)|(MaxFragmentUniformVectors)|(MaxDrawBuffers))\b
 \bgl_(DepthRange)\b \b\_\_LINE\_\_\b \b\_\_VERSION\_\_\b \bGL\_ES\b \bGL\_FRAGMENT\_PRECISION\_HIGH\b
+\bgl_((BackColor)|(BackSecondaryColor)|(ClipVertex)|(Color)|(DepthRange)|(FogCoord)|(FragColor))\b
+\bgl_((FragCoord)|(FragData)|(FragDepth)|(FrontColor)|(FrontFacing)|(FrontSecondaryColor))\b
+\bgl_((GlobalInvocationID)|(InvocationID)|(LocalInvocationID)|(LocalInvocationIndex)|(MaxCombinedTextureImageUnits))\b
+\bgl_((MaxDrawBuffers)|(MaxFragmentUniformVectors)|(MaxTextureImageUnits)|(MaxVaryingVectors))\b
+\bgl_((MaxVertexAttribs)|(MaxVertexTextureImageUnits)|(MaxVertexUniformVectors))\b
+\bgl_((MultiTexCoord[0-9]+)|(Normal)|(NumWoorkGroups)|(PointCoord)|(PointSize)|(Position))\b
+\bgl_((PrimitiveIDIn)|(SecondaryColor)|(TexCoord)|(Vertex)|(VertexID)|(WorkGroupID)|(WorkGroupSize))\b
 }}

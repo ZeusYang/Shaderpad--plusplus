@@ -158,5 +158,6 @@
         <file>highlighter/glslPattern</file>
         <file>highlighter/glslTheme</file>
         <file>highlighter/glslBuildin</file>
+        <file>icons/completer.jpg</file>
     </qresource>
 </RCC>

@@ -35,7 +35,7 @@ TextChild::TextChild(QWidget *parent)
     highlighter = new Highlighter(this->document());
     highlighter->loadPatternAndTheme(tr(":/highlighter/glslPattern"),
                                      tr(":/highlighter/glslTheme"));
-    //输入提示框，输入的时候出现并展现提示词语，按esc消失
+    completer = nullptr;
 }
 
 void TextChild::newFile()
@@ -150,19 +150,19 @@ int TextChild::lineNumberAreaWidth()
     return space;
 }
 
-void TextChild::setupCompleter(QAbstractItemModel *modelFromFile)
+void TextChild::setCompleter(QCompleter *completern)
 {
-    completer = new QCompleter(this);
-    modelFromFile->setParent(completer);
+    //设置自动补齐
+    //if (completer != nullptr)disconnect(completer, 0, this, 0);
+    completer = completern;
+    if (!completer)return;
+    completer->setParent(this);
     completer->setWidget(this);
-    completer->setModel(modelFromFile);
-    completer->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
-    completer->setCaseSensitivity(Qt::CaseInsensitive);
-    completer->setWrapAround(false);
     completer->setCompletionMode(QCompleter::PopupCompletion);
     completer->setCaseSensitivity(Qt::CaseInsensitive);
-    connect(completer,SIGNAL(activated(QString)),
-            this,SLOT(insertCompletion(QString)));
+    this->insertCompletion(tr(""));
+    connect(completer, SIGNAL(activated(QString)),
+                     this, SLOT(insertCompletion(QString)));
 }
 
 void TextChild::closeEvent(QCloseEvent *event)
@@ -177,7 +177,7 @@ void TextChild::closeEvent(QCloseEvent *event)
 void TextChild::keyPressEvent(QKeyEvent *e)
 {
     //自动补齐激活时通过键盘操作
-    if (completer->popup()->isVisible()) {
+    if (completer && completer->popup()->isVisible()) {
         // The following keys are forwarded by the completer to the widget
        switch (e->key()) {
        case Qt::Key_Enter:
@@ -194,25 +194,22 @@ void TextChild::keyPressEvent(QKeyEvent *e)
     //父类的处理正常运行
     QPlainTextEdit::keyPressEvent(e);
 
-    if(e->text().isEmpty())return;
+    if(!completer || e->text().isEmpty())return;
 
     //获取当前输入的字符
     QString completionPrefix = textUnderCursor();
-    qDebug() << "prefix->" << completionPrefix;
-    static QString eow("~!@#$%^&*()_+{}|:\"<>?,./;'[]\\-=");//单词末尾
+    static QString eow("~!@$%^&*()+{}|:\"<>?,./;'[]\\-=");//单词末尾
     if (e->text().isEmpty() || completionPrefix.length() < 1
                       || eow.contains(e->text().right(1))) {//.right获取当前输入的最右边的字符，也就是刚输入的字符
         completer->popup()->hide();//提示框隐藏
         return;
     }
-    qDebug() << "here1";
     //设置自动补齐的前缀
     if (completionPrefix != completer->completionPrefix()) {
         completer->setCompletionPrefix(completionPrefix);
         //并把选中的光标移动到第一个s
         completer->popup()->setCurrentIndex(completer->completionModel()->index(0, 0));
     }
-    qDebug() << completer->completionCount();
     //补齐的区域
     QRect cr = cursorRect();
     cr.setWidth(completer->popup()->sizeHintForColumn(0)
@@ -226,6 +223,12 @@ void TextChild::resizeEvent(QResizeEvent *event)
     QPlainTextEdit::resizeEvent(event);
     QRect cr = contentsRect();
     lineNumberArea->setGeometry(QRect(cr.left(), cr.top(), lineNumberAreaWidth(), cr.height()));
+}
+
+void TextChild::focusInEvent(QFocusEvent *event)
+{
+    if(completer)completer->setWidget(this);
+    QPlainTextEdit::focusInEvent(event);
 }
 
 void TextChild::updateLineNumberAreaWidth(int newBlockCount)
@@ -246,7 +249,6 @@ void TextChild::updateLineNumberArea(const QRect &rect, int dy)
 
 void TextChild::insertCompletion(const QString &completion)
 {//插入自动补齐的文本
-    qDebug() << completion;
     QTextCursor tc = textCursor();
     int extra = completion.length() - completer->completionPrefix().length();
     tc.movePosition(QTextCursor::Left);//移动光标

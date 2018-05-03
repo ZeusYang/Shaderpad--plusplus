@@ -17,8 +17,10 @@
 #include <QMessageBox>
 #include <QLabel>
 #include <QPixmap>
+#include <QCompleter>
 #include <QHBoxLayout>
 #include <QTextBlock>
+#include <iostream>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -73,9 +75,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(searchDlg,&SearchDialog::searchReplaceAllSignal,this,&MainWindow::searchReplaceAll);
     connect(searchDlg,&SearchDialog::searchCountSignal,this,&MainWindow::searchCount);
 
-    //加载样式表
-    changeTheme("darkblack",themeDlg->alpha,themeDlg->font);
-
     //状态栏显示行列号等相关信息
     col = new QLabel(this);
     row = new QLabel(this);
@@ -112,7 +111,14 @@ MainWindow::MainWindow(QWidget *parent) :
             this,&MainWindow::modifyActiveWindow);
 
     //加载自动补齐文本
-    glslCompletion = loadModelCompletionFromFile(tr(":/highlighter/glslBuildin"));
+    glslCompletion = new QCompleter(this);
+    glslCompletion->setModel(loadModelCompletionFromFile(":/highlighter/glslBuildin"));
+    glslCompletion->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
+    glslCompletion->setCaseSensitivity(Qt::CaseInsensitive);
+    glslCompletion->setWrapAround(false);
+
+    //加载样式表
+    changeTheme("darkblack",themeDlg->alpha,themeDlg->font);
 }
 
 MainWindow::~MainWindow()
@@ -120,16 +126,24 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QStringList MainWindow::loadModelCompletionFromFile(const QString& path)
+QAbstractItemModel* MainWindow::loadModelCompletionFromFile(const QString& path)
 {
     QFile file(path);
-    file.open(QFile::ReadOnly);
+    if (!file.open(QFile::ReadOnly))
+        return new QStringListModel(glslCompletion);
     QStringList words;
+    //std::vector<std::string> tmp;
     while (!file.atEnd()) {
         QByteArray line = file.readLine();
         if (!line.isEmpty())words << line.trimmed();
+        //tmp.push_back(line.trimmed().toStdString());
     }
-    return words;
+//    std::sort(tmp.begin(),tmp.end());
+//    for(uint x = 0;x < tmp.size();++x){
+//        std::cout << tmp[x] << std::endl;
+//    }
+    QStringListModel *ret = new QStringListModel(words, glslCompletion);
+    return ret;
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -228,7 +242,7 @@ TextChild *MainWindow::createTextChild()
     connect(child,&TextChild::redoAvailable,ui->actionRedo,&QAction::setEnabled);
     connect(child,&TextChild::undoAvailable,ui->actionUndo,&QAction::setEnabled);
     //设置自动补齐器
-    child->setupCompleter(new QStringListModel(glslCompletion));
+    child->setCompleter(glslCompletion);
     return child;
 }
 
@@ -486,6 +500,14 @@ void MainWindow::changeTheme(QString theme, float alpha, QFont font)
     this->setStyleSheet(styleSheet);
     styleFile.close();
     QApplication::restoreOverrideCursor();
+
+    //设置自动补齐窗口的样式表
+    glslCompletion->popup()->setStyleSheet(tr("QAbstractItemView{"
+                                              "font:%1pt \"%2\";"
+                                              "color:rgba(255,128,128,255);"
+                                              "border-image:url(:/icons/completer.jpg);"
+                                              "}").arg(font.pointSize())
+                                           .arg(font.family()));
 }
 
 void MainWindow::modifyStatusInfo()

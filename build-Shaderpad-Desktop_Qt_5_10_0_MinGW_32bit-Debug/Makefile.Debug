@@ -276,6 +276,7 @@ debug/qrc_resource.cpp: ../Shaderpad/resource.qrc \
 		../Shaderpad/icons/paste.png \
 		../Shaderpad/icons/Blender.png \
 		../Shaderpad/icons/5.jpg \
+		../Shaderpad/icons/completer.jpg \
 		../Shaderpad/icons/instruction.png \
 		../Shaderpad/icons/4.jpg \
 		../Shaderpad/icons/saveAs.png \
@@ -1221,6 +1222,8 @@ debug/mainwindow.o: ../Shaderpad/mainwindow.cpp ../Shaderpad/mainwindow.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QLabel \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qlabel.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QPixmap \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QCompleter \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qcompleter.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QHBoxLayout \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QTextBlock \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/qtextobject.h \
@@ -1394,6 +1397,8 @@ debug/textchild.o: ../Shaderpad/textchild.cpp ../Shaderpad/textchild.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QCompleter \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qcompleter.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QFont \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QScrollBar \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qscrollbar.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QDebug \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QKeyEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\textchild.o ..\Shaderpad\textchild.cpp

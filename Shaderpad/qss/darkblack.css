@@ -631,7 +631,7 @@ background:#242629;
 }
 
 *{
-font: 11pt "Andalus";
+font: 12pt "Andalus";
 }
 
 QStatusBar QWidget QLabel{
@@ -650,6 +650,12 @@ QPlainTextEdit{
 background-color:rgba(36,38,41,100);
 color:rgba(255,255,255,255);
 }
+
+/*QAbstractItemView{
+background-color:rgba(36,38,41,100);"
+font: bold 16pt "Consolas";
+color:rgba(255,0,0,255);
+}*/
 
 *:disabled{
 background:#1F2026;
