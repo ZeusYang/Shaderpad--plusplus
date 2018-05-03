@@ -1,6 +1,6 @@
 type{{
 \bdouble\b \bu?int\b \bmat[2-4]\b \b[diub]?vec[2-4]\b \bsampler[1-3]D\b \bsamplerCube\b
-\bbool\b \bvoid\b \bfloat\b
+\bbool\b \bvoid\b \bfloat\b \bmat[2-4]x[2-4]\b
 }}
 preprocess{{
 \B\#((define)|(undef)|(if)|(ifdef)|(ifndef)|(else)|(elif)|(endif)|(error)|(pragma)|(extension)|(version)|(line))\b

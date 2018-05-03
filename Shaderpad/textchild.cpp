@@ -1,5 +1,6 @@
 #include "textchild.h"
 #include "highlighter.h"
+#include "inputtiplist.h"
 #include <QFileDialog>
 #include <QCloseEvent>
 #include <QMessageBox>
@@ -8,7 +9,9 @@
 #include <QApplication>
 #include <QTextBlock>
 #include <QPainter>
+#include <QCompleter>
 #include <QFont>
+#include <QScrollBar>
 #include <QDebug>
 #include <QKeyEvent>
 
@@ -32,10 +35,7 @@ TextChild::TextChild(QWidget *parent)
     highlighter = new Highlighter(this->document());
     highlighter->loadPatternAndTheme(tr(":/highlighter/glslPattern"),
                                      tr(":/highlighter/glslTheme"));
-}
-
-TextChild::~TextChild()
-{
+    //输入提示框，输入的时候出现并展现提示词语，按esc消失
 }
 
 void TextChild::newFile()
@@ -150,6 +150,21 @@ int TextChild::lineNumberAreaWidth()
     return space;
 }
 
+void TextChild::setupCompleter(QAbstractItemModel *modelFromFile)
+{
+    completer = new QCompleter(this);
+    modelFromFile->setParent(completer);
+    completer->setWidget(this);
+    completer->setModel(modelFromFile);
+    completer->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    completer->setWrapAround(false);
+    completer->setCompletionMode(QCompleter::PopupCompletion);
+    completer->setCaseSensitivity(Qt::CaseInsensitive);
+    connect(completer,SIGNAL(activated(QString)),
+            this,SLOT(insertCompletion(QString)));
+}
+
 void TextChild::closeEvent(QCloseEvent *event)
 {
     //关闭的时候判断是否需要保存
@@ -161,7 +176,48 @@ void TextChild::closeEvent(QCloseEvent *event)
 
 void TextChild::keyPressEvent(QKeyEvent *e)
 {
+    //自动补齐激活时通过键盘操作
+    if (completer->popup()->isVisible()) {
+        // The following keys are forwarded by the completer to the widget
+       switch (e->key()) {
+       case Qt::Key_Enter:
+       case Qt::Key_Return:
+       case Qt::Key_Escape:
+       case Qt::Key_Tab:
+       case Qt::Key_Backtab:
+            e->ignore();
+            return; // let the completer do default behavior
+       default:
+           break;
+       }
+    }
+    //父类的处理正常运行
     QPlainTextEdit::keyPressEvent(e);
+
+    if(e->text().isEmpty())return;
+
+    //获取当前输入的字符
+    QString completionPrefix = textUnderCursor();
+    qDebug() << "prefix->" << completionPrefix;
+    static QString eow("~!@#$%^&*()_+{}|:\"<>?,./;'[]\\-=");//单词末尾
+    if (e->text().isEmpty() || completionPrefix.length() < 1
+                      || eow.contains(e->text().right(1))) {//.right获取当前输入的最右边的字符，也就是刚输入的字符
+        completer->popup()->hide();//提示框隐藏
+        return;
+    }
+    qDebug() << "here1";
+    //设置自动补齐的前缀
+    if (completionPrefix != completer->completionPrefix()) {
+        completer->setCompletionPrefix(completionPrefix);
+        //并把选中的光标移动到第一个s
+        completer->popup()->setCurrentIndex(completer->completionModel()->index(0, 0));
+    }
+    qDebug() << completer->completionCount();
+    //补齐的区域
+    QRect cr = cursorRect();
+    cr.setWidth(completer->popup()->sizeHintForColumn(0)
+                + completer->popup()->verticalScrollBar()->sizeHint().width());
+    completer->complete(cr); //弹出
 }
 
 void TextChild::resizeEvent(QResizeEvent *event)
@@ -186,6 +242,17 @@ void TextChild::updateLineNumberArea(const QRect &rect, int dy)
     else lineNumberArea->update(0, rect.y(), lineNumberArea->width(), rect.height());
     if (rect.contains(viewport()->rect()))
         updateLineNumberAreaWidth(0);
+}
+
+void TextChild::insertCompletion(const QString &completion)
+{//插入自动补齐的文本
+    qDebug() << completion;
+    QTextCursor tc = textCursor();
+    int extra = completion.length() - completer->completionPrefix().length();
+    tc.movePosition(QTextCursor::Left);//移动光标
+    tc.movePosition(QTextCursor::EndOfWord);
+    tc.insertText(completion.right(extra));
+    setTextCursor(tc);
 }
 
 bool TextChild::maybeSave()
@@ -221,4 +288,11 @@ void TextChild::setCurrentFile(const QString &fileName)
     document()->setModified(false);
     setWindowModified(false);
     setWindowTitle(userFriendlyCurrentFile());
+}
+
+QString TextChild::textUnderCursor() const
+{
+    QTextCursor tc = textCursor();
+    tc.select(QTextCursor::WordUnderCursor);//获取光标位置下的文本
+    return tc.selectedText();
 }

@@ -21,6 +21,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    QStringList loadModelCompletionFromFile(const QString& path);//从文件加载自动补齐文本
 protected:
     void paintEvent(QPaintEvent *event);
 
@@ -125,6 +127,8 @@ private:
     SearchDialog *searchDlg;                        //查找/替换对话框
     QString bgImage;                                //当前背景图片
     QLabel *col,*row,*length,*selection,*lines;     //状态栏信息
+
+    QStringList glslCompletion;             //glsl自动补齐条目
 
     TextChild *activeTextChild();                   //当前活动窗口
     TextChild *findTextChild(const QString &fileName);//查找子窗口

@@ -3,12 +3,13 @@
 #include <QPlainTextEdit>
 
 class Highlighter;
+class QCompleter;
+class QAbstractItemModel;
 class TextChild : public QPlainTextEdit
 {
     Q_OBJECT
 public:
     explicit TextChild(QWidget *parent = nullptr);
-    ~TextChild();
     void newFile();                             //新建文件
     bool loadFile(const QString &fileName);     //加载文件
     bool save();                                //保存操作
@@ -20,22 +21,27 @@ public:
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);//行号区域重绘事件
     int lineNumberAreaWidth();                        //行号区域的宽度
+    void setupCompleter(QAbstractItemModel *);        //加载自动补齐器
 
 protected:
     void closeEvent(QCloseEvent *event);        //关闭事件
     void keyPressEvent(QKeyEvent *e);           //键盘事件
     void resizeEvent(QResizeEvent *event) override;//resize事件，这与行号区域有关
+
 private slots:
     void updateLineNumberAreaWidth(int newBlockCount);//更新行号区域的宽度
     void updateLineNumberArea(const QRect &, int);  //更新行号的区域部分
+    void insertCompletion(const QString &completion); //插入自动补齐字符
 private:
     bool maybeSave();                           //是否需要保存
     void setCurrentFile(const QString& fileName);//保存当前文件路径
+    QString textUnderCursor() const;            //当前鼠标下的文本
 
     QString curFile;                            //当前文件路径
     bool isUntitled;                            //是否被保存到硬盘上的标志未保存过为true
     QWidget *lineNumberArea;                    //行号显示器
     Highlighter *highlighter;                   //语法高亮器
+    QCompleter *completer;                      //自动补齐器
 };
 
 class LineNumberArea : public QWidget{//代码块旁边的行号显示器

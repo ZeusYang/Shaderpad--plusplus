@@ -285,6 +285,7 @@ debug/qrc_resource.cpp: ../Shaderpad/resource.qrc \
 		../Shaderpad/icons/Qt.png \
 		../Shaderpad/icons/3.jpg \
 		../Shaderpad/icons/highlight.png \
+		../Shaderpad/highlighter/glslBuildin \
 		../Shaderpad/highlighter/glslPattern \
 		../Shaderpad/highlighter/glslTheme
 	E:\Qt5.10.0\5.10.0\mingw53_32\bin\rcc.exe -name resource ..\Shaderpad\resource.qrc -o debug\qrc_resource.cpp
@@ -1213,6 +1214,8 @@ debug/mainwindow.o: ../Shaderpad/mainwindow.cpp ../Shaderpad/mainwindow.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtPrintSupport/qprintpreviewdialog.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QFileInfo \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QRegularExpression \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QStringListModel \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qstringlistmodel.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QMessageBox \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qmessagebox.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QLabel \
@@ -1348,6 +1351,24 @@ debug/textchild.o: ../Shaderpad/textchild.cpp ../Shaderpad/textchild.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/qtextobject.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QRegularExpression \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qregularexpression.h \
+		../Shaderpad/inputtiplist.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QListWidget \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qlistwidget.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qlistview.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qstyleoption.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/qvalidator.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/qicon.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qslider.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qabstractslider.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qstyle.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qtabbar.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qtabwidget.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qrubberband.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QFileDialog \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qfiledialog.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qdir.h \
@@ -1359,7 +1380,6 @@ debug/textchild.o: ../Shaderpad/textchild.cpp ../Shaderpad/textchild.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QPushButton \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/qicon.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QFileInfo \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QApplication \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qapplication.h \
@@ -1371,6 +1391,8 @@ debug/textchild.o: ../Shaderpad/textchild.cpp ../Shaderpad/textchild.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QTextBlock \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QPainter \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/qpainter.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QCompleter \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qcompleter.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QFont \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QDebug \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtGui/QKeyEvent

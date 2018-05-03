@@ -157,5 +157,6 @@
         <file>icons/ZoomOut.png</file>
         <file>highlighter/glslPattern</file>
         <file>highlighter/glslTheme</file>
+        <file>highlighter/glslBuildin</file>
     </qresource>
 </RCC>

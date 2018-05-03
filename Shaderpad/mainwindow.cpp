@@ -13,6 +13,7 @@
 #include <QPrintPreviewDialog>
 #include <QFileInfo>
 #include <QRegularExpression>
+#include <QStringListModel>
 #include <QMessageBox>
 #include <QLabel>
 #include <QPixmap>
@@ -110,11 +111,25 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->tabWidget,&QTabWidget::currentChanged,
             this,&MainWindow::modifyActiveWindow);
 
+    //加载自动补齐文本
+    glslCompletion = loadModelCompletionFromFile(tr(":/highlighter/glslBuildin"));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+QStringList MainWindow::loadModelCompletionFromFile(const QString& path)
+{
+    QFile file(path);
+    file.open(QFile::ReadOnly);
+    QStringList words;
+    while (!file.atEnd()) {
+        QByteArray line = file.readLine();
+        if (!line.isEmpty())words << line.trimmed();
+    }
+    return words;
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -212,6 +227,8 @@ TextChild *MainWindow::createTextChild()
     //是否可以撤销
     connect(child,&TextChild::redoAvailable,ui->actionRedo,&QAction::setEnabled);
     connect(child,&TextChild::undoAvailable,ui->actionUndo,&QAction::setEnabled);
+    //设置自动补齐器
+    child->setupCompleter(new QStringListModel(glslCompletion));
     return child;
 }
 
