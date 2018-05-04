@@ -30,7 +30,6 @@ TextChild::TextChild(QWidget *parent)
     updateLineNumberAreaWidth(0);
     //设置缩进宽度为四个空格的宽度
     setTabStopDistance(50);
-
     //语法高亮器
     highlighter = new Highlighter(this->document());
     highlighter->loadPatternAndTheme(tr(":/highlighter/glslPattern"),

@@ -113,7 +113,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //加载自动补齐文本
     glslCompletion = new QCompleter(this);
     glslCompletion->setModel(loadModelCompletionFromFile(":/highlighter/glslBuildin"));
-    glslCompletion->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
+    //glslCompletion->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
+    glslCompletion->setModelSorting(QCompleter::CaseSensitivelySortedModel);
     glslCompletion->setCaseSensitivity(Qt::CaseInsensitive);
     glslCompletion->setWrapAround(false);
 
@@ -132,16 +133,18 @@ QAbstractItemModel* MainWindow::loadModelCompletionFromFile(const QString& path)
     if (!file.open(QFile::ReadOnly))
         return new QStringListModel(glslCompletion);
     QStringList words;
-    //std::vector<std::string> tmp;
+    std::vector<std::string> tmp;
     while (!file.atEnd()) {
         QByteArray line = file.readLine();
         if (!line.isEmpty())words << line.trimmed();
-        //tmp.push_back(line.trimmed().toStdString());
+        tmp.push_back(line.trimmed().toStdString());
     }
-//    std::sort(tmp.begin(),tmp.end());
-//    for(uint x = 0;x < tmp.size();++x){
-//        std::cout << tmp[x] << std::endl;
-//    }
+    std::sort(tmp.begin(),tmp.end());
+    auto it = std::unique(tmp.begin(),tmp.end());
+    tmp.erase(it,tmp.end());
+    for(uint x = 0;x < tmp.size();++x){
+        std::cout << tmp[x] << std::endl;
+    }
     QStringListModel *ret = new QStringListModel(words, glslCompletion);
     return ret;
 }
