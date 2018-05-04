@@ -639,7 +639,7 @@ QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,Q
 background:#CFDDEE;
 }
 
-QPlainTextEdit{
+QTextEdit,QPlainTextEdit{
 background-color:rgba(207, 221, 238,100);
 color:rgba(255,255,255,255);
 }
@@ -654,6 +654,26 @@ color:#D6B668;
 BgImageDialog QLabel#labelImage{
 border:5px solid #7F9AB8;
 border-radius:10px;
+}
+
+QTextEdit,QLineEdit#lineEditTarget{
+background-color:rgba(100,100,100,100);
+color:rgba(200,200,200,255);
+font: bold 16pt "Consolas";
+}
+
+QDialog#DocumentDialog{
+border-image:url(:/icons/6.jpg);
+}
+
+QTextEdit,QLineEdit#lineEditTarget{
+background-color:rgba(100,100,100,100);
+color:rgba(200,200,200,255);
+font: 16pt "Consolas";
+}
+
+QDialog#DocumentDialog{
+border-image:url(:/icons/6.jpg);
 }
 
 *:disabled{

@@ -1,0 +1,79 @@
+bitCount{{
+类型:整数操作函数
+原型:
+genIType bitCount(genIType value);  
+genIType bitCount(genUType value); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:bitCount — counts the number of 1 bits in an integer
+适用范围:所有着色器
+}}
+bitfieldExtract{{
+类型:整数操作函数
+原型:
+genIType bitfieldExtract(genIType value,int offset,int bits);  
+genUType bitfieldExtract(genUType value,int offset,int bits); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:bitfieldExtract — extract a range of bits from an integer
+适用范围:所有着色器
+}}
+bitfieldInsert{{
+类型:整数操作函数
+原型:
+genIType bitfieldInsert(genIType base,genIType insert,int offset,int bits);  
+genUType bitfieldInsert(genUType base,genUType insert,int offset,int bits); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:bitfieldInsert — insert a range of bits into an integer
+适用范围:所有着色器
+}}
+bitfieldReverse{{
+类型:整数操作函数
+原型:
+genIType bitfieldReverse(genIType value);  
+genUType bitfieldReverse(genUType value); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:bitfieldReverse — reverse the order of bits in an integer
+适用范围:所有着色器
+}}
+findLSB{{
+类型:整数操作函数
+原型:
+genIType findLSB(genIType value);
+genIType findLSB(genUType value);
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:findLSB — find the index of the least significant bit set to 1 in an integer
+适用范围:所有着色器
+}}
+findMSB{{
+类型:整数操作函数
+原型:
+genIType findMSB(genIType value);  
+genIType findMSB(genUType value); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:findMSB — find the index of the most significant bit set to 1 in an integer
+适用范围:所有着色器
+}}
+uaddCarry{{
+类型:整数操作函数
+原型:
+genUType uaddCarry(genUType x,genUType y,out genUType carry); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:uaddCarry — add unsigned integers and generate carry
+适用范围:所有着色器
+}}
+umulExtended{{
+类型:整数操作函数
+原型:
+void umulExtended(genUType x,genUType y,out genUType msb,out genUType lsb);  
+void imulExtended(genIType x,genIType y,out genIType msb,out genIType lsb); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:umulExtended — perform a 32- by 32-bit multiply to produce a 64-bit result
+适用范围:所有着色器
+}}
+usubBorrow{{
+类型:整数操作函数
+原型:
+genUType usubBorrow(genUType x,genUType y,out genUType borrow);   
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:usubBorrow — subtract unsigned integers and generate borrow
+适用范围:所有着色器
+}}

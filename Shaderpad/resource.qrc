@@ -159,5 +159,20 @@
         <file>highlighter/glslTheme</file>
         <file>highlighter/glslBuildin</file>
         <file>icons/completer.jpg</file>
+        <file>highlighter/documents/API.txt</file>
+        <file>highlighter/documents/Atomic.txt</file>
+        <file>highlighter/documents/Built-In Variables.txt</file>
+        <file>highlighter/documents/Component Comparison.txt</file>
+        <file>highlighter/documents/Floating-Point.txt</file>
+        <file>highlighter/documents/Geometry Shader.txt</file>
+        <file>highlighter/documents/Image.txt</file>
+        <file>highlighter/documents/Integer.txt</file>
+        <file>highlighter/documents/Mathematics.txt</file>
+        <file>highlighter/documents/Matrix.txt</file>
+        <file>highlighter/documents/Memory Barrier.txt</file>
+        <file>highlighter/documents/Texture Sampling.txt</file>
+        <file>highlighter/documents/Trigonometry.txt</file>
+        <file>highlighter/documents/Vector.txt</file>
+        <file>icons/glsl.png</file>
     </qresource>
 </RCC>

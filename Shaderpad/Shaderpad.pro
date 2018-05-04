@@ -31,7 +31,8 @@ SOURCES += \
     themedialog.cpp \
     bgimagedialog.cpp \
     searchdialog.cpp \
-    highlighter.cpp
+    highlighter.cpp \
+    documentdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,13 +40,15 @@ HEADERS += \
     themedialog.h \
     bgimagedialog.h \
     searchdialog.h \
-    highlighter.h
+    highlighter.h \
+    documentdialog.h
 
 FORMS += \
         mainwindow.ui \
     themedialog.ui \
     bgimagedialog.ui \
-    searchdialog.ui
+    searchdialog.ui \
+    documentdialog.ui
 
 RESOURCES += \
     resource.qrc

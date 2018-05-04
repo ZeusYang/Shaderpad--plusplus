@@ -1,0 +1,96 @@
+atomicAdd{{
+类型:原子操作函数
+原型:
+int atomicAdd(inout int mem, int data);
+uint atomicAdd(inout uint mem, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicAdd — perform an atomic addition to a variable
+适用范围:计算着色器
+}}
+atomicAnd{{
+类型:原子操作函数
+原型:
+int atomicAnd(inout int mem, int data);
+uint atomicAnd(inout uint mem, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicAnd — perform an atomic logical AND operation to a variable
+适用范围:计算着色器
+}}
+atomicCompSwap{{
+类型:原子操作函数
+原型:
+int atomicCompSwap(inout int mem, uint compare, uint data);
+uint atomicCompSwap(inout uint mem, uint compare, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicCompSwap — perform an atomic compare-exchange operation to a variable
+适用范围:计算着色器
+}}
+atomicCounter{{
+类型:原子操作函数
+原型:
+uint atomicCounter(atomic_uint c);
+支持版本:4.20 4.30 4.40 4.50 
+描述:atomicCounter — return the current value of an atomic counter
+适用范围:计算着色器
+}}
+atomicCounterDecrement{{
+类型:原子操作函数
+原型:
+uint atomicCounterDecrement(atomic_uint c);
+支持版本:4.20 4.30 4.40 4.50 
+描述:atomicCounterDecrement — atomically decrement a counter and return its new value
+适用范围:计算着色器
+}}
+atomicCounterIncrement{{
+类型:原子操作函数
+原型:
+uint atomicCounterIncrement(atomic_uint c);
+支持版本:4.20 4.30 4.40 4.50 
+描述:atomicCounterIncrement — atomically increment a counter and return the prior value
+适用范围:计算着色器
+}}
+atomicExchange{{
+类型:原子操作函数
+原型:
+int atomicExchange(inout int mem, int data);
+uint atomicExchange(inout uint mem, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicExchange — perform an atomic exchange operation to a variable
+适用范围:计算着色器
+}}
+atomicMax{{
+类型:原子操作函数
+原型:
+int atomicMax(inout int mem, int data);
+uint atomicMax(inout uint mem, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicMax — perform an atomic max operation to a variable
+适用范围:计算着色器
+}}
+atomicMin{{
+类型:原子操作函数
+原型:
+int atomicMin(inout int mem, int data);
+uint atomicMin(inout uint mem, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicMin — perform an atomic min operation to a variable
+适用范围:计算着色器
+}}
+atomicOr{{
+类型:原子操作函数
+原型:
+int atomicOr(inout int mem, int data);
+uint atomicOr(inout uint mem, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicOr — perform an atomic logical OR operation to a variable
+适用范围:计算着色器
+}}
+atomicXor{{
+类型:原子操作函数
+原型:
+int atomicXor(inout int mem, int data);
+uint atomicXor(inout uint mem, uint data);
+支持版本:4.30 4.40 4.50 
+描述:atomicXor — perform an atomic logical exclusive OR operation to a variable
+适用范围:计算着色器
+}}

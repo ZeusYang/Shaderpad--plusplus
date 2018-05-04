@@ -16,6 +16,7 @@ class BgImageDialog;
 class SearchDialog;
 class QAbstractItemModel;
 class QCompleter;
+class DocumentDialog;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -120,6 +121,8 @@ private slots:
     //计数
     void searchCount(QString from, bool caseSen,bool whole, QLabel *display);
 
+    void on_actionOpenGLAPI_triggered();
+
 private:
     Ui::MainWindow *ui;
     QAction *actionSeparator;                       //间隔器
@@ -129,7 +132,7 @@ private:
     SearchDialog *searchDlg;                        //查找/替换对话框
     QString bgImage;                                //当前背景图片
     QLabel *col,*row,*length,*selection,*lines;     //状态栏信息
-
+    DocumentDialog *apiQuery;                       //API文档查询对话框
     QCompleter *glslCompletion;                     //glsl自动补齐条目
 
     TextChild *activeTextChild();                   //当前活动窗口

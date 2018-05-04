@@ -248,6 +248,7 @@ void TextChild::updateLineNumberArea(const QRect &rect, int dy)
 
 void TextChild::insertCompletion(const QString &completion)
 {//插入自动补齐的文本
+    if(completer->widget() != this)return;
     QTextCursor tc = textCursor();
     int extra = completion.length() - completer->completionPrefix().length();
     tc.movePosition(QTextCursor::Left);//移动光标

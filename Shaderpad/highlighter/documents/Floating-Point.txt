@@ -1,0 +1,92 @@
+floatBitsToInt{{
+类型:浮点数操作函数
+原型:
+genIType floatBitsToInt(genType x); 
+genUType floatBitsToUint(genType x); 
+支持版本:3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+描述:floatBitsToInt — produce the encoding of a floating point value as an integer
+适用范围:所有着色器
+}}
+frexp{{
+类型:浮点数操作函数
+原型:
+genType frexp(genType x,out genIType exp); 
+genDType frexp(genDType x,out genIType exp);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:frexp — split a floating point number
+适用范围:所有着色器
+}}
+intBitsToFloat{{
+类型:浮点数操作函数
+原型:
+genType intBitsToFloat(genIType x);  
+genType uintBitsToFloat(genUType x);   
+支持版本:3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:intBitsToFloat, uintBitsToFloat — produce a floating point using an encoding supplied as an integer
+适用范围:所有着色器
+}}
+ldexp{{
+类型:浮点数操作函数
+原型:
+genType ldexp(genType x,genIType exp);  
+genDType ldexp(genDType x,genIType exp);    
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:ldexp — assemble a floating point number from a value and exponent
+适用范围:所有着色器
+}}
+packDouble2x32{{
+类型:浮点数操作函数
+原型:
+double packDouble2x32(uvec2 v);   
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:packDouble2x32 — create a double-precision value from a pair of unsigned integers
+适用范围:所有着色器
+}}
+packHalf2x16{{
+类型:浮点数操作函数
+原型:
+uint packHalf2x16(  vec2 v);   
+支持版本:4.20 4.30 4.40 4.50 
+描述:packHalf2x16 — convert two 32-bit floating-point quantities to 16-bit quantities and pack them into a single 32-bit integer
+适用范围:所有着色器
+}}
+packUnorm{{
+类型:浮点数操作函数
+原型:
+uint packUnorm2x16(vec2 v); 
+uint packUnorm4x8(vec4 v); 
+uint packSnorm4x8(vec4 v);   
+支持版本:4.10 4.20 4.30 4.40 4.50 
+uint packSnorm2x16(vec2 v); 
+支持版本:4.20 4.30 4.40 4.50 
+描述:packUnorm — pack floating-point values into an unsigned integer
+适用范围:所有着色器
+}}
+unpackDouble2x32{{
+类型:浮点数操作函数
+原型:
+uvec2 unpackDouble2x32(double d); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:unpackDouble2x32 — produce two unsigned integers containing the bit encoding of a double precision floating point value
+适用范围:所有着色器
+}}
+unpackHalf2x16{{
+类型:浮点数操作函数
+原型:
+vec2 unpackHalf2x16(  uint v);  
+支持版本:4.20 4.30 4.40 4.50 
+描述:unpackHalf2x16 — convert two 16-bit floating-point values packed into a single 32-bit integer into a vector of two 32-bit floating-point quantities
+适用范围:所有着色器
+}}
+unpackUnorm{{
+类型:浮点数操作函数
+原型:
+vec2 unpackUnorm2x16(uint p);  
+vec4 unpackUnorm4x8(uint p); 
+vec4 unpackSnorm4x8(uint p); 
+支持版本:4.10 4.20 4.30 4.40 4.50 
+vec2 unpackSnorm2x16(uint p);
+支持版本:4.20 4.30 4.40 4.50 
+描述:unpackUnorm2x16, unpackUnorm4x8, unpackSnorm4x8 — unpack floating-point values from an unsigned integer
+适用范围:所有着色器
+}}

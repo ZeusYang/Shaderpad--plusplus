@@ -58,6 +58,7 @@ public:
     QAction *actionPDFExport;
     QAction *actionZoomIn;
     QAction *actionZoomOut;
+    QAction *actionOpenGLAPI;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QSplitter *splitter;
@@ -226,6 +227,11 @@ public:
         QIcon icon28;
         icon28.addFile(QStringLiteral(":/icons/ZoomOut.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionZoomOut->setIcon(icon28);
+        actionOpenGLAPI = new QAction(MainWindow);
+        actionOpenGLAPI->setObjectName(QStringLiteral("actionOpenGLAPI"));
+        QIcon icon29;
+        icon29.addFile(QStringLiteral(":/icons/glsl.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionOpenGLAPI->setIcon(icon29);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -309,6 +315,7 @@ public:
         menu_E->addSeparator();
         menu_E->addAction(actionComment);
         menu_File->addAction(actionSearch);
+        menu_File->addAction(actionOpenGLAPI);
         menu_File->addSeparator();
         menu_File->addAction(actionPrevious);
         menu_File->addAction(actionNext);
@@ -335,6 +342,7 @@ public:
         mainToolBar->addAction(actionRedo);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionSearch);
+        mainToolBar->addAction(actionOpenGLAPI);
         mainToolBar->addAction(actionComment);
 
         retranslateUi(MainWindow);
@@ -426,6 +434,10 @@ public:
 "", nullptr));
 #ifndef QT_NO_SHORTCUT
         actionZoomOut->setShortcut(QApplication::translate("MainWindow", "Ctrl+-", nullptr));
+#endif // QT_NO_SHORTCUT
+        actionOpenGLAPI->setText(QApplication::translate("MainWindow", "OpenGL\347\235\200\350\211\262\345\231\250API\346\226\207\346\241\243\346\237\245\350\257\242(&L)", nullptr));
+#ifndef QT_NO_SHORTCUT
+        actionOpenGLAPI->setShortcut(QApplication::translate("MainWindow", "F1", nullptr));
 #endif // QT_NO_SHORTCUT
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", nullptr));

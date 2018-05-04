@@ -1,0 +1,100 @@
+acos{{
+类型:三角函数
+原型:genType acos(genType x);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:acos — return the arccosine of the parameter
+适用范围:所有着色器
+}}
+acosh{{
+类型:三角函数
+原型:genType acosh(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:acosh — return the arc hyperbolic cosine of the parameter
+适用范围:所有着色器
+}}
+asin{{
+类型:三角函数
+原型:genType asin(genType x);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:asin — return the arcsine of the parameter
+适用范围:所有着色器
+}}
+asinh{{
+类型:三角函数
+原型:genType asinh(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:asinh — return the arc hyperbolic sine of the parameter
+适用范围:所有着色器
+}}
+atan{{
+类型:三角函数
+原型:
+genType atan(genType y, genType x);
+genType atan(genType y_over_x);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:atan — return the arc-tangent of the parameters
+适用范围:所有着色器
+}}
+atanh{{
+类型:三角函数
+原型:genType atanh(genType x);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:atanh — return the arc hyperbolic tangent of the parameter
+适用范围:所有着色器
+}}
+cos{{
+类型:三角函数
+原型:genType cos(genType angle);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:cos — return the cosine of the parameter
+适用范围:所有着色器
+}}
+cosh{{
+类型:三角函数
+原型:genType cosh(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:cosh — return the hyperbolic cosine of the parameter
+适用范围:所有着色器
+}}
+degrees{{
+类型:三角函数
+原型:genType degrees(genType radians);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:degrees — convert a quantity in radians to degrees
+适用范围:所有着色器
+}}
+radians{{
+类型:三角函数
+原型:genType radians(genType degrees);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:radians — convert a quantity in degrees to radians
+适用范围:所有着色器
+}}
+sin{{
+类型:三角函数
+原型:genType sin(genType angle);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:sin — return the sine of the parameter
+适用范围:所有着色器
+}}
+sinh{{
+类型:三角函数
+原型:genType sinh(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:sinh — return the hyperbolic sine of the parameter
+适用范围:所有着色器
+}}
+tan{{
+类型:三角函数
+原型:genType tan(genType angle);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:tan — return the tangent of the parameter
+适用范围:所有着色器
+}}
+tanh{{
+类型:三角函数
+原型:genType tanh(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:tanh — return the hyperbolic tangent of the parameter
+适用范围:所有着色器
+}}

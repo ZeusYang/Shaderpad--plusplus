@@ -4,6 +4,7 @@
 #include "themedialog.h"
 #include "bgimagedialog.h"
 #include "searchdialog.h"
+#include "documentdialog.h"
 #include <QFileDialog>
 #include <QSignalMapper>
 #include <QPrinter>
@@ -75,6 +76,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(searchDlg,&SearchDialog::searchReplaceAllSignal,this,&MainWindow::searchReplaceAll);
     connect(searchDlg,&SearchDialog::searchCountSignal,this,&MainWindow::searchCount);
 
+    //API查询对话框
+    apiQuery = new DocumentDialog(this);
+    searchDlg->setModal(false);
+
     //状态栏显示行列号等相关信息
     col = new QLabel(this);
     row = new QLabel(this);
@@ -113,10 +118,11 @@ MainWindow::MainWindow(QWidget *parent) :
     //加载自动补齐文本
     glslCompletion = new QCompleter(this);
     glslCompletion->setModel(loadModelCompletionFromFile(":/highlighter/glslBuildin"));
-    //glslCompletion->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
     glslCompletion->setModelSorting(QCompleter::CaseSensitivelySortedModel);
     glslCompletion->setCaseSensitivity(Qt::CaseInsensitive);
     glslCompletion->setWrapAround(false);
+
+    apiQuery->setCompleter(glslCompletion);
 
     //加载样式表
     changeTheme("darkblack",themeDlg->alpha,themeDlg->font);
@@ -696,4 +702,9 @@ void MainWindow::searchCount(QString from, bool caseSen, bool whole, QLabel *dis
     }
     while(index < content.size());
     display->setText(tr("共有%1个").arg(count));
+}
+
+void MainWindow::on_actionOpenGLAPI_triggered()
+{
+    apiQuery->show();
 }

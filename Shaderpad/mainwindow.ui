@@ -105,6 +105,7 @@
      <string>文档(&amp;v)</string>
     </property>
     <addaction name="actionSearch"/>
+    <addaction name="actionOpenGLAPI"/>
     <addaction name="separator"/>
     <addaction name="actionPrevious"/>
     <addaction name="actionNext"/>
@@ -155,6 +156,7 @@
    <addaction name="actionRedo"/>
    <addaction name="separator"/>
    <addaction name="actionSearch"/>
+   <addaction name="actionOpenGLAPI"/>
    <addaction name="actionComment"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
@@ -471,6 +473,18 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionOpenGLAPI">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/glsl.png</normaloff>:/icons/glsl.png</iconset>
+   </property>
+   <property name="text">
+    <string>OpenGL着色器API文档查询(&amp;L)</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
    </property>
   </action>
  </widget>

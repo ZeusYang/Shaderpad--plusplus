@@ -1,0 +1,322 @@
+abs{{
+类型:数学函数
+原型:
+genType abs(genType x); 
+描述:abs — return the absolute value of the parameter
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+适用范围:所有着色器
+}}
+clamp{{
+类型:数学函数
+原型:
+genType clamp(genType x,genType minVal, genType maxVal);
+genType clamp(genType x,float minVal, float maxVal); 
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType clamp(genDType x,genDType minVal, genDType maxVal); 
+genDType clamp(genDType x,double minVal, double maxVal);
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+genIType clamp(genIType x,genIType minVal,genIType maxVal); 
+genIType clamp(genIType x,int minVal,int maxVal);  
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+genUType clamp(genUType x,genUType minVal,genUType maxVal); 
+genUType clamp(genUType x,uint minVal,uint maxVal); 
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+描述:clamp — constrain a value to lie between two further values
+适用范围:所有着色器
+}}
+dFdx{{
+类型:数学函数
+原型:
+genType dFdx(genType p);  
+genType dFdy(genType p);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50   
+genType dFdxCoarse(genType p);  
+genType dFdyCoarse(genType p);  
+genType dFdxFine(genType p);  
+genType dFdyFine(genType p); 
+支持版本:4.50  
+描述:dFdx, dFdy — return the partial derivative of an argument with respect to x or y
+适用范围:所有着色器
+}}
+dFdy{{
+类型:数学函数
+原型:
+genType dFdx(genType p);  
+genType dFdy(genType p);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50   
+genType dFdxCoarse(genType p);  
+genType dFdyCoarse(genType p);  
+genType dFdxFine(genType p);  
+genType dFdyFine(genType p); 
+支持版本:4.50  
+描述:dFdx, dFdy — return the partial derivative of an argument with respect to x or y
+适用范围:所有着色器
+}}
+exp{{
+类型:数学函数
+原型:genType exp(genType x); 
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:exp — return the natural exponentiation of the parameter
+适用范围:所有着色器
+}}
+exp2{{
+类型:数学函数
+原型:genType exp2(  genType x); 
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:exp2 — return 2 raised to the power of the parameter
+适用范围:所有着色器
+}}
+floor{{
+类型:数学函数
+原型:
+genType floor(genType x);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType floor(genDType x);
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50  
+描述:floor — find the nearest integer less than or equal to the parameter
+适用范围:所有着色器
+}}
+fma{{
+类型:数学函数
+原型:
+genType fma(genType a,genType b,genType c);
+genDType fma(genDType a,genDType b,genDType c);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50  
+描述:fma — perform a fused multiply-add operation
+适用范围:所有着色器
+}}
+fract{{
+类型:数学函数
+原型:
+genType fract(genType x);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType fract(genDType x); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:fract — compute the fractional part of the argument
+适用范围:所有着色器
+}}
+fwidth{{
+类型:数学函数
+原型:
+genType fwidth(genType p);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+genType fwidthCoarse(genType p);  
+genType fwidthFine(genType p); 
+支持版本:4.50  
+描述:fwidth — return the sum of the absolute value of derivatives in x and y
+适用范围:所有着色器
+}}
+inversesqrt{{
+类型:数学函数
+原型:
+genType inversesqrt(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+genDType inversesqrt(genDType x); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50  
+描述:inversesqrt — return the inverse of the square root of the parameter
+适用范围:所有着色器
+}}
+isinf{{
+类型:数学函数
+原型:
+genBType isinf(genType x); 
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genBType isinf(genDType x); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:isinf — determine whether the parameter is positive or negative infinity
+适用范围:所有着色器
+}}
+isnan{{
+类型:数学函数
+原型:
+genBType isnan(genType x);  
+genBType isnan(genDType x);   
+支持版本:1.10 1.20 1.
+描述:isnan — determine whether the parameter is a number
+适用范围:所有着色器
+}}
+log{{
+类型:数学函数
+原型:
+genType log(genType x);   
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:log — return the natural logarithm of the parameter
+适用范围:所有着色器
+}}
+log2{{
+类型:数学函数
+原型:
+genType log2(genType x);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:log2 — return the base 2 logarithm of the parameter
+适用范围:所有着色器
+}}
+max{{
+类型:数学函数
+原型:
+genType max(genType x,genType y);  
+genType max(genType x,float y);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType max(genDType x,genDType y);  
+genDType max(genDType x,double y); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+genIType max(genIType x,genIType y);  
+genIType max(genIType x,int y);  
+genUType max(genUType x,genUType y);  
+genUType max(genUType x,uint y);   
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:max — return the greater of two values
+适用范围:所有着色器
+}}
+min{{
+类型:数学函数
+原型:
+genType min(genType x,genType y);  
+genType min(genType x,float y);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType min(genDType x,genDType y);  
+genDType min(genDType x,double y);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+genIType min(genIType x,genIType y);  
+genIType min(genIType x,int y);  
+genUType min(genUType x,genUType y);  
+genUType min(genUType x,uint y);  
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:min — return the lesser of two values
+适用范围:所有着色器
+}}
+mix{{
+类型:数学函数
+原型:
+genType mix(genType x,genType y,genType a);  
+genType mix(genType x,genType y,float a);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType mix(genDType x,genDType y,genDType a);  
+genDType mix(genDType x,genDType y,double a); 
+genDType mix(genDType x,genDType y,genBType a);
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50   
+genType mix(genType x,genType y,genBType a);    
+genIType mix(genIType x,genIType y,genBType a);  
+genUType mix(genUType x,genUType y,genBType a);  
+genBType mix(genBType x,genBType y,genBType a); 
+支持版本:4.50   
+描述:mix — linearly interpolate between two values
+适用范围:所有着色器
+}}
+mod{{
+类型:数学函数
+原型:
+genType mod(genType x,float y);  
+genType mod(genType x,genType y);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+genDType mod(genDType x,double y);  
+genDType mod(genDType x,genDType y);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50  
+描述:mod — compute value of one parameter modulo another
+适用范围:所有着色器
+}}
+modf{{
+类型:数学函数
+原型:
+genType modf(genType x,out genType i); 
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+genDType modf(genDType x,out genDType i);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50  
+描述:modf — separate a value into its integer and fractional components	
+适用范围:所有着色器
+}}
+noise{{
+类型:数学函数
+原型:
+float noise1(genType x);
+vec2 noise2(genType x);
+vec3 noise3(genType x);
+vec4 noise4(genType x);  
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:noise — generate values with a pseudo-random noise function	
+适用范围:所有着色器
+}}
+pow{{
+类型:数学函数
+原型:
+genType pow(genType x,genType y);   
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:pow — return the value of the first parameter raised to the power of the second
+适用范围:所有着色器
+}}
+round{{
+类型:数学函数
+原型:
+genType round(genType x); 
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType round(genDType x);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:round — find the nearest integer less than or equal to the parameter
+适用范围:所有着色器
+}}
+roundEven{{
+类型:数学函数
+原型:
+genType roundEven(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50
+genDType roundEven(genDType x);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:roundEven — find the nearest even integer to the parameter
+适用范围:所有着色器
+}}
+sign{{
+类型:数学函数
+原型:
+genType sign(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+genIType sign(genIType x);
+支持版本:1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType sign(genDType x);
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:sign — extract the sign of the parameter
+适用范围:所有着色器
+}}
+smoothstep{{
+类型:数学函数
+原型:
+genType smoothstep(genType edge0,genType edge1,genType x);  
+genType smoothstep(float edge0,float edge1,genType x); 
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50   
+genDType smoothstep(genDType edge0,genDType edge1,genDType x);  
+genDType smoothstep(double edge0,double edge1,genDType x); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:smoothstep — perform Hermite interpolation between two values
+适用范围:所有着色器
+}}
+sqrt{{
+类型:数学函数
+原型:
+genType sqrt(genType x);
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+genDType sqrt(genDType x);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:sqrt — return the square root of the parameter
+适用范围:所有着色器
+}}
+step{{
+类型:数学函数
+原型:
+genType step(genType edge,genType x);  
+genType step(float edge,genType x); 
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50  
+genDType step(genDType edge,genDType x);  
+genDType step(double edge,genDType x);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:step — generate a step function by comparing two values
+适用范围:所有着色器
+}}
+trunc{{
+类型:数学函数
+原型:
+genType trunc(genType x);
+支持版本:1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50   
+genDType trunc(genDType x);  
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:trunc — find the nearest integer less than or equal to the parameter
+适用范围:所有着色器
+}}

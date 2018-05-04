@@ -651,11 +651,15 @@ background-color:rgba(36,38,41,100);
 color:rgba(255,255,255,255);
 }
 
-/*QAbstractItemView{
-background-color:rgba(36,38,41,100);"
-font: bold 16pt "Consolas";
-color:rgba(255,0,0,255);
-}*/
+QTextEdit,QLineEdit#lineEditTarget{
+background-color:rgba(100,100,100,100);
+color:rgba(200,200,200,255);
+font: 16pt "Consolas";
+}
+
+QDialog#DocumentDialog{
+border-image:url(:/icons/6.jpg);
+}
 
 *:disabled{
 background:#1F2026;

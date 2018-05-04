@@ -1,0 +1,277 @@
+imageAtomicAdd{{
+类型:图像操作函数
+原型:
+uint imageAtomicAdd(gimage1D image,int P,uint data);  
+uint imageAtomicAdd(gimage2D image,ivec2 P,uint data);  
+uint imageAtomicAdd(gimage3D image,ivec3 P,uint data);  
+uint imageAtomicAdd(gimage2DRect image,ivec2 P,uint data);  
+uint imageAtomicAdd(gimageCube image,ivec3 P,uint data);  
+uint imageAtomicAdd(gbufferImage image,int P,uint data);  
+uint imageAtomicAdd(gimage1DArray image,ivec2 P,uint data);  
+uint imageAtomicAdd(gimage2DArray image,ivec3 P,uint data);  
+uint imageAtomicAdd(gimageCubeArray image,ivec3 P,uint data);  
+uint imageAtomicAdd(gimage2DMS image,ivec2 P,int sample,uint data);  
+uint imageAtomicAdd(gimage2DMSArray image,ivec3 P,int sample,uint data);  
+int imageAtomicAdd(gimage1D image,int P,int data);  
+int imageAtomicAdd(gimage2D image,ivec2 P,int data);  
+int imageAtomicAdd(gimage3D image,ivec3 P,int data);  
+int imageAtomicAdd(gimage2DRect image,ivec2 P,int data);  
+int imageAtomicAdd(gimageCube image,ivec3 P,int data);  
+int imageAtomicAdd(gbufferImage image,int P,int data);  
+int imageAtomicAdd(gimage1DArray image,ivec2 P,int data);  
+int imageAtomicAdd(gimage2DArray image,ivec3 P,int data);  
+int imageAtomicAdd(gimageCubeArray image,ivec3 P,int data);  
+int imageAtomicAdd(gimage2DMS image,ivec2 P,int sample,int data);  
+int imageAtomicAdd(gimage2DMSArray image,ivec3 P,int sample,int data);  
+支持版本:4.20 4.30 4.40 4.50  
+描述:imageAtomicAdd — atomically add a value to an existing value in memory and return the original value
+适用范围:计算着色器等
+}}
+imageAtomicCompSwap{{
+类型:图像操作函数
+原型:
+uint imageAtomicCompSwap(gimage1D image,int P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimage2D image,ivec2 P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimage3D image,ivec3 P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimage2DRect image,ivec2 P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimageCube image,ivec3 P,uint compare,uint data);  
+uint imageAtomicCompSwap(gbufferImage image,int P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimage1DArray image,ivec2 P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimage2DArray image,ivec3 P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimageCubeArray image,ivec3 P,uint compare,uint data);  
+uint imageAtomicCompSwap(gimage2DMS image,ivec2 P,int sample,uint compare,uint data);  
+uint imageAtomicCompSwap(gimage2DMSArray image,ivec3 P,int sample,uint compare,uint data);  
+int imageAtomicCompSwap(gimage1D image,int P,int compare,int data);  
+int imageAtomicCompSwap(gimage2D image,ivec2 P,int compare,int data);  
+int imageAtomicCompSwap(gimage3D image,ivec3 P,int compare,int data);  
+int imageAtomicCompSwap(gimage2DRect image,ivec2 P,int compare,int data);  
+int imageAtomicCompSwap(gimageCube image,ivec3 P,int compare,int data);  
+int imageAtomicCompSwap(gbufferImage image,int P,int compare,int data);  
+int imageAtomicCompSwap(gimage1DArray image,ivec2 P,int compare,int data);  
+int imageAtomicCompSwap(gimage2DArray image,ivec3 P,int compare,int data);  
+int imageAtomicCompSwap(gimageCubeArray image,ivec3 P,int compare,int data);  
+int imageAtomicCompSwap(gimage2DMS image,ivec2 P,int sample,int compare,int data);  
+int imageAtomicCompSwap(gimage2DMSArray image,ivec3 P,int sample,int compare,int data);  
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageAtomicCompSwap — atomically compares supplied data with that in memory and conditionally stores it to memory
+适用范围:计算着色器等
+}}
+imageAtomicExchange{{
+类型:图像操作函数
+原型:
+uint imageAtomicExchange(gimage1D image,int P,uint data);  
+uint imageAtomicExchange(gimage2D image,ivec2 P,uint data);  
+uint imageAtomicExchange(gimage3D image,ivec3 P,uint data);  
+uint imageAtomicExchange(gimage2DRect image,ivec2 P,uint data);  
+uint imageAtomicExchange(gimageCube image,ivec3 P,uint data);  
+uint imageAtomicExchange(gbufferImage image,int P,uint data);  
+uint imageAtomicExchange(gimage1DArray image,ivec2 P,uint data);  
+uint imageAtomicExchange(gimage2DArray image,ivec3 P,uint data);  
+uint imageAtomicExchange(gimageCubeArray image,ivec3 P,uint data);  
+uint imageAtomicExchange(gimage2DMS image,ivec2 P,int sample,uint data);  
+uint imageAtomicExchange(gimage2DMSArray image,ivec3 P,int sample,uint data);  
+int imageAtomicExchange(gimage1D image,int P,int data);  
+int imageAtomicExchange(gimage2D image,ivec2 P,int data);  
+int imageAtomicExchange(gimage3D image,ivec3 P,int data);  
+int imageAtomicExchange(gimage2DRect image,ivec2 P,int data);  
+int imageAtomicExchange(gimageCube image,ivec3 P,int data);  
+int imageAtomicExchange(gbufferImage image,int P,int data);  
+int imageAtomicExchange(gimage1DArray image,ivec2 P,int data);  
+int imageAtomicExchange(gimage2DArray image,ivec3 P,int data); 
+int imageAtomicExchange(gimageCubeArray image,ivec3 P,int data);  
+int imageAtomicExchange(gimage2DMS image,ivec2 P,int sample,int data);  
+int imageAtomicExchange(gimage2DMSArray image,ivec3 P,int sample,int data);  
+int imageAtomicExchange(gimage1D image,int P,float data);  
+int imageAtomicExchange(gimage2D image,ivec2 P,float data);  
+int imageAtomicExchange(gimage3D image,ivec3 P,float data);  
+int imageAtomicExchange(gimage2DRect image,ivec2 P,float data);  
+int imageAtomicExchange(gimageCube image,ivec3 P,float data);  
+int imageAtomicExchange(gbufferImage image,int P,float data);  
+int imageAtomicExchange(gimage1DArray image,ivec2 P,float data);  
+int imageAtomicExchange(gimage2DArray image,ivec3 P,float data);  
+int imageAtomicExchange(gimageCubeArray image,ivec3 P,float data);  
+int imageAtomicExchange(gimage2DMS image,ivec2 P,int sample,float data);  
+int imageAtomicExchange(gimage2DMSArray image,ivec3 P,int sample,float data); 
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageAtomicExchange — atomically store supplied data into memory and return the original value from memory
+适用范围:计算着色器等
+}}
+imageAtomicMax{{
+类型:图像操作函数
+原型:
+uint imageAtomicMax(gimage1D image,int P,uint data); 
+uint imageAtomicMax(gimage2D image,ivec2 P,uint data); 
+uint imageAtomicMax(gimage3D image,ivec3 P,uint data); 
+uint imageAtomicMax(gimage2DRect image,ivec2 P,uint data); 
+uint imageAtomicMax(gimageCube image,ivec3 P,uint data); 
+uint imageAtomicMax(gbufferImage image,int P,uint data); 
+uint imageAtomicMax(gimage1DArray image,ivec2 P,uint data); 
+uint imageAtomicMax(gimage2DArray image,ivec3 P,uint data); 
+uint imageAtomicMax(gimageCubeArray image,ivec3 P,uint data); 
+uint imageAtomicMax(gimage2DMS image,ivec2 P,int sample,uint data); 
+uint imageAtomicMax(gimage2DMSArray image,ivec3 P,int sample,uint data); 
+int imageAtomicMax(gimage1D image,int P,int data); 
+int imageAtomicMax(gimage2D image,ivec2 P,int data); 
+int imageAtomicMax(gimage3D image,ivec3 P,int data); 
+int imageAtomicMax(gimage2DRect image,ivec2 P,int data); 
+int imageAtomicMax(gimageCube image,ivec3 P,int data); 
+int imageAtomicMax(gbufferImage image,int P,int data); 
+int imageAtomicMax(gimage1DArray image,ivec2 P,int data); 
+int imageAtomicMax(gimage2DArray image,ivec3 P,int data); 
+int imageAtomicMax(gimageCubeArray image,ivec3 P,int data); 
+int imageAtomicMax(gimage2DMS image,ivec2 P,int sample,int data); 
+int imageAtomicMax(gimage2DMSArray image,ivec3 P,int sample,int data); 
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageAtomicMax — atomically compute the minimum of a value with an existing value in memory, store that value and return the original value
+适用范围:计算着色器等
+}}
+imageAtomicMin{{
+类型:图像操作函数
+原型:
+uint imageAtomicMin(gimage1D image,int P,uint data);  
+uint imageAtomicMin(gimage2D image,ivec2 P,uint data);  
+uint imageAtomicMin(gimage3D image,ivec3 P,uint data);  
+uint imageAtomicMin(gimage2DRect image,ivec2 P,uint data);  
+uint imageAtomicMin(gimageCube image,ivec3 P,uint data);  
+uint imageAtomicMin(gbufferImage image,int P,uint data);  
+uint imageAtomicMin(gimage1DArray image,ivec2 P,uint data);  
+uint imageAtomicMin(gimage2DArray image,ivec3 P,uint data);  
+uint imageAtomicMin(gimageCubeArray image,ivec3 P,uint data);  
+uint imageAtomicMin(gimage2DMS image,ivec2 P,int sample,uint data);  
+uint imageAtomicMin(gimage2DMSArray image,ivec3 P,int sample,uint data);  
+int imageAtomicMin(gimage1D image,int P,int data);  
+int imageAtomicMin(gimage2D image,ivec2 P,int data);  
+int imageAtomicMin(gimage3D image,ivec3 P,int data);  
+int imageAtomicMin(gimage2DRect image,ivec2 P,int data);  
+int imageAtomicMin(gimageCube image,ivec3 P,int data);  
+int imageAtomicMin(gbufferImage image,int P,int data);  
+int imageAtomicMin(gimage1DArray image,ivec2 P,int data);  
+int imageAtomicMin(gimage2DArray image,ivec3 P,int data);  
+int imageAtomicMin(gimageCubeArray image,ivec3 P,int data);  
+int imageAtomicMin(gimage2DMS image,ivec2 P,int sample,int data);  
+int imageAtomicMin(gimage2DMSArray image,ivec3 P,int sample,int data); 
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageAtomicMin — atomically compute the minimum of a value with an existing value in memory, store that value and return the original value
+适用范围:计算着色器等
+}}
+imageAtomicOr{{
+类型:图像操作函数
+原型:
+uint imageAtomicOr(gimage1D image, int P, uint data);
+uint imageAtomicOr(gimage2D image, ivec2 P, uint data);
+uint imageAtomicOr(gimage3D image, ivec3 P, uint data);
+uint imageAtomicOr(gimage2DRect image, ivec2 P, uint data);
+uint imageAtomicOr(gimageCube image, ivec3 P, uint data);
+uint imageAtomicOr(gbufferImage image, int P, uint data);
+uint imageAtomicOr(gimage1DArray image, ivec2 P, uint data);
+uint imageAtomicOr(gimage2DArray image, ivec3 P, uint data);
+uint imageAtomicOr(gimageCubeArray image, ivec3 P, uint data);
+uint imageAtomicOr(gimage2DMS image, ivec2 P, int sample, uint data);
+uint imageAtomicOr(gimage2DMSArray image, ivec3 P, int sample, uint data);
+int imageAtomicOr(gimage1D image, int P, int data);
+int imageAtomicOr(gimage2D image, ivec2 P, int data);
+int imageAtomicOr(gimage3D image, ivec3 P, int data);
+int imageAtomicOr(gimage2DRect image, ivec2 P, int data);
+int imageAtomicOr(gimageCube image, ivec3 P, int data);
+int imageAtomicOr(gbufferImage image, int P, int data);
+int imageAtomicOr(gimage1DArray image, ivec2 P, int data);
+int imageAtomicOr(gimage2DArray image, ivec3 P, int data);
+int imageAtomicOr(gimageCubeArray image, ivec3 P, int data);
+int imageAtomicOr(gimage2DMS image, ivec2 P, int sample, int data);
+int imageAtomicOr(gimage2DMSArray image, ivec3 P, int sample, int data);
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageAtomicOr — atomically compute the logical OR of a value with an existing value in memory, store that value and return the original value
+适用范围:计算着色器等
+}}
+imageAtomicXor{{
+类型:图像操作函数
+原型:
+uint imageAtomicXor(gimage1D image, int P, uint data);
+uint imageAtomicXor(gimage2D image, ivec2 P, uint data);
+uint imageAtomicXor(gimage3D image, ivec3 P, uint data);
+uint imageAtomicXor(gimage2DRect image, ivec2 P, uint data);
+uint imageAtomicXor(gimageCube image, ivec3 P, uint data);
+uint imageAtomicXor(gbufferImage image, int P, uint data);
+uint imageAtomicXor(gimage1DArray image, ivec2 P, uint data);
+uint imageAtomicXor(gimage2DArray image, ivec3 P, uint data);
+uint imageAtomicXor(gimageCubeArray image, ivec3 P, uint data);
+uint imageAtomicXor(gimage2DMS image, ivec2 P, int sample, uint data);
+uint imageAtomicXor(gimage2DMSArray image, ivec3 P, int sample, uint data);
+int imageAtomicXor(gimage1D image, int P, int data);
+int imageAtomicXor(gimage2D image, ivec2 P, int data);
+int imageAtomicXor(gimage3D image, ivec3 P, int data);
+int imageAtomicXor(gimage2DRect image, ivec2 P, int data);
+int imageAtomicXor(gimageCube image, ivec3 P, int data);
+int imageAtomicXor(gbufferImage image, int P, int data);
+int imageAtomicXor(gimage1DArray image, ivec2 P, int data);
+int imageAtomicXor(gimage2DArray image, ivec3 P, int data);
+int imageAtomicXor(gimageCubeArray image, ivec3 P, int data);
+int imageAtomicXor(gimage2DMS image, ivec2 P, int sample, int data);
+int imageAtomicXor(gimage2DMSArray image, ivec3 P, int sample, int data);
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageAtomicXor — atomically compute the logical exclusive OR of a value with an existing value in memory, store that value and return the original value
+适用范围:计算着色器等
+}}
+imageLoad{{
+类型:图像操作函数
+原型:
+gvec4 imageLoad(gimage1D image, int P);
+gvec4 imageLoad(gimage2D image, ivec2 P);
+gvec4 imageLoad(gimage3D image, ivec3 P);
+gvec4 imageLoad(gimage2DRect image, ivec2 P);
+gvec4 imageLoad(gimageCube image, ivec3 P);
+gvec4 imageLoad(gbufferImage image, int P);
+gvec4 imageLoad(gimage1DArray image, ivec2 P);
+gvec4 imageLoad(gimage2DArray image, ivec3 P);
+gvec4 imageLoad(gimageCubeArray image, ivec3 P);
+gvec4 imageLoad(gimage2DMS image, ivec2 P, int sample);
+gvec4 imageLoad(gimage2DMSArray image, ivec3 P, int sample);
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageLoad — load a single texel from an image
+适用范围:计算着色器等
+}}
+imageSamples{{
+类型:图像操作函数
+原型:
+int imageSamples(gimage2DMS image);
+int imageSamples(gimage2DMSArray image);
+支持版本:4.50 
+描述:imageSamples — return the number of samples of an image
+适用范围:计算着色器等
+}}
+imageSize{{
+类型:图像操作函数
+原型:
+int imageSize(gimage1D image);
+ivec2 imageSize(gimage2D image);
+ivec3 imageSize(gimage3D image);
+ivec2 imageSize(gimageCube image);
+ivec3 imageSize(gimageCubeArray image);
+ivec2 imageSize(gimageRect image);
+ivec2 imageSize(gimage1DArray image);
+ivec3 imageSize(gimage2DArray image);
+int imageSize(gimageBuffer image);
+ivec2 imageSize(gimage2DMS image);
+ivec3 imageSize(gimage2DMSArray image);
+支持版本:4.30 4.40 4.50 
+描述:imageSize — retrieve the dimensions of an image
+适用范围:计算着色器等
+}}
+imageStore{{
+类型:图像操作函数
+原型:
+void imageStore(gimage1D image, int P, gvec4 data);
+void imageStore(gimage2D image, ivec2 P, gvec4 data);
+void imageStore(gimage3D image, ivec3 P, gvec4 data);
+void imageStore(gimage2DRect image, ivec2 P, gvec4 data);
+void imageStore(gimageCube image, ivec3 P, gvec4 data);
+void imageStore(gbufferImage image, int P, gvec4 data);
+void imageStore(gimage1DArray image, ivec2 P, gvec4 data);
+void imageStore(gimage2DArray image, ivec3 P, gvec4 data);
+void imageStore(gimageCubeArray image, ivec3 P, gvec4 data);
+void imageStore(gimage2DMS image, ivec2 P, int sample, gvec4 data);
+void imageStore(gimage2DMSArray image, ivec3 P, int sample, gvec4 data);
+支持版本:4.20 4.30 4.40 4.50 
+描述:imageStore — write a single texel into an image
+适用范围:计算着色器等
+}}

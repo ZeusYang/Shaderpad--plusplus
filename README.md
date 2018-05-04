@@ -30,5 +30,5 @@ Todo:
 - code template
 
 ...
-
+OpenGL着色器API文档查询
 \b\#((define)|(undef)|(if)|(ifdef)|(ifndef)|(else)|(elif)|(endif)|(error)|(pragma)|(extension)|(version)|(line))\b
