@@ -59,7 +59,7 @@ unpackDouble2x32
 unpackHalf2x16
 unpackUnorm
 }}
-Built-In Variables{{
+Built-In-Variables{{
 gl_ClipDistance
 gl_CullDistance
 gl_FragCoord
@@ -104,7 +104,7 @@ notEqual
 reflect
 refract
 }}
-Component Comparison{{
+Component-Comparison{{
 all
 any
 greaterThan
@@ -113,13 +113,13 @@ lessThan
 lessThanEqual
 not
 }}
-Geometry Shader{{
+Geometry-Shader{{
 EmitStreamVertex
 EmitVertex
 EndPrimitive
 EndStreamPrimitive
 }}
-Texture Sampling{{
+Texture-Sampling{{
 interpolateAtCentroid
 interpolateAtOffset
 interpolateAtSample
@@ -192,7 +192,7 @@ atomicMin
 atomicOr
 atomicXor
 }}
-Memory Barrier{{
+Memory-Barrier{{
 barrier
 groupMemoryBarrier
 memoryBarrier

@@ -145,12 +145,12 @@ QAbstractItemModel* MainWindow::loadModelCompletionFromFile(const QString& path)
         if (!line.isEmpty())words << line.trimmed();
         tmp.push_back(line.trimmed().toStdString());
     }
-    std::sort(tmp.begin(),tmp.end());
-    auto it = std::unique(tmp.begin(),tmp.end());
-    tmp.erase(it,tmp.end());
-    for(uint x = 0;x < tmp.size();++x){
-        std::cout << tmp[x] << std::endl;
-    }
+//    std::sort(tmp.begin(),tmp.end());
+//    auto it = std::unique(tmp.begin(),tmp.end());
+//    tmp.erase(it,tmp.end());
+//    for(uint x = 0;x < tmp.size();++x){
+//        std::cout << tmp[x] << std::endl;
+//    }
     QStringListModel *ret = new QStringListModel(words, glslCompletion);
     return ret;
 }
@@ -706,5 +706,11 @@ void MainWindow::searchCount(QString from, bool caseSen, bool whole, QLabel *dis
 
 void MainWindow::on_actionOpenGLAPI_triggered()
 {
+    QString cursorText;
+    if(activeTextChild())cursorText = activeTextChild()->textUnderCursor();
+    if(!cursorText.isEmpty()){
+        apiQuery->setLineEditText(cursorText);
+        apiQuery->queryLineText();
+    }
     apiQuery->show();
 }

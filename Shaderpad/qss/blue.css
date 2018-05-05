@@ -669,7 +669,7 @@ border-image:url(:/icons/6.jpg);
 QTextEdit,QLineEdit#lineEditTarget{
 background-color:rgba(100,100,100,100);
 color:rgba(200,200,200,255);
-font: 16pt "Consolas";
+font: 14pt "Consolas";
 }
 
 QDialog#DocumentDialog{

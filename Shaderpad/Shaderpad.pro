@@ -32,7 +32,8 @@ SOURCES += \
     bgimagedialog.cpp \
     searchdialog.cpp \
     highlighter.cpp \
-    documentdialog.cpp
+    documentdialog.cpp \
+    queryword.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +42,8 @@ HEADERS += \
     bgimagedialog.h \
     searchdialog.h \
     highlighter.h \
-    documentdialog.h
+    documentdialog.h \
+    queryword.h
 
 FORMS += \
         mainwindow.ui \

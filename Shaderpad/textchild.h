@@ -17,6 +17,7 @@ public:
     QString userFriendlyCurrentFile();          //提取文件名
     QString currentFile(){return curFile;}      //当前文件路径
     QString currentName(){return userFriendlyCurrentFile();}//当前文件名
+    QString textUnderCursor() const;            //当前鼠标下的文本
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);//行号区域重绘事件
     int lineNumberAreaWidth();                        //行号区域的宽度
@@ -39,7 +40,6 @@ private slots:
 private:
     bool maybeSave();                           //是否需要保存
     void setCurrentFile(const QString& fileName);//保存当前文件路径
-    QString textUnderCursor() const;            //当前鼠标下的文本
 
     QString curFile;                            //当前文件路径
     bool isUntitled;                            //是否被保存到硬盘上的标志未保存过为true

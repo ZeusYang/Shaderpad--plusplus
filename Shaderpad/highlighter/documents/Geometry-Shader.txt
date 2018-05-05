@@ -1,0 +1,32 @@
+EmitStreamVertex{{
+类型:几何着色器函数
+原型:
+void EmitStreamVertex(int stream); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:EmitStreamVertex — emit a vertex to a specified stream
+适用范围:几何着色器
+}}
+EmitVertex{{
+类型:几何着色器函数
+原型:
+void EmitVertex(void);  
+支持版本:1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:EmitVertex — emit a vertex to the first vertex stream
+适用范围:几何着色器
+}}
+EndPrimitive{{
+类型:几何着色器函数
+原型:
+void EndPrimitive(void);  
+支持版本:1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+描述:EndPrimitive — complete the current output primitive on the first vertex stream
+适用范围:几何着色器
+}}
+EndStreamPrimitive{{
+类型:几何着色器函数
+原型:
+void EndStreamPrimitive(int stream); 
+支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
+描述:EndStreamPrimitive — complete the current output primitive on a specified stream
+适用范围:几何着色器
+}}

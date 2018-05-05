@@ -7,6 +7,7 @@ INPUT(
 ./release\searchdialog.o
 ./release\highlighter.o
 ./release\documentdialog.o
+./release\queryword.o
 ./release\qrc_resource.o
 ./release\moc_mainwindow.o
 ./release\moc_textchild.o

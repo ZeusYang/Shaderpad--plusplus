@@ -7,6 +7,7 @@ namespace Ui {
 class DocumentDialog;
 }
 class QCompleter;
+class QueryWord;
 class DocumentDialog : public QDialog
 {
     Q_OBJECT
@@ -18,8 +19,18 @@ public:
 
     void initializeTextEdit();
 
+    void setLineEditText(const QString& target);
+
+    void queryLineText();
+
+private slots:
+    void on_pushButtonQuery_clicked();
+
+    void on_lineEditTarget_returnPressed();
+
 private:
     Ui::DocumentDialog *ui;
+    QueryWord *queryWord;                            //glsl查询文档
 };
 
 #endif // DOCUMENTDIALOG_H

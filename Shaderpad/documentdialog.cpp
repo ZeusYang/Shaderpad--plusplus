@@ -1,5 +1,6 @@
 #include "documentdialog.h"
 #include "ui_documentdialog.h"
+#include "queryword.h"
 #include "highlighter.h"
 #include <QCompleter>
 
@@ -20,11 +21,16 @@ DocumentDialog::DocumentDialog(QWidget *parent) :
                                      tr(":/highlighter/glslTheme"));
     ui->textEdit->setReadOnly(true);
     initializeTextEdit();
+
+    //glsl文档
+    queryWord = new QueryWord;
+    queryWord->loadHeadFromFile(tr(":/highlighter/documents/API.txt"));
 }
 
 DocumentDialog::~DocumentDialog()
 {
     delete ui;
+    delete queryWord;
 }
 
 void DocumentDialog::setCompleter(QCompleter *completer)
@@ -40,4 +46,29 @@ void DocumentDialog::initializeTextEdit()
                          "支持的GLSL版本、简单描述，如果想要查看更加详细的文档资料，"
                          "请戳http://docs.gl/。");
     ui->textEdit->setPlainText(context);
+}
+
+void DocumentDialog::setLineEditText(const QString &target)
+{
+    ui->lineEditTarget->setText(target);
+}
+
+void DocumentDialog::queryLineText()
+{
+    QString target = ui->lineEditTarget->text();
+    if(!target.isEmpty()){
+        QString context = queryWord->queryTargetWord(target);
+        if(context.isEmpty())context = tr("没有找到%1相关的资料").arg(target);
+        ui->textEdit->setPlainText(context);
+    }
+}
+
+void DocumentDialog::on_pushButtonQuery_clicked()
+{
+    queryLineText();
+}
+
+void DocumentDialog::on_lineEditTarget_returnPressed()
+{
+    on_pushButtonQuery_clicked();
 }
