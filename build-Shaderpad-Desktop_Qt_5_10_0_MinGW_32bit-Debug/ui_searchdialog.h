@@ -36,11 +36,11 @@ public:
     QCheckBox *checkBoxCase;
     QCheckBox *checkBoxReg;
     QPushButton *pushButtonSure;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QLabel *labelCount;
     QPushButton *pushButtonCount;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
@@ -59,8 +59,8 @@ public:
         SearchDialog->setSizeGripEnabled(false);
         pushButtonReplaceAll = new QPushButton(SearchDialog);
         pushButtonReplaceAll->setObjectName(QStringLiteral("pushButtonReplaceAll"));
-        pushButtonReplaceAll->setGeometry(QRect(322, 150, 131, 24));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        pushButtonReplaceAll->setGeometry(QRect(322, 150, 131, 41));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(pushButtonReplaceAll->sizePolicy().hasHeightForWidth());
@@ -84,17 +84,17 @@ public:
         checkBoxReg->setGeometry(QRect(20, 160, 121, 21));
         pushButtonSure = new QPushButton(SearchDialog);
         pushButtonSure->setObjectName(QStringLiteral("pushButtonSure"));
-        pushButtonSure->setGeometry(QRect(370, 300, 80, 24));
+        pushButtonSure->setGeometry(QRect(370, 300, 80, 41));
         sizePolicy.setHeightForWidth(pushButtonSure->sizePolicy().hasHeightForWidth());
         pushButtonSure->setSizePolicy(sizePolicy);
-        widget = new QWidget(SearchDialog);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(310, 190, 140, 31));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(SearchDialog);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(310, 210, 140, 41));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setSpacing(20);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        labelCount = new QLabel(widget);
+        labelCount = new QLabel(layoutWidget);
         labelCount->setObjectName(QStringLiteral("labelCount"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -104,22 +104,22 @@ public:
 
         horizontalLayout_3->addWidget(labelCount);
 
-        pushButtonCount = new QPushButton(widget);
+        pushButtonCount = new QPushButton(layoutWidget);
         pushButtonCount->setObjectName(QStringLiteral("pushButtonCount"));
         sizePolicy.setHeightForWidth(pushButtonCount->sizePolicy().hasHeightForWidth());
         pushButtonCount->setSizePolicy(sizePolicy);
 
         horizontalLayout_3->addWidget(pushButtonCount);
 
-        widget1 = new QWidget(SearchDialog);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(22, 22, 431, 131));
-        verticalLayout = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(SearchDialog);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(22, 22, 431, 131));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget1);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QStringLiteral("label"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
@@ -129,12 +129,12 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEditSearch = new QLineEdit(widget1);
+        lineEditSearch = new QLineEdit(layoutWidget1);
         lineEditSearch->setObjectName(QStringLiteral("lineEditSearch"));
 
         horizontalLayout->addWidget(lineEditSearch);
 
-        pushButtonNext = new QPushButton(widget1);
+        pushButtonNext = new QPushButton(layoutWidget1);
         pushButtonNext->setObjectName(QStringLiteral("pushButtonNext"));
 
         horizontalLayout->addWidget(pushButtonNext);
@@ -144,19 +144,19 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_2 = new QLabel(widget1);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QStringLiteral("label_2"));
         sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy2);
 
         horizontalLayout_2->addWidget(label_2);
 
-        lineEditReplace = new QLineEdit(widget1);
+        lineEditReplace = new QLineEdit(layoutWidget1);
         lineEditReplace->setObjectName(QStringLiteral("lineEditReplace"));
 
         horizontalLayout_2->addWidget(lineEditReplace);
 
-        pushButtonReplace = new QPushButton(widget1);
+        pushButtonReplace = new QPushButton(layoutWidget1);
         pushButtonReplace->setObjectName(QStringLiteral("pushButtonReplace"));
 
         horizontalLayout_2->addWidget(pushButtonReplace);

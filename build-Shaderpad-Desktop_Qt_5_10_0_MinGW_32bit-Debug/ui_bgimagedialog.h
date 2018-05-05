@@ -51,28 +51,31 @@ public:
         BgImageDialog->setSizePolicy(sizePolicy);
         layoutWidget = new QWidget(BgImageDialog);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(160, 320, 256, 26));
+        layoutWidget->setGeometry(QRect(160, 320, 256, 31));
         horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         pushButtonSure = new QPushButton(layoutWidget);
         pushButtonSure->setObjectName(QStringLiteral("pushButtonSure"));
-        sizePolicy.setHeightForWidth(pushButtonSure->sizePolicy().hasHeightForWidth());
-        pushButtonSure->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pushButtonSure->sizePolicy().hasHeightForWidth());
+        pushButtonSure->setSizePolicy(sizePolicy1);
 
         horizontalLayout_2->addWidget(pushButtonSure);
 
         pushButtonCancel = new QPushButton(layoutWidget);
         pushButtonCancel->setObjectName(QStringLiteral("pushButtonCancel"));
-        sizePolicy.setHeightForWidth(pushButtonCancel->sizePolicy().hasHeightForWidth());
-        pushButtonCancel->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(pushButtonCancel->sizePolicy().hasHeightForWidth());
+        pushButtonCancel->setSizePolicy(sizePolicy1);
 
         horizontalLayout_2->addWidget(pushButtonCancel);
 
         pushButtonApply = new QPushButton(layoutWidget);
         pushButtonApply->setObjectName(QStringLiteral("pushButtonApply"));
-        sizePolicy.setHeightForWidth(pushButtonApply->sizePolicy().hasHeightForWidth());
-        pushButtonApply->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(pushButtonApply->sizePolicy().hasHeightForWidth());
+        pushButtonApply->setSizePolicy(sizePolicy1);
 
         horizontalLayout_2->addWidget(pushButtonApply);
 
@@ -94,11 +97,11 @@ public:
         comboBoxSelect->addItem(QString());
         comboBoxSelect->addItem(QString());
         comboBoxSelect->setObjectName(QStringLiteral("comboBoxSelect"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(comboBoxSelect->sizePolicy().hasHeightForWidth());
-        comboBoxSelect->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(comboBoxSelect->sizePolicy().hasHeightForWidth());
+        comboBoxSelect->setSizePolicy(sizePolicy2);
 
         horizontalLayout->addWidget(comboBoxSelect);
 
@@ -112,11 +115,11 @@ public:
 
         labelImage = new QLabel(layoutWidget1);
         labelImage->setObjectName(QStringLiteral("labelImage"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(labelImage->sizePolicy().hasHeightForWidth());
-        labelImage->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(labelImage->sizePolicy().hasHeightForWidth());
+        labelImage->setSizePolicy(sizePolicy3);
         labelImage->setScaledContents(true);
 
         gridLayout->addWidget(labelImage, 1, 0, 1, 1);

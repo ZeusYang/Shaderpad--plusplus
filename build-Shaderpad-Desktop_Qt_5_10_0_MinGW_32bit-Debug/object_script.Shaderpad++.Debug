@@ -8,6 +8,7 @@ INPUT(
 ./debug\highlighter.o
 ./debug\documentdialog.o
 ./debug\queryword.o
+./debug\templatedialog.o
 ./debug\qrc_resource.o
 ./debug\moc_mainwindow.o
 ./debug\moc_textchild.o
@@ -15,4 +16,5 @@ INPUT(
 ./debug\moc_bgimagedialog.o
 ./debug\moc_searchdialog.o
 ./debug\moc_documentdialog.o
+./debug\moc_templatedialog.o
 );

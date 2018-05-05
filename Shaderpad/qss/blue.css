@@ -5,12 +5,8 @@ border:1px solid #7F9AB8;
 border-radius:0px;
 }
 
-*{
-font: 11pt "Andalus";
-}
-
 QDialog{
-border-image:url(:/icons/dialog.jpg);
+border-image:url(:/icons/1.jpg);
 }
 
 TextChild{
@@ -633,6 +629,10 @@ border-radius:0px;
 QTableView QLineEdit:focus,QTableView QComboBox:focus,QTableView QSpinBox:focus,QTableView QDoubleSpinBox:focus,QTableView QDateEdit:focus,QTableView QTimeEdit:focus,QTableView QDateTimeEdit:focus{
 border-width:0px;
 border-radius:0px;
+}
+
+*{
+font: 12pt "幼圆";
 }
 
 QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit{

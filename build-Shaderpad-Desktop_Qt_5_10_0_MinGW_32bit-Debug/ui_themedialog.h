@@ -55,7 +55,7 @@ public:
     {
         if (ThemeDialog->objectName().isEmpty())
             ThemeDialog->setObjectName(QStringLiteral("ThemeDialog"));
-        ThemeDialog->resize(384, 277);
+        ThemeDialog->resize(384, 287);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -64,17 +64,17 @@ public:
         ThemeDialog->setSizeGripEnabled(false);
         pushButtonSure = new QPushButton(ThemeDialog);
         pushButtonSure->setObjectName(QStringLiteral("pushButtonSure"));
-        pushButtonSure->setGeometry(QRect(110, 240, 80, 24));
+        pushButtonSure->setGeometry(QRect(110, 240, 80, 31));
         sizePolicy.setHeightForWidth(pushButtonSure->sizePolicy().hasHeightForWidth());
         pushButtonSure->setSizePolicy(sizePolicy);
         pushButtonCancel = new QPushButton(ThemeDialog);
         pushButtonCancel->setObjectName(QStringLiteral("pushButtonCancel"));
-        pushButtonCancel->setGeometry(QRect(200, 240, 80, 24));
+        pushButtonCancel->setGeometry(QRect(200, 240, 80, 31));
         sizePolicy.setHeightForWidth(pushButtonCancel->sizePolicy().hasHeightForWidth());
         pushButtonCancel->setSizePolicy(sizePolicy);
         pushButtonApply = new QPushButton(ThemeDialog);
         pushButtonApply->setObjectName(QStringLiteral("pushButtonApply"));
-        pushButtonApply->setGeometry(QRect(290, 240, 80, 24));
+        pushButtonApply->setGeometry(QRect(290, 240, 80, 31));
         sizePolicy.setHeightForWidth(pushButtonApply->sizePolicy().hasHeightForWidth());
         pushButtonApply->setSizePolicy(sizePolicy);
         layoutWidget = new QWidget(ThemeDialog);
@@ -220,7 +220,7 @@ public:
 
         checkBox = new QCheckBox(layoutWidget);
         checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setEnabled(false);
+        checkBox->setEnabled(true);
         checkBox->setChecked(true);
         checkBox->setTristate(true);
 

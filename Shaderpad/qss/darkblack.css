@@ -6,7 +6,7 @@ border-radius:0px;
 }
 
 QDialog{
-border-image:url(:/icons/dialog.jpg);
+border-image:url(:/icons/1.jpg);
 }
 
 QWidget[form="bottom"]{
@@ -110,7 +110,7 @@ position:relative;
 left:10px;
 }
 
-.QPushButton,.QToolButton{
+QPushButton,.QToolButton{
 border-style:none;
 border:1px solid #111214;
 color:#D7E2E9;
@@ -631,7 +631,7 @@ background:#242629;
 }
 
 *{
-font: 12pt "Andalus";
+font: 12pt "幼圆";
 }
 
 QStatusBar QWidget QLabel{
@@ -659,6 +659,14 @@ font: 14pt "Consolas";
 
 QDialog#DocumentDialog{
 border-image:url(:/icons/6.jpg);
+}
+
+QDialog QListWidget{
+background:transparent;
+}
+
+QDialog QLineEdit,QComboBox,QPushButton,QSlider{
+background-color:rgba(100,100,100,100);
 }
 
 *:disabled{

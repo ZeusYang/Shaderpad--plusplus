@@ -5,12 +5,8 @@ border:1px solid #353535;
 border-radius:0px;
 }
 
-*{
-font: 11pt "Andalus";
-}
-
 QDialog{
-border-image:url(:/icons/dialog.jpg);
+border-image:url(:/icons/1.jpg);
 }
 
 TextChild{
@@ -637,6 +633,10 @@ border-radius:0px;
 
 QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit{
 background:#464646;
+}
+
+*{
+font: 12pt "幼圆";
 }
 
 QTextEdit,QPlainTextEdit{

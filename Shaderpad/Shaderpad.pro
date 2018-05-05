@@ -33,7 +33,8 @@ SOURCES += \
     searchdialog.cpp \
     highlighter.cpp \
     documentdialog.cpp \
-    queryword.cpp
+    queryword.cpp \
+    templatedialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,14 +44,16 @@ HEADERS += \
     searchdialog.h \
     highlighter.h \
     documentdialog.h \
-    queryword.h
+    queryword.h \
+    templatedialog.h
 
 FORMS += \
         mainwindow.ui \
     themedialog.ui \
     bgimagedialog.ui \
     searchdialog.ui \
-    documentdialog.ui
+    documentdialog.ui \
+    templatedialog.ui
 
 RESOURCES += \
     resource.qrc

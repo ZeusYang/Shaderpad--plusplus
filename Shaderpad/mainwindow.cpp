@@ -5,6 +5,7 @@
 #include "bgimagedialog.h"
 #include "searchdialog.h"
 #include "documentdialog.h"
+#include "templatedialog.h"
 #include <QFileDialog>
 #include <QSignalMapper>
 #include <QPrinter>
@@ -79,6 +80,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //API查询对话框
     apiQuery = new DocumentDialog(this);
     searchDlg->setModal(false);
+
+    //新建项目对话框
+    templateDlg = new TemplateDialog(this);
+    templateDlg->setModal(true);
 
     //状态栏显示行列号等相关信息
     col = new QLabel(this);
@@ -170,6 +175,7 @@ void MainWindow::on_actionNew_triggered()
     ui->tabWidget->addTab(newone,newone->currentName());
     setActiveSubWindow(newone);
     newone->show();
+    templateDlg->show();
 }
 
 void MainWindow::closeCurrentPage(int index)

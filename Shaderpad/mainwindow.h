@@ -17,6 +17,7 @@ class SearchDialog;
 class QAbstractItemModel;
 class QCompleter;
 class DocumentDialog;
+class TemplateDialog;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -134,6 +135,7 @@ private:
     QLabel *col,*row,*length,*selection,*lines;     //状态栏信息
     DocumentDialog *apiQuery;                       //API文档查询对话框
     QCompleter *glslCompletion;                     //glsl自动补齐条目
+    TemplateDialog *templateDlg;                    //新建模板文件对话框
 
     TextChild *activeTextChild();                   //当前活动窗口
     TextChild *findTextChild(const QString &fileName);//查找子窗口
