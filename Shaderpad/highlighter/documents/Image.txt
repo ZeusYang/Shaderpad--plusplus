@@ -27,6 +27,35 @@ int imageAtomicAdd(gimage2DMSArray image,ivec3 P,int sample,int data);
 描述:imageAtomicAdd — atomically add a value to an existing value in memory and return the original value
 适用范围:计算着色器等
 }}
+imageAtomicAnd{{
+类型:图像操作函数
+原型:
+uint imageAtomicAnd(gimage1D image, int P, uint data);
+uint imageAtomicAnd(gimage2D image, ivec2 P, uint data);
+uint imageAtomicAnd(gimage3D image, ivec3 P, uint data);
+uint imageAtomicAnd(gimage2DRect image, ivec2 P, uint data);
+uint imageAtomicAnd(gimageCube image, ivec3 P, uint data);
+uint imageAtomicAnd(gbufferImage image, int P, uint data);
+uint imageAtomicAnd(gimage1DArray image, ivec2 P, uint data);
+uint imageAtomicAnd(gimage2DArray image, ivec3 P, uint data);
+uint imageAtomicAnd(gimageCubeArray image, ivec3 P, uint data);
+uint imageAtomicAnd(gimage2DMS image, ivec2 P, int sample, uint data);
+uint imageAtomicAnd(gimage2DMSArray image, ivec3 P, int sample, uint data);
+int imageAtomicAnd(gimage1D image, int P, int data);
+int imageAtomicAnd(gimage2D image, ivec2 P, int data);
+int imageAtomicAnd(gimage3D image, ivec3 P, int data);
+int imageAtomicAnd(gimage2DRect image, ivec2 P, int data);
+int imageAtomicAnd(gimageCube image, ivec3 P, int data);
+int imageAtomicAnd(gbufferImage image, int P, int data);
+int imageAtomicAnd(gimage1DArray image, ivec2 P, int data);
+int imageAtomicAnd(gimage2DArray image, ivec3 P, int data);
+int imageAtomicAnd(gimageCubeArray image, ivec3 P, int data);
+int imageAtomicAnd(gimage2DMS image, ivec2 P, int sample, int data);
+int imageAtomicAnd(gimage2DMSArray image, ivec3 P, int sample, int data);  
+支持版本:4.20 4.30 4.40 4.50  
+描述:imageAtomicAnd — atomically compute the logical AND of a value with an existing value in memory, store that value and return the original value
+适用范围:计算着色器等
+}}
 imageAtomicCompSwap{{
 类型:图像操作函数
 原型:

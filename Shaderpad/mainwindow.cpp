@@ -84,6 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //新建项目对话框
     templateDlg = new TemplateDialog(this);
     templateDlg->setModal(true);
+    connect(templateDlg,&TemplateDialog::createNewFile,this,&MainWindow::createNewProject);
 
     //状态栏显示行列号等相关信息
     col = new QLabel(this);
@@ -126,7 +127,6 @@ MainWindow::MainWindow(QWidget *parent) :
     glslCompletion->setModelSorting(QCompleter::CaseSensitivelySortedModel);
     glslCompletion->setCaseSensitivity(Qt::CaseInsensitive);
     glslCompletion->setWrapAround(false);
-
     apiQuery->setCompleter(glslCompletion);
 
     //加载样式表
@@ -150,12 +150,12 @@ QAbstractItemModel* MainWindow::loadModelCompletionFromFile(const QString& path)
         if (!line.isEmpty())words << line.trimmed();
         tmp.push_back(line.trimmed().toStdString());
     }
-//    std::sort(tmp.begin(),tmp.end());
-//    auto it = std::unique(tmp.begin(),tmp.end());
-//    tmp.erase(it,tmp.end());
-//    for(uint x = 0;x < tmp.size();++x){
-//        std::cout << tmp[x] << std::endl;
-//    }
+    std::sort(tmp.begin(),tmp.end());
+    auto it = std::unique(tmp.begin(),tmp.end());
+    tmp.erase(it,tmp.end());
+    for(uint x = 0;x < tmp.size();++x){
+        std::cout << tmp[x] << std::endl;
+    }
     QStringListModel *ret = new QStringListModel(words, glslCompletion);
     return ret;
 }
@@ -170,19 +170,17 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 void MainWindow::on_actionNew_triggered()
 {
-    TextChild *newone = createTextChild();
-    newone->newFile();
-    ui->tabWidget->addTab(newone,newone->currentName());
-    setActiveSubWindow(newone);
-    newone->show();
+    //创建模板文件对话框
     templateDlg->show();
 }
 
 void MainWindow::closeCurrentPage(int index)
 {
     QWidget* child =  ui->tabWidget->widget(index);
-    ui->tabWidget->removeTab(index);
     child->close();
+    TextChild* tmp = qobject_cast<TextChild*>(child);
+    if(tmp->isValid)return;
+    ui->tabWidget->removeTab(index);
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -248,7 +246,7 @@ void MainWindow::updateMenus(int index)
 
 TextChild *MainWindow::createTextChild()
 {
-    TextChild *child = new TextChild;
+    TextChild *child = new TextChild(this);
     //是否可以复制
     connect(child,&TextChild::copyAvailable,ui->actionCut,&QAction::setEnabled);
     connect(child,&TextChild::copyAvailable,ui->actionCopy,&QAction::setEnabled);
@@ -682,7 +680,6 @@ void MainWindow::searchReplaceAll(QString to, QString from, bool caseSen, bool w
     child->setPlainText(content);
     //发射内容被修改了的信号
     child->document()->setModified(true);
-    //child->documentWasModified();
 }
 
 void MainWindow::searchCount(QString from, bool caseSen, bool whole, QLabel *display)
@@ -719,4 +716,29 @@ void MainWindow::on_actionOpenGLAPI_triggered()
         apiQuery->queryLineText();
     }
     apiQuery->show();
+}
+
+void MainWindow::createNewProject(QString path, QString context)
+{
+    TextChild *existing = findTextChild(path);
+    if(existing){//文件已经打开
+        setActiveSubWindow(existing);
+        return;
+    }
+    //文件已经存在
+    QFileInfo fileInfo(path);
+    if(fileInfo.isFile()){
+        QMessageBox::information(this,tr("警告"),tr("文件已经存在!"));
+        return;
+    }
+
+    TextChild *newone = createTextChild();
+    newone->newFile(path,context);
+    if(!newone->isValid){
+        delete newone;
+        return ;
+    }
+    ui->tabWidget->addTab(newone,newone->currentName());
+    setActiveSubWindow(newone);
+    newone->show();
 }

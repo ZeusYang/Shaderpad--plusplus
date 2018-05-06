@@ -124,6 +124,9 @@ private slots:
 
     void on_actionOpenGLAPI_triggered();
 
+    //创建新项目文件
+    void createNewProject(QString path,QString context);
+
 private:
     Ui::MainWindow *ui;
     QAction *actionSeparator;                       //间隔器

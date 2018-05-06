@@ -1,6 +1,9 @@
 #include "templatedialog.h"
 #include "ui_templatedialog.h"
 #include <QStringListModel>
+//#include <QFile>
+#include <QDebug>
+#include <QFileDialog>
 
 TemplateDialog::TemplateDialog(QWidget *parent) :
     QDialog(parent),
@@ -15,4 +18,26 @@ TemplateDialog::TemplateDialog(QWidget *parent) :
 TemplateDialog::~TemplateDialog()
 {
     delete ui;
+}
+
+void TemplateDialog::on_pushButton_clicked()
+{
+    QString fileName = QFileDialog::getExistingDirectory(this);
+    if(fileName.isEmpty())return;
+    curPath = fileName;
+    ui->lineEditPath->setText(curPath);
+}
+
+void TemplateDialog::on_pushButtonSure_clicked()
+{
+    static const QString categories[] = {"vertex","fragment","geometry","compute","empty"};
+    QString type = categories[ui->listWidget->currentRow()];
+    QFile file(":/template/"+type);
+    file.open(QFile::ReadOnly);
+    QString context = tr(file.readAll());
+    file.close();
+    QString name = ui->nLineEditName->text() + ui->pLineEditPost->text();
+    QString target = curPath + "/" + name;
+    close();
+    emit createNewFile(target,context);
 }

@@ -313,13 +313,18 @@ debug/qrc_resource.cpp: ../Shaderpad/resource.qrc \
 		../Shaderpad/highlighter/documents/Trigonometry.txt \
 		../Shaderpad/highlighter/documents/Vector.txt \
 		../Shaderpad/highlighter/documents/Image.txt \
+		../Shaderpad/highlighter/documents/Other.txt \
 		../Shaderpad/highlighter/documents/Geometry-Shader.txt \
 		../Shaderpad/highlighter/documents/Memory-Barrier.txt \
 		../Shaderpad/highlighter/documents/Floating-Point.txt \
 		../Shaderpad/highlighter/documents/Integer.txt \
 		../Shaderpad/highlighter/documents/API.txt \
 		../Shaderpad/highlighter/documents/instruction.txt \
-		../Shaderpad/highlighter/documents/Built-In-Variables.txt
+		../Shaderpad/highlighter/documents/Built-In-Variables.txt \
+		../Shaderpad/template/geometry \
+		../Shaderpad/template/vertex \
+		../Shaderpad/template/compute \
+		../Shaderpad/template/fragment
 	E:\Qt5.10.0\5.10.0\mingw53_32\bin\rcc.exe -name resource ..\Shaderpad\resource.qrc -o debug\qrc_resource.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -2676,7 +2681,12 @@ debug/templatedialog.o: ../Shaderpad/templatedialog.cpp ../Shaderpad/templatedia
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QPushButton \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qpushbutton.h \
 		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QStringListModel \
-		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qstringlistmodel.h
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qstringlistmodel.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/QDebug \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/QFileDialog \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtWidgets/qfiledialog.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qdir.h \
+		E:/Qt5.10.0/5.10.0/mingw53_32/include/QtCore/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\templatedialog.o ..\Shaderpad\templatedialog.cpp
 
 debug/qrc_resource.o: debug/qrc_resource.cpp 

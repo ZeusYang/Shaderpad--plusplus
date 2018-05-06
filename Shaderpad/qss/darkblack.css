@@ -665,8 +665,8 @@ QDialog QListWidget{
 background:transparent;
 }
 
-QDialog QLineEdit,QComboBox,QPushButton,QSlider{
-background-color:rgba(100,100,100,100);
+QDialog QLineEdit,QComboBox,QPushButton{
+background-color:rgba(36,38,41,100);
 }
 
 *:disabled{

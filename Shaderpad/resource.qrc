@@ -174,5 +174,10 @@
         <file>highlighter/documents/instruction.txt</file>
         <file>highlighter/documents/Memory-Barrier.txt</file>
         <file>highlighter/documents/Texture-Sampling.txt</file>
+        <file>template/compute</file>
+        <file>template/fragment</file>
+        <file>template/geometry</file>
+        <file>template/vertex</file>
+        <file>highlighter/documents/Other.txt</file>
     </qresource>
 </RCC>

@@ -6,13 +6,22 @@ genType abs(genType x);
 支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
 适用范围:所有着色器
 }}
+ceil{{
+类型:数学函数
+原型:
+genType ceil(genType x);
+genDType ceil(genDType x);
+描述:ceil — find the nearest integer that is greater than or equal to the parameter
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
+适用范围:所有着色器
+}}
 clamp{{
 类型:数学函数
 原型:
 genType clamp(genType x,genType minVal, genType maxVal);
 genType clamp(genType x,float minVal, float maxVal); 
-支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50 
-genDType clamp(genDType x,genDType minVal, genDType maxVal); 
+支持版本:1.10 1.20 1.30 1.40 1.50 3.30 4.00 4.10 4.20 4.30 4.40 4.50
+genDType clamp(genDType x,genDType minVal, genDType maxVal);
 genDType clamp(genDType x,double minVal, double maxVal);
 支持版本:4.00 4.10 4.20 4.30 4.40 4.50 
 genIType clamp(genIType x,genIType minVal,genIType maxVal); 

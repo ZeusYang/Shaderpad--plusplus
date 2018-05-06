@@ -1,0 +1,25 @@
+#version 430 core
+layout(binding = 0,rgba32f) uniform image2D curbuffer;//当前缓冲  
+layout(binding = 1,rgba32f) uniform image2D prebuffer;//之前缓冲
+layout (local_size_x = 1,local_size_y = 1,local_size_z = 1)in;
+
+uniform float k1,k2,k3;//参数
+uniform float width,height;//宽高，用于边界判断
+
+void main(void)
+{ 
+	ivec2 index = ivec2(int(gl_GlobalInvocationID.x),int(gl_GlobalInvocationID.y));
+	//边界判断
+	if(index.s >= 1 && index.s < (width-1) && index.t >= 1 && index.t < (height-1)){
+		vec4 cur = imageLoad(curbuffer,index);
+		vec4 pre = imageLoad(prebuffer,index);
+		vec4 left = imageLoad(curbuffer,ivec2(index.s-1,index.t));
+		vec4 right = imageLoad(curbuffer,ivec2(index.s+1,index.t));
+		vec4 up = imageLoad(curbuffer,ivec2(index.s,index.t-1));
+		vec4 down = imageLoad(curbuffer,ivec2(index.s,index.t+1));
+		float tmp = k1*cur.y + k2*pre.y + k3*(left.y+right.y+up.y+down.y);
+		cur.y = tmp;
+		barrier();
+		imageStore(prebuffer,index,cur);
+	}
+}

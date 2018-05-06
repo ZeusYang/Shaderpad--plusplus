@@ -1,10 +1,10 @@
-EmitStreamPrimitive
 EmitStreamVertex
 EmitVertex
 EndPrimitive
 EndStreamPrimitive
 GL_ES
 GL_FRAGMENT_PRECISION_HIGH
+__FILE__
 __LINE__
 __VERSION__
 abs
@@ -100,11 +100,8 @@ gl_BackColor
 gl_BackSecondaryColor
 gl_ClipDistance
 gl_ClipVertex
-gl_Color
 gl_CullDistance
 gl_DepthRange
-gl_FogCoord
-gl_FogFragCoord
 gl_FragColor
 gl_FragCoord
 gl_FragData
@@ -128,9 +125,7 @@ gl_MaxVertexAttribs
 gl_MaxVertexTextureImageUnits
 gl_MaxVertexUniformVectors
 gl_MultiTexCoordn
-gl_Normal
 gl_NumSamples
-gl_NumWoorkGroups
 gl_NumWorkGroups
 gl_PatchVerticesIn
 gl_PointCoord
@@ -153,7 +148,6 @@ gl_ViewportIndex
 gl_WorkGroupID
 gl_WorkGroupSize
 gl_in
-greater
 greaterThan
 greaterThanEqual
 groupMemoryBarrier
@@ -161,7 +155,6 @@ highp
 if
 ifdef
 ifndef
-image2D
 imageAtomicAdd
 imageAtomicAnd
 imageAtomicCompSwap
@@ -256,10 +249,6 @@ rgba32f
 round
 roundEven
 row_major
-sampler1D
-sampler2D
-sampler3D
-samplerCube
 shared
 sign
 sin
@@ -278,11 +267,7 @@ texelFetch
 texelFetchOffset
 texture
 texture2D
-texture2DLod
-texture2DProj
-texture2DProjLod
 textureCube
-textureCubeLod
 textureGather
 textureGatherOffset
 textureGatherOffsets
@@ -310,7 +295,6 @@ trunc
 uaddCarry
 uint
 umulExtended
-unchanged
 undef
 uniform
 unpackDouble2x32

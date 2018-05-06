@@ -8,8 +8,9 @@ class TextChild : public QPlainTextEdit
 {
     Q_OBJECT
 public:
+    bool isValid;//当前窗口是否有效
+
     explicit TextChild(QWidget *parent = nullptr);
-    void newFile();                             //新建文件
     bool loadFile(const QString &fileName);     //加载文件
     bool save();                                //保存操作
     bool saveAs();                              //另存为操作
@@ -23,10 +24,8 @@ public:
     int lineNumberAreaWidth();                        //行号区域的宽度
 
     void setCompleter(QCompleter *completern);       //设置自动补齐器
-    QCompleter *Completer() const{
-        return completer;
-    }
-
+public slots:
+    void newFile(QString path,QString context); //新建文件
 protected:
     void closeEvent(QCloseEvent *event);        //关闭事件
     void keyPressEvent(QKeyEvent *e);           //键盘事件

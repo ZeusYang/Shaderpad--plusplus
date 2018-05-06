@@ -110,7 +110,7 @@ position:relative;
 left:10px;
 }
 
-.QPushButton,.QToolButton{
+QPushButton,.QToolButton{
 border-style:none;
 border:1px solid #738393;
 color:#E7ECF0;
@@ -664,6 +664,14 @@ font: 14pt "Consolas";
 
 QDialog#DocumentDialog{
 border-image:url(:/icons/6.jpg);
+}
+
+QDialog QListWidget{
+background:transparent;
+}
+
+QDialog QLineEdit,QComboBox,QPushButton{
+background-color:rgba(97,111,118,100);
 }
 
 *:disabled{

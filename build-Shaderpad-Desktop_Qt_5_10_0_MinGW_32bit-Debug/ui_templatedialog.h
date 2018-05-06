@@ -36,16 +36,16 @@ public:
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEditPath;
     QPushButton *pushButton;
-    QCheckBox *checkBox;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QCheckBox *checkBoxDefault;
+    QPushButton *pushButtonSure;
+    QPushButton *pushButtonCancel;
     QFormLayout *formLayout;
     QLabel *nLabel;
-    QLineEdit *nLineEdit;
+    QLineEdit *nLineEditName;
     QLabel *pLabel;
-    QLineEdit *pLineEdit;
+    QLineEdit *pLineEditPost;
 
     void setupUi(QDialog *TemplateDialog)
     {
@@ -110,10 +110,10 @@ public:
 
         horizontalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(groupBox);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEditPath = new QLineEdit(groupBox);
+        lineEditPath->setObjectName(QStringLiteral("lineEditPath"));
 
-        horizontalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(lineEditPath);
 
         pushButton = new QPushButton(groupBox);
         pushButton->setObjectName(QStringLiteral("pushButton"));
@@ -123,30 +123,30 @@ public:
 
         gridLayout->addLayout(horizontalLayout, 1, 0, 1, 3);
 
-        checkBox = new QCheckBox(groupBox);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBoxDefault = new QCheckBox(groupBox);
+        checkBoxDefault->setObjectName(QStringLiteral("checkBoxDefault"));
 
-        gridLayout->addWidget(checkBox, 2, 0, 1, 1);
+        gridLayout->addWidget(checkBoxDefault, 2, 0, 1, 1);
 
-        pushButton_2 = new QPushButton(groupBox);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButtonSure = new QPushButton(groupBox);
+        pushButtonSure->setObjectName(QStringLiteral("pushButtonSure"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(pushButtonSure->sizePolicy().hasHeightForWidth());
+        pushButtonSure->setSizePolicy(sizePolicy1);
 
-        gridLayout->addWidget(pushButton_2, 3, 1, 1, 1);
+        gridLayout->addWidget(pushButtonSure, 3, 1, 1, 1);
 
-        pushButton_3 = new QPushButton(groupBox);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButtonCancel = new QPushButton(groupBox);
+        pushButtonCancel->setObjectName(QStringLiteral("pushButtonCancel"));
         QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(pushButtonCancel->sizePolicy().hasHeightForWidth());
+        pushButtonCancel->setSizePolicy(sizePolicy2);
 
-        gridLayout->addWidget(pushButton_3, 3, 2, 1, 1);
+        gridLayout->addWidget(pushButtonCancel, 3, 2, 1, 1);
 
         formLayout = new QFormLayout();
         formLayout->setObjectName(QStringLiteral("formLayout"));
@@ -156,20 +156,20 @@ public:
 
         formLayout->setWidget(0, QFormLayout::LabelRole, nLabel);
 
-        nLineEdit = new QLineEdit(groupBox);
-        nLineEdit->setObjectName(QStringLiteral("nLineEdit"));
+        nLineEditName = new QLineEdit(groupBox);
+        nLineEditName->setObjectName(QStringLiteral("nLineEditName"));
 
-        formLayout->setWidget(0, QFormLayout::FieldRole, nLineEdit);
+        formLayout->setWidget(0, QFormLayout::FieldRole, nLineEditName);
 
         pLabel = new QLabel(groupBox);
         pLabel->setObjectName(QStringLiteral("pLabel"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, pLabel);
 
-        pLineEdit = new QLineEdit(groupBox);
-        pLineEdit->setObjectName(QStringLiteral("pLineEdit"));
+        pLineEditPost = new QLineEdit(groupBox);
+        pLineEditPost->setObjectName(QStringLiteral("pLineEditPost"));
 
-        formLayout->setWidget(1, QFormLayout::FieldRole, pLineEdit);
+        formLayout->setWidget(1, QFormLayout::FieldRole, pLineEditPost);
 
 
         gridLayout->addLayout(formLayout, 0, 0, 1, 3);
@@ -178,11 +178,14 @@ public:
         horizontalLayout_2->addWidget(groupBox);
 
 #ifndef QT_NO_SHORTCUT
-        nLabel->setBuddy(nLineEdit);
-        pLabel->setBuddy(pLineEdit);
+        nLabel->setBuddy(nLineEditName);
+        pLabel->setBuddy(pLineEditPost);
 #endif // QT_NO_SHORTCUT
 
         retranslateUi(TemplateDialog);
+
+        listWidget->setCurrentRow(0);
+
 
         QMetaObject::connectSlotsByName(TemplateDialog);
     } // setupUi
@@ -208,9 +211,9 @@ public:
         groupBox->setTitle(QApplication::translate("TemplateDialog", "\350\256\276\347\275\256", nullptr));
         label->setText(QApplication::translate("TemplateDialog", "\345\210\233\345\273\272\350\267\257\345\276\204:", nullptr));
         pushButton->setText(QApplication::translate("TemplateDialog", "\346\265\217\350\247\210...", nullptr));
-        checkBox->setText(QApplication::translate("TemplateDialog", "\350\256\276\344\270\272\351\273\230\350\256\244\350\267\257\345\276\204", nullptr));
-        pushButton_2->setText(QApplication::translate("TemplateDialog", "\347\241\256\345\256\232", nullptr));
-        pushButton_3->setText(QApplication::translate("TemplateDialog", "\345\217\226\346\266\210", nullptr));
+        checkBoxDefault->setText(QApplication::translate("TemplateDialog", "\350\256\276\344\270\272\351\273\230\350\256\244\350\267\257\345\276\204", nullptr));
+        pushButtonSure->setText(QApplication::translate("TemplateDialog", "\347\241\256\345\256\232", nullptr));
+        pushButtonCancel->setText(QApplication::translate("TemplateDialog", "\345\217\226\346\266\210", nullptr));
         nLabel->setText(QApplication::translate("TemplateDialog", "\345\220\215\347\247\260(&N):", nullptr));
         pLabel->setText(QApplication::translate("TemplateDialog", "\345\220\216\347\274\200(&P):", nullptr));
     } // retranslateUi

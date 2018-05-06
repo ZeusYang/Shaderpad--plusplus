@@ -16,7 +16,7 @@
 #include <QKeyEvent>
 
 TextChild::TextChild(QWidget *parent)
-    :QPlainTextEdit(parent),isUntitled(true)
+    :QPlainTextEdit(parent),isUntitled(true),isValid(true)
 {
     //关闭窗口时销毁对象
     setAttribute(Qt::WA_DeleteOnClose);
@@ -37,13 +37,16 @@ TextChild::TextChild(QWidget *parent)
     completer = nullptr;
 }
 
-void TextChild::newFile()
+void TextChild::newFile(QString path,QString context)
 {
-    //窗口编号
-    static int sequenceNumber = 1;
     isUntitled = true;
-    //给新建的文件按编号命名
-    curFile = tr("new%1").arg(sequenceNumber++);
+    curFile = path;
+    setPlainText(context);
+    if(!this->saveFile(path)){
+        isValid = false;
+        return ;
+    }
+    isValid = true;
     setWindowTitle(curFile);
 }
 
@@ -152,10 +155,8 @@ int TextChild::lineNumberAreaWidth()
 void TextChild::setCompleter(QCompleter *completern)
 {
     //设置自动补齐
-    //if (completer != nullptr)disconnect(completer, 0, this, 0);
     completer = completern;
     if (!completer)return;
-    completer->setParent(this);
     completer->setWidget(this);
     completer->setCompletionMode(QCompleter::PopupCompletion);
     completer->setCaseSensitivity(Qt::CaseInsensitive);
@@ -169,8 +170,12 @@ void TextChild::closeEvent(QCloseEvent *event)
     //关闭的时候判断是否需要保存
     if(maybeSave()){
         event->accept();
+        isValid = false;
     }
-    else event->ignore();
+    else {
+        event->ignore();
+        isValid = true;//取消关闭
+    }
 }
 
 void TextChild::keyPressEvent(QKeyEvent *e)
