@@ -447,9 +447,9 @@ public:
 #ifndef QT_NO_SHORTCUT
         actionSelectAll->setShortcut(QApplication::translate("MainWindow", "Ctrl+A", nullptr));
 #endif // QT_NO_SHORTCUT
-        actionComment->setText(QApplication::translate("MainWindow", "\344\273\243\347\240\201\345\235\227\346\263\250\351\207\212/\345\217\226\346\266\210\346\263\250\351\207\212(&Z)...", nullptr));
+        actionComment->setText(QApplication::translate("MainWindow", "\345\214\272\345\235\227\346\263\250\351\207\212/\345\217\226\346\266\210\346\263\250\351\207\212(&Z)...", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionComment->setToolTip(QApplication::translate("MainWindow", "\344\273\243\347\240\201\345\235\227\346\263\250\351\207\212/\345\217\226\346\266\210\346\263\250\351\207\212", nullptr));
+        actionComment->setToolTip(QApplication::translate("MainWindow", "\345\214\272\345\235\227\346\263\250\351\207\212/\345\217\226\346\266\210\346\263\250\351\207\212", nullptr));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionComment->setShortcut(QApplication::translate("MainWindow", "Ctrl+/", nullptr));
@@ -469,13 +469,13 @@ public:
 #ifndef QT_NO_TOOLTIP
         actionBackground->setToolTip(QApplication::translate("MainWindow", "\350\203\214\346\231\257\345\233\276\347\211\207", nullptr));
 #endif // QT_NO_TOOLTIP
-        actionInstruction->setText(QApplication::translate("MainWindow", "\350\257\264\346\230\216\344\271\246(&I)", nullptr));
+        actionInstruction->setText(QApplication::translate("MainWindow", "\344\275\277\347\224\250\350\257\264\346\230\216(&I)", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionInstruction->setToolTip(QApplication::translate("MainWindow", "\350\257\264\346\230\216\344\271\246", nullptr));
+        actionInstruction->setToolTip(QApplication::translate("MainWindow", "\344\275\277\347\224\250\350\257\264\346\230\216", nullptr));
 #endif // QT_NO_TOOLTIP
-        actionAbout->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216(&A)", nullptr));
+        actionAbout->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216Shaderpad++(&A)", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionAbout->setToolTip(QApplication::translate("MainWindow", "\345\205\263\344\272\216", nullptr));
+        actionAbout->setToolTip(QApplication::translate("MainWindow", "\345\205\263\344\272\216Shaderpad++", nullptr));
 #endif // QT_NO_TOOLTIP
         actionAboutQt->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216Qt(&Q)", nullptr));
 #ifndef QT_NO_TOOLTIP

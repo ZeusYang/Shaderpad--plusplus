@@ -14,7 +14,8 @@
 #include <QScrollBar>
 #include <QMenu>
 #include <QPalette>
-#include <QDebug>
+#include <QTextStream>
+//#include <QDebug>
 #include <QKeyEvent>
 
 TextChild::TextChild(QWidget *parent)

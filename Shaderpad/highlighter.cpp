@@ -3,7 +3,7 @@
 #include <QRegularExpression>
 #include <QStringList>
 #include <QTextStream>
-#include <QDebug>
+//#include <QDebug>
 #include <sstream>
 
 Highlighter::Highlighter(QTextDocument *parent)

@@ -7,6 +7,7 @@
 #include "documentdialog.h"
 #include "templatedialog.h"
 #include "jumpdialog.h"
+#include "instructiondialog.h"
 #include <QFileDialog>
 #include <QSignalMapper>
 #include <QPrinter>
@@ -23,8 +24,8 @@
 #include <QCompleter>
 #include <QHBoxLayout>
 #include <QTextBlock>
-#include <iostream>
-#include <QDebug>
+//#include <iostream>
+//#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -150,11 +151,11 @@ QAbstractItemModel* MainWindow::loadModelCompletionFromFile(const QString& path)
     if (!file.open(QFile::ReadOnly))
         return new QStringListModel(glslCompletion);
     QStringList words;
-    std::vector<std::string> tmp;
+    //std::vector<std::string> tmp;
     while (!file.atEnd()) {
         QByteArray line = file.readLine();
         if (!line.isEmpty())words << line.trimmed();
-        tmp.push_back(line.trimmed().toStdString());
+        //tmp.push_back(line.trimmed().toStdString());
     }
 //    std::sort(tmp.begin(),tmp.end());
 //    auto it = std::unique(tmp.begin(),tmp.end());
@@ -231,6 +232,7 @@ void MainWindow::updateMenus(int index)
     ui->actionPDFExport->setEnabled(hasTextChild);
     ui->actionZoomIn->setEnabled(hasTextChild);
     ui->actionZoomOut->setEnabled(hasTextChild);
+    ui->actionJumpRow->setEnabled(hasTextChild);
     //设置间隔期是否显示
     actionSeparator->setVisible(hasTextChild);
 
@@ -437,7 +439,10 @@ void MainWindow::on_actionAboutQt_triggered()
 
 void MainWindow::on_actionAbout_triggered()
 {
-
+    QMessageBox::about(this,tr("关于Shaderpad++"),
+                               tr("欢迎使用Shaderpad++ version1.0\n"
+                                  "有任何问题、改进的地方，可通过以下邮箱告诉我:\n"
+                                  "邮箱:1579148717@qq.com\n"));
 }
 
 void MainWindow::printPreview(QPrinter *printer)
@@ -769,4 +774,15 @@ void MainWindow::jumpRowCol(int rows)
     }
     QTextBlock block = child->document()->findBlockByNumber(rows-1);
     child->setTextCursor(QTextCursor(block));
+}
+
+void MainWindow::on_actionInstruction_triggered()
+{
+    QFile file(tr(":/highlighter/documents/instruction.txt"));
+    file.open(QFile::ReadOnly);
+    QString info = file.readAll();
+    file.close();
+    static InstructionDialog *instructionDlg = new InstructionDialog(this);
+    instructionDlg->setText(info);
+    instructionDlg->show();;
 }

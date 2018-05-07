@@ -389,10 +389,10 @@
      <normaloff>:/icons/comment.png</normaloff>:/icons/comment.png</iconset>
    </property>
    <property name="text">
-    <string>代码块注释/取消注释(&amp;Z)...</string>
+    <string>区块注释/取消注释(&amp;Z)...</string>
    </property>
    <property name="toolTip">
-    <string>代码块注释/取消注释</string>
+    <string>区块注释/取消注释</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+/</string>
@@ -443,10 +443,10 @@
      <normaloff>:/icons/instruction.png</normaloff>:/icons/instruction.png</iconset>
    </property>
    <property name="text">
-    <string>说明书(&amp;I)</string>
+    <string>使用说明(&amp;I)</string>
    </property>
    <property name="toolTip">
-    <string>说明书</string>
+    <string>使用说明</string>
    </property>
   </action>
   <action name="actionAbout">
@@ -455,10 +455,10 @@
      <normaloff>:/icons/about.png</normaloff>:/icons/about.png</iconset>
    </property>
    <property name="text">
-    <string>关于(&amp;A)</string>
+    <string>关于Shaderpad++(&amp;A)</string>
    </property>
    <property name="toolTip">
-    <string>关于</string>
+    <string>关于Shaderpad++</string>
    </property>
   </action>
   <action name="actionAboutQt">

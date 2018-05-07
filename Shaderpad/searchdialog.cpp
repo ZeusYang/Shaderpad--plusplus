@@ -1,6 +1,6 @@
 #include "searchdialog.h"
 #include "ui_searchdialog.h"
-#include <QDebug>
+//#include <QDebug>
 
 SearchDialog::SearchDialog(QWidget *parent) :
     QDialog(parent),

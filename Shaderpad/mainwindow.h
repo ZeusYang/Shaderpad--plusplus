@@ -133,6 +133,8 @@ private slots:
     //跳转光标行列
     void jumpRowCol(int rows);
 
+    void on_actionInstruction_triggered();
+
 private:
     Ui::MainWindow *ui;
     QAction *actionSeparator;                       //间隔器

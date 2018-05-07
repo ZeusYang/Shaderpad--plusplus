@@ -2,7 +2,7 @@
 #include <QFile>
 #include <iostream>
 #include <sstream>
-#include <QDebug>
+//#include <QDebug>
 #include <QObject>
 
 QueryWord::QueryWord()

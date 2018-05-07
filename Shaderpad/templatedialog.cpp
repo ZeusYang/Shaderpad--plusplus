@@ -2,7 +2,7 @@
 #include "ui_templatedialog.h"
 #include <QStringListModel>
 #include <QStandardPaths>
-#include <QDebug>
+//#include <QDebug>
 #include <QFileDialog>
 
 TemplateDialog::TemplateDialog(QWidget *parent) :

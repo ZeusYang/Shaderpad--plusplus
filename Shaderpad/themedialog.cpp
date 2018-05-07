@@ -1,6 +1,6 @@
 #include "themedialog.h"
 #include "ui_themedialog.h"
-#include <QDebug>
+//#include <QDebug>
 
 ThemeDialog::ThemeDialog(QWidget *parent) :
     QDialog(parent),

@@ -1,6 +1,6 @@
 #include "jumpdialog.h"
 #include "ui_jumpdialog.h"
-#include <QDebug>
+//#include <QDebug>
 
 JumpDialog::JumpDialog(QWidget *parent) :
     QDialog(parent),
