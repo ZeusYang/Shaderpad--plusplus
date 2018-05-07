@@ -44,7 +44,7 @@ void DocumentDialog::initializeTextEdit()
     QString context = tr("这是一个OpenGL着色器GLSL的API及相关关键词查询窗口，"
                          "在此提供简单的资料说明，主要包括API的所属类型、函数原型、"
                          "支持的GLSL版本、简单描述，如果想要查看更加详细的文档资料，"
-                         "请戳http://docs.gl/。");
+                         "请戳http://docs.gl/");
     ui->textEdit->setPlainText(context);
 }
 

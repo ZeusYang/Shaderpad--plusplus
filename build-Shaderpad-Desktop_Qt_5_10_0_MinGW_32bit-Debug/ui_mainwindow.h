@@ -48,7 +48,6 @@ public:
     QAction *actionSearch;
     QAction *actionTheme;
     QAction *actionBackground;
-    QAction *actionHighlight;
     QAction *actionInstruction;
     QAction *actionAbout;
     QAction *actionAboutQt;
@@ -59,19 +58,19 @@ public:
     QAction *actionZoomIn;
     QAction *actionZoomOut;
     QAction *actionOpenGLAPI;
+    QAction *actionJumpRow;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QSplitter *splitter;
     QTabWidget *tabWidget;
     QWidget *tab;
-    QGridLayout *gridLayout_2;
     QWidget *tab_2;
     QMenuBar *menuBar;
     QMenu *menu_F;
     QMenu *menu_E;
-    QMenu *menu_File;
     QMenu *menu_2;
     QMenu *menu_H;
+    QMenu *menu_File;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -80,6 +79,11 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(1040, 780);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
         MainWindow->setMinimumSize(QSize(1040, 780));
         MainWindow->setStyleSheet(QStringLiteral(""));
         actionNew = new QAction(MainWindow);
@@ -177,61 +181,61 @@ public:
         QIcon icon18;
         icon18.addFile(QStringLiteral(":/icons/background.png"), QSize(), QIcon::Normal, QIcon::Off);
         actionBackground->setIcon(icon18);
-        actionHighlight = new QAction(MainWindow);
-        actionHighlight->setObjectName(QStringLiteral("actionHighlight"));
-        QIcon icon19;
-        icon19.addFile(QStringLiteral(":/icons/highlight.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionHighlight->setIcon(icon19);
         actionInstruction = new QAction(MainWindow);
         actionInstruction->setObjectName(QStringLiteral("actionInstruction"));
-        QIcon icon20;
-        icon20.addFile(QStringLiteral(":/icons/instruction.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionInstruction->setIcon(icon20);
+        QIcon icon19;
+        icon19.addFile(QStringLiteral(":/icons/instruction.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionInstruction->setIcon(icon19);
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
-        QIcon icon21;
-        icon21.addFile(QStringLiteral(":/icons/about.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionAbout->setIcon(icon21);
+        QIcon icon20;
+        icon20.addFile(QStringLiteral(":/icons/about.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionAbout->setIcon(icon20);
         actionAboutQt = new QAction(MainWindow);
         actionAboutQt->setObjectName(QStringLiteral("actionAboutQt"));
-        QIcon icon22;
-        icon22.addFile(QStringLiteral(":/icons/Qt.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionAboutQt->setIcon(icon22);
+        QIcon icon21;
+        icon21.addFile(QStringLiteral(":/icons/Qt.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionAboutQt->setIcon(icon21);
         actionNext = new QAction(MainWindow);
         actionNext->setObjectName(QStringLiteral("actionNext"));
-        QIcon icon23;
-        icon23.addFile(QStringLiteral(":/icons/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionNext->setIcon(icon23);
+        QIcon icon22;
+        icon22.addFile(QStringLiteral(":/icons/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionNext->setIcon(icon22);
         actionPrevious = new QAction(MainWindow);
         actionPrevious->setObjectName(QStringLiteral("actionPrevious"));
-        QIcon icon24;
-        icon24.addFile(QStringLiteral(":/icons/previous.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionPrevious->setIcon(icon24);
+        QIcon icon23;
+        icon23.addFile(QStringLiteral(":/icons/previous.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPrevious->setIcon(icon23);
         actionPrintView = new QAction(MainWindow);
         actionPrintView->setObjectName(QStringLiteral("actionPrintView"));
-        QIcon icon25;
-        icon25.addFile(QStringLiteral(":/icons/view.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionPrintView->setIcon(icon25);
+        QIcon icon24;
+        icon24.addFile(QStringLiteral(":/icons/view.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPrintView->setIcon(icon24);
         actionPDFExport = new QAction(MainWindow);
         actionPDFExport->setObjectName(QStringLiteral("actionPDFExport"));
-        QIcon icon26;
-        icon26.addFile(QStringLiteral(":/icons/pdf.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionPDFExport->setIcon(icon26);
+        QIcon icon25;
+        icon25.addFile(QStringLiteral(":/icons/pdf.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPDFExport->setIcon(icon25);
         actionZoomIn = new QAction(MainWindow);
         actionZoomIn->setObjectName(QStringLiteral("actionZoomIn"));
-        QIcon icon27;
-        icon27.addFile(QStringLiteral(":/icons/ZoomIn.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionZoomIn->setIcon(icon27);
+        QIcon icon26;
+        icon26.addFile(QStringLiteral(":/icons/ZoomIn.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionZoomIn->setIcon(icon26);
         actionZoomOut = new QAction(MainWindow);
         actionZoomOut->setObjectName(QStringLiteral("actionZoomOut"));
-        QIcon icon28;
-        icon28.addFile(QStringLiteral(":/icons/ZoomOut.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionZoomOut->setIcon(icon28);
+        QIcon icon27;
+        icon27.addFile(QStringLiteral(":/icons/ZoomOut.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionZoomOut->setIcon(icon27);
         actionOpenGLAPI = new QAction(MainWindow);
         actionOpenGLAPI->setObjectName(QStringLiteral("actionOpenGLAPI"));
+        QIcon icon28;
+        icon28.addFile(QStringLiteral(":/icons/glsl.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionOpenGLAPI->setIcon(icon28);
+        actionJumpRow = new QAction(MainWindow);
+        actionJumpRow->setObjectName(QStringLiteral("actionJumpRow"));
         QIcon icon29;
-        icon29.addFile(QStringLiteral(":/icons/glsl.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionOpenGLAPI->setIcon(icon29);
+        icon29.addFile(QStringLiteral(":/icons/Jump.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionJumpRow->setIcon(icon29);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -243,18 +247,11 @@ public:
         splitter->setOrientation(Qt::Horizontal);
         tabWidget = new QTabWidget(splitter);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
         tabWidget->setSizePolicy(sizePolicy);
         tabWidget->setTabBarAutoHide(false);
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
-        gridLayout_2 = new QGridLayout(tab);
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setContentsMargins(11, 11, 11, 11);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
@@ -271,12 +268,12 @@ public:
         menu_F->setObjectName(QStringLiteral("menu_F"));
         menu_E = new QMenu(menuBar);
         menu_E->setObjectName(QStringLiteral("menu_E"));
-        menu_File = new QMenu(menuBar);
-        menu_File->setObjectName(QStringLiteral("menu_File"));
         menu_2 = new QMenu(menuBar);
         menu_2->setObjectName(QStringLiteral("menu_2"));
         menu_H = new QMenu(menuBar);
         menu_H->setObjectName(QStringLiteral("menu_H"));
+        menu_File = new QMenu(menuBar);
+        menu_File->setObjectName(QStringLiteral("menu_File"));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -314,20 +311,20 @@ public:
         menu_E->addAction(actionSelectAll);
         menu_E->addSeparator();
         menu_E->addAction(actionComment);
-        menu_File->addAction(actionSearch);
-        menu_File->addAction(actionOpenGLAPI);
-        menu_File->addSeparator();
-        menu_File->addAction(actionPrevious);
-        menu_File->addAction(actionNext);
         menu_2->addAction(actionTheme);
         menu_2->addAction(actionBackground);
         menu_2->addSeparator();
-        menu_2->addAction(actionHighlight);
         menu_2->addAction(actionZoomIn);
         menu_2->addAction(actionZoomOut);
         menu_H->addAction(actionInstruction);
         menu_H->addAction(actionAbout);
         menu_H->addAction(actionAboutQt);
+        menu_File->addAction(actionSearch);
+        menu_File->addAction(actionJumpRow);
+        menu_File->addAction(actionOpenGLAPI);
+        menu_File->addSeparator();
+        menu_File->addAction(actionPrevious);
+        menu_File->addAction(actionNext);
         mainToolBar->addAction(actionNew);
         mainToolBar->addAction(actionOpen);
         mainToolBar->addSeparator();
@@ -337,17 +334,21 @@ public:
         mainToolBar->addAction(actionCut);
         mainToolBar->addAction(actionCopy);
         mainToolBar->addAction(actionPaste);
+        mainToolBar->addAction(actionSelectAll);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionUndo);
         mainToolBar->addAction(actionRedo);
+        mainToolBar->addAction(actionZoomIn);
+        mainToolBar->addAction(actionZoomOut);
         mainToolBar->addSeparator();
         mainToolBar->addAction(actionSearch);
         mainToolBar->addAction(actionOpenGLAPI);
+        mainToolBar->addAction(actionJumpRow);
         mainToolBar->addAction(actionComment);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -357,95 +358,188 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionNew->setText(QApplication::translate("MainWindow", "\346\226\260\345\273\272\346\226\207\344\273\266(&N)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionNew->setToolTip(QApplication::translate("MainWindow", "\346\226\260\345\273\272\346\226\207\344\273\266", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionNew->setShortcut(QApplication::translate("MainWindow", "Ctrl+N", nullptr));
 #endif // QT_NO_SHORTCUT
         actionOpen->setText(QApplication::translate("MainWindow", "\346\211\223\345\274\200\346\226\207\344\273\266(&O)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionOpen->setToolTip(QApplication::translate("MainWindow", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionOpen->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", nullptr));
 #endif // QT_NO_SHORTCUT
         actionSave->setText(QApplication::translate("MainWindow", "\344\277\235\345\255\230(&S)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionSave->setToolTip(QApplication::translate("MainWindow", "\344\277\235\345\255\230", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionSave->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", nullptr));
 #endif // QT_NO_SHORTCUT
         actionSaveAs->setText(QApplication::translate("MainWindow", "\345\217\246\345\255\230\344\270\272(&A)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionSaveAs->setToolTip(QApplication::translate("MainWindow", "\345\217\246\345\255\230\344\270\272", nullptr));
+#endif // QT_NO_TOOLTIP
         actionSaveAll->setText(QApplication::translate("MainWindow", "\345\205\250\351\203\250\344\277\235\345\255\230(&G)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionSaveAll->setToolTip(QApplication::translate("MainWindow", "\345\205\250\351\203\250\344\277\235\345\255\230", nullptr));
+#endif // QT_NO_TOOLTIP
         actionClose->setText(QApplication::translate("MainWindow", "\345\205\263\351\227\255(&C)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionClose->setToolTip(QApplication::translate("MainWindow", "\345\205\263\351\227\255", nullptr));
+#endif // QT_NO_TOOLTIP
         actionCloseAll->setText(QApplication::translate("MainWindow", "\345\205\250\351\203\250\345\205\263\351\227\255(&H)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionCloseAll->setToolTip(QApplication::translate("MainWindow", "\345\205\250\351\203\250\345\205\263\351\227\255", nullptr));
+#endif // QT_NO_TOOLTIP
         actionPrint->setText(QApplication::translate("MainWindow", "\346\211\223\345\215\260(&P)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionPrint->setToolTip(QApplication::translate("MainWindow", "\346\211\223\345\215\260", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionPrint->setShortcut(QApplication::translate("MainWindow", "Ctrl+P", nullptr));
 #endif // QT_NO_SHORTCUT
         actionExit->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272(&X)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionExit->setToolTip(QApplication::translate("MainWindow", "\351\200\200\345\207\272", nullptr));
+#endif // QT_NO_TOOLTIP
         actionUndo->setText(QApplication::translate("MainWindow", "\346\222\244\351\224\200(&U)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionUndo->setToolTip(QApplication::translate("MainWindow", "\346\222\244\351\224\200", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionUndo->setShortcut(QApplication::translate("MainWindow", "Ctrl+Z", nullptr));
 #endif // QT_NO_SHORTCUT
         actionRedo->setText(QApplication::translate("MainWindow", "\346\201\242\345\244\215(&R)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionRedo->setToolTip(QApplication::translate("MainWindow", "\346\201\242\345\244\215", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionRedo->setShortcut(QApplication::translate("MainWindow", "Ctrl+Y", nullptr));
 #endif // QT_NO_SHORTCUT
         actionCut->setText(QApplication::translate("MainWindow", "\345\211\252\345\210\207(&T)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionCut->setToolTip(QApplication::translate("MainWindow", "\345\211\252\345\210\207", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionCut->setShortcut(QApplication::translate("MainWindow", "Ctrl+X", nullptr));
 #endif // QT_NO_SHORTCUT
         actionCopy->setText(QApplication::translate("MainWindow", "\345\244\215\345\210\266(&P)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionCopy->setToolTip(QApplication::translate("MainWindow", "\345\244\215\345\210\266", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionCopy->setShortcut(QApplication::translate("MainWindow", "Ctrl+C", nullptr));
 #endif // QT_NO_SHORTCUT
         actionPaste->setText(QApplication::translate("MainWindow", "\347\262\230\350\264\264(&P)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionPaste->setToolTip(QApplication::translate("MainWindow", "\347\262\230\350\264\264", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionPaste->setShortcut(QApplication::translate("MainWindow", "Ctrl+V", nullptr));
 #endif // QT_NO_SHORTCUT
         actionSelectAll->setText(QApplication::translate("MainWindow", "\345\205\250\351\200\211(&A)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionSelectAll->setToolTip(QApplication::translate("MainWindow", "\345\205\250\351\200\211", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionSelectAll->setShortcut(QApplication::translate("MainWindow", "Ctrl+A", nullptr));
 #endif // QT_NO_SHORTCUT
         actionComment->setText(QApplication::translate("MainWindow", "\344\273\243\347\240\201\345\235\227\346\263\250\351\207\212/\345\217\226\346\266\210\346\263\250\351\207\212(&Z)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionComment->setToolTip(QApplication::translate("MainWindow", "\344\273\243\347\240\201\345\235\227\346\263\250\351\207\212/\345\217\226\346\266\210\346\263\250\351\207\212", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionComment->setShortcut(QApplication::translate("MainWindow", "Ctrl+/", nullptr));
 #endif // QT_NO_SHORTCUT
         actionSearch->setText(QApplication::translate("MainWindow", "\346\237\245\346\211\276(&F)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionSearch->setToolTip(QApplication::translate("MainWindow", "\346\237\245\346\211\276", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionSearch->setShortcut(QApplication::translate("MainWindow", "Ctrl+F", nullptr));
 #endif // QT_NO_SHORTCUT
         actionTheme->setText(QApplication::translate("MainWindow", "\344\270\273\351\242\230(&T)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionTheme->setToolTip(QApplication::translate("MainWindow", "\344\270\273\351\242\230", nullptr));
+#endif // QT_NO_TOOLTIP
         actionBackground->setText(QApplication::translate("MainWindow", "\350\203\214\346\231\257\345\233\276\347\211\207(&B)", nullptr));
-        actionHighlight->setText(QApplication::translate("MainWindow", "\345\242\236\345\212\240\351\253\230\344\272\256\350\257\215(&H)...", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionBackground->setToolTip(QApplication::translate("MainWindow", "\350\203\214\346\231\257\345\233\276\347\211\207", nullptr));
+#endif // QT_NO_TOOLTIP
         actionInstruction->setText(QApplication::translate("MainWindow", "\350\257\264\346\230\216\344\271\246(&I)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionInstruction->setToolTip(QApplication::translate("MainWindow", "\350\257\264\346\230\216\344\271\246", nullptr));
+#endif // QT_NO_TOOLTIP
         actionAbout->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216(&A)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionAbout->setToolTip(QApplication::translate("MainWindow", "\345\205\263\344\272\216", nullptr));
+#endif // QT_NO_TOOLTIP
         actionAboutQt->setText(QApplication::translate("MainWindow", "\345\205\263\344\272\216Qt(&Q)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionAboutQt->setToolTip(QApplication::translate("MainWindow", "\345\205\263\344\272\216Qt", nullptr));
+#endif // QT_NO_TOOLTIP
         actionNext->setText(QApplication::translate("MainWindow", "\344\270\213\344\270\200\344\270\252\346\226\207\346\241\243(&N)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionNext->setToolTip(QApplication::translate("MainWindow", "\344\270\213\344\270\200\344\270\252\346\226\207\346\241\243", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionNext->setShortcut(QApplication::translate("MainWindow", "PgDown", nullptr));
 #endif // QT_NO_SHORTCUT
         actionPrevious->setText(QApplication::translate("MainWindow", "\345\211\215\344\270\200\344\270\252\346\226\207\346\241\243(&P)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionPrevious->setToolTip(QApplication::translate("MainWindow", "\345\211\215\344\270\200\344\270\252\346\226\207\346\241\243", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionPrevious->setShortcut(QApplication::translate("MainWindow", "PgUp", nullptr));
 #endif // QT_NO_SHORTCUT
         actionPrintView->setText(QApplication::translate("MainWindow", "\346\211\223\345\215\260\351\242\204\350\247\210(&V)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionPrintView->setToolTip(QApplication::translate("MainWindow", "\346\211\223\345\215\260\351\242\204\350\247\210", nullptr));
+#endif // QT_NO_TOOLTIP
         actionPDFExport->setText(QApplication::translate("MainWindow", "\345\257\274\345\207\272PDF\346\226\207\344\273\266(&E)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionPDFExport->setToolTip(QApplication::translate("MainWindow", "\345\257\274\345\207\272PDF\346\226\207\344\273\266", nullptr));
+#endif // QT_NO_TOOLTIP
         actionZoomIn->setText(QApplication::translate("MainWindow", "\345\242\236\345\244\247\345\255\227\344\275\223(&U)\n"
 "", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionZoomIn->setToolTip(QApplication::translate("MainWindow", "\345\242\236\345\244\247\345\255\227\344\275\223", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionZoomIn->setShortcut(QApplication::translate("MainWindow", "Ctrl+=", nullptr));
 #endif // QT_NO_SHORTCUT
         actionZoomOut->setText(QApplication::translate("MainWindow", "\345\207\217\345\260\217\345\255\227\344\275\223(&D)\n"
 "", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionZoomOut->setToolTip(QApplication::translate("MainWindow", "\345\207\217\345\260\217\345\255\227\344\275\223", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionZoomOut->setShortcut(QApplication::translate("MainWindow", "Ctrl+-", nullptr));
 #endif // QT_NO_SHORTCUT
         actionOpenGLAPI->setText(QApplication::translate("MainWindow", "OpenGL\347\235\200\350\211\262\345\231\250API\346\226\207\346\241\243\346\237\245\350\257\242(&L)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionOpenGLAPI->setToolTip(QApplication::translate("MainWindow", "\347\235\200\350\211\262\345\231\250API\346\226\207\346\241\243\346\237\245\350\257\242", nullptr));
+#endif // QT_NO_TOOLTIP
 #ifndef QT_NO_SHORTCUT
         actionOpenGLAPI->setShortcut(QApplication::translate("MainWindow", "F1", nullptr));
+#endif // QT_NO_SHORTCUT
+        actionJumpRow->setText(QApplication::translate("MainWindow", "\350\241\214\350\267\263\350\275\254(&T)", nullptr));
+#ifndef QT_NO_TOOLTIP
+        actionJumpRow->setToolTip(QApplication::translate("MainWindow", "\350\241\214\350\267\263\350\275\254", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_SHORTCUT
+        actionJumpRow->setShortcut(QApplication::translate("MainWindow", "F2", nullptr));
 #endif // QT_NO_SHORTCUT
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", nullptr));
         menu_F->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266(&F)", nullptr));
         menu_E->setTitle(QApplication::translate("MainWindow", "\347\274\226\350\276\221(&E)", nullptr));
-        menu_File->setTitle(QApplication::translate("MainWindow", "\346\226\207\346\241\243(&v)", nullptr));
         menu_2->setTitle(QApplication::translate("MainWindow", "\351\243\216\346\240\274(&S)", nullptr));
         menu_H->setTitle(QApplication::translate("MainWindow", "\345\270\256\345\212\251(&H)", nullptr));
+        menu_File->setTitle(QApplication::translate("MainWindow", "\346\226\207\346\241\243(&V)", nullptr));
     } // retranslateUi
 
 };

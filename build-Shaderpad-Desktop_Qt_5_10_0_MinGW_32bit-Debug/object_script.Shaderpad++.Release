@@ -9,6 +9,7 @@ INPUT(
 ./release\documentdialog.o
 ./release\queryword.o
 ./release\templatedialog.o
+./release\jumpdialog.o
 ./release\qrc_resource.o
 ./release\moc_mainwindow.o
 ./release\moc_textchild.o
@@ -17,4 +18,5 @@ INPUT(
 ./release\moc_searchdialog.o
 ./release\moc_documentdialog.o
 ./release\moc_templatedialog.o
+./release\moc_jumpdialog.o
 );

@@ -125,6 +125,7 @@ public:
 
         checkBoxDefault = new QCheckBox(groupBox);
         checkBoxDefault->setObjectName(QStringLiteral("checkBoxDefault"));
+        checkBoxDefault->setChecked(true);
 
         gridLayout->addWidget(checkBoxDefault, 2, 0, 1, 1);
 
@@ -216,6 +217,7 @@ public:
         pushButtonCancel->setText(QApplication::translate("TemplateDialog", "\345\217\226\346\266\210", nullptr));
         nLabel->setText(QApplication::translate("TemplateDialog", "\345\220\215\347\247\260(&N):", nullptr));
         pLabel->setText(QApplication::translate("TemplateDialog", "\345\220\216\347\274\200(&P):", nullptr));
+        pLineEditPost->setText(QApplication::translate("TemplateDialog", ".vert", nullptr));
     } // retranslateUi
 
 };

@@ -46,4 +46,7 @@ buildin{{
 \bgl_((MaxVertexAttribs)|(MaxVertexTextureImageUnits)|(MaxVertexUniformVectors))\b
 \bgl_((MultiTexCoord[0-9]+)|(Normal)|(NumWoorkGroups)|(PointCoord)|(PointSize)|(Position))\b
 \bgl_((PrimitiveIDIn)|(SecondaryColor)|(TexCoord)|(Vertex)|(VertexID)|(WorkGroupID)|(WorkGroupSize))\b
+\bgl_((ClipDistance)|(CullDistance)|(HelperInvocation)|(InstanceID)|(InvocationID))\b
+\bgl_((Layer)|(NumSamples)|(PatchVerticesIn)|(SampleID)|(SampleMask)|(SampleMaskIn)|(SamplePosition))\b
+\bgl_((TessCoord)|(TessLevelInner)|(TessLevelOuter)|(VertexID)|(ViewportIndex)|(in)|(NumWorkGroups)|(PrimitiveID))\b
 }}

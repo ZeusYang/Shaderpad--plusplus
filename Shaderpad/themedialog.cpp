@@ -102,4 +102,5 @@ void ThemeDialog::on_pushButtonApply_clicked()
 
 void ThemeDialog::on_checkBox_stateChanged(int arg1)
 {
+    Q_UNUSED(arg1);
 }

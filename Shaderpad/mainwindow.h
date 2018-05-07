@@ -18,6 +18,7 @@ class QAbstractItemModel;
 class QCompleter;
 class DocumentDialog;
 class TemplateDialog;
+class JumpDialog;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -127,6 +128,11 @@ private slots:
     //创建新项目文件
     void createNewProject(QString path,QString context);
 
+    void on_actionJumpRow_triggered();
+
+    //跳转光标行列
+    void jumpRowCol(int rows);
+
 private:
     Ui::MainWindow *ui;
     QAction *actionSeparator;                       //间隔器
@@ -139,6 +145,7 @@ private:
     DocumentDialog *apiQuery;                       //API文档查询对话框
     QCompleter *glslCompletion;                     //glsl自动补齐条目
     TemplateDialog *templateDlg;                    //新建模板文件对话框
+    JumpDialog *jumpDlg;                            //行列跳转对话框
 
     TextChild *activeTextChild();                   //当前活动窗口
     TextChild *findTextChild(const QString &fileName);//查找子窗口

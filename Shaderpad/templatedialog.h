@@ -22,9 +22,14 @@ private slots:
 
     void on_pushButtonSure_clicked();
 
+    void on_listWidget_currentRowChanged(int currentRow);
+
+    void on_pushButtonCancel_clicked();
+
 private:
     Ui::TemplateDialog *ui;
     QString curPath;
+    QString curDir;
 };
 
 #endif // TEMPLATEDIALOG_H

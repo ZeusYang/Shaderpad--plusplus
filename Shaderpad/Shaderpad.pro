@@ -34,7 +34,8 @@ SOURCES += \
     highlighter.cpp \
     documentdialog.cpp \
     queryword.cpp \
-    templatedialog.cpp
+    templatedialog.cpp \
+    jumpdialog.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,7 +46,8 @@ HEADERS += \
     highlighter.h \
     documentdialog.h \
     queryword.h \
-    templatedialog.h
+    templatedialog.h \
+    jumpdialog.h
 
 FORMS += \
         mainwindow.ui \
@@ -53,7 +55,8 @@ FORMS += \
     bgimagedialog.ui \
     searchdialog.ui \
     documentdialog.ui \
-    templatedialog.ui
+    templatedialog.ui \
+    jumpdialog.ui
 
 RESOURCES += \
     resource.qrc

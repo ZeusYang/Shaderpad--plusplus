@@ -12,6 +12,8 @@
 #include <QCompleter>
 #include <QFont>
 #include <QScrollBar>
+#include <QMenu>
+#include <QPalette>
 #include <QDebug>
 #include <QKeyEvent>
 

@@ -6,6 +6,7 @@
 #include "searchdialog.h"
 #include "documentdialog.h"
 #include "templatedialog.h"
+#include "jumpdialog.h"
 #include <QFileDialog>
 #include <QSignalMapper>
 #include <QPrinter>
@@ -86,6 +87,11 @@ MainWindow::MainWindow(QWidget *parent) :
     templateDlg->setModal(true);
     connect(templateDlg,&TemplateDialog::createNewFile,this,&MainWindow::createNewProject);
 
+    //行列跳转对话框
+    jumpDlg = new JumpDialog(this);
+    jumpDlg->setModal(false);
+    connect(jumpDlg,&JumpDialog::setColRow,this,&MainWindow::jumpRowCol);
+
     //状态栏显示行列号等相关信息
     col = new QLabel(this);
     row = new QLabel(this);
@@ -150,12 +156,12 @@ QAbstractItemModel* MainWindow::loadModelCompletionFromFile(const QString& path)
         if (!line.isEmpty())words << line.trimmed();
         tmp.push_back(line.trimmed().toStdString());
     }
-    std::sort(tmp.begin(),tmp.end());
-    auto it = std::unique(tmp.begin(),tmp.end());
-    tmp.erase(it,tmp.end());
-    for(uint x = 0;x < tmp.size();++x){
-        std::cout << tmp[x] << std::endl;
-    }
+//    std::sort(tmp.begin(),tmp.end());
+//    auto it = std::unique(tmp.begin(),tmp.end());
+//    tmp.erase(it,tmp.end());
+//    for(uint x = 0;x < tmp.size();++x){
+//        std::cout << tmp[x] << std::endl;
+//    }
     QStringListModel *ret = new QStringListModel(words, glslCompletion);
     return ret;
 }
@@ -242,6 +248,9 @@ void MainWindow::updateMenus(int index)
     ui->actionRedo->setEnabled(activeTextChild()
                                && activeTextChild()->document()->isRedoAvailable());
 
+    //设置当前文件名
+    if(activeTextChild())
+        jumpDlg->setCurrentFile(activeTextChild()->currentName());
 }
 
 TextChild *MainWindow::createTextChild()
@@ -271,6 +280,8 @@ void MainWindow::updateFileItemsMenu()
     //先清空菜单，然后再添加各个菜单动作
     ui->menu_File->clear();
     ui->menu_File->addAction(ui->actionSearch);
+    ui->menu_File->addAction(ui->actionJumpRow);
+    ui->menu_File->addAction(ui->actionOpenGLAPI);
     ui->menu_File->addSeparator();
     ui->menu_File->addAction(ui->actionNext);
     ui->menu_File->addAction(ui->actionPrevious);
@@ -741,4 +752,21 @@ void MainWindow::createNewProject(QString path, QString context)
     ui->tabWidget->addTab(newone,newone->currentName());
     setActiveSubWindow(newone);
     newone->show();
+}
+
+void MainWindow::on_actionJumpRow_triggered()
+{
+    jumpDlg->show();
+}
+
+void MainWindow::jumpRowCol(int rows)
+{
+    TextChild *child = activeTextChild();
+    if(rows > child->blockCount()){
+        QMessageBox::information(this,tr("请注意!"),
+                                 tr("您输入的行号超出当前文档的最大行数，请重新输入"));
+        return;
+    }
+    QTextBlock block = child->document()->findBlockByNumber(rows-1);
+    child->setTextCursor(QTextCursor(block));
 }

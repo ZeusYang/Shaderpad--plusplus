@@ -263,3 +263,106 @@ gl_WorkGroupSize{{
 描述:gl_WorkGroupSize — contains the size of the workgroup operated on by a compute shader
 适用范围:计算着色器
 }}
+gl_DepthRange{{
+类型:内建变量
+声明:
+struct gl_DepthRangeParameters{
+    float near;
+    float far;
+    float diff;
+};
+uniform gl_DepthRangeParameters gl_DepthRange;
+支持版本:3.30 - 4.40 4.50 
+描述:这个struct提供了对glDepthRange近、远值的访问。diff等于far和near的差。
+适用范围:片元着色器
+}}
+gl_in{{
+类型:内建变量
+声明:
+in gl_PerVertex{
+	vec4 gl_Position;
+	float gl_PointSize;
+	float gl_ClipDistance[];
+} gl_in[];
+gl_PerVertex包含了从前面的顶点着色器传送过来的值。
+支持版本:3.30 - 4.40 4.50 
+描述:在几何着色器中，他们有前缀gl_in，是一个block的数组。这个数组的大小依赖于用于这个几何着色器的输入的layout关键词。用户不用以一个特定的大小重新声明这个block，系统会自动完成。可以用函数length()获得其大小。
+适用范围:几何着色器
+}}
+gl_FragColor{{
+类型:内建变量
+声明:mediump vec4 gl_FragColor;
+支持版本:3.30+,OpenGL ES
+描述:片元着色器可以使用gl_FragColor和gl_FragData内建变量向OpenGL管线输出值，除非关键字discard被执行。
+适用范围:片元着色器
+}}
+gl_FragData{{
+类型:内建变量
+描述:
+gl_FragData变量值是一个数组。向gl_FragData[n]写入数据时为了指明后续固定功能管线要使用的片元数据n。如果后续固定功能管线要使用这个片元数据，但是着色器又没有给它写入值，那么片元数据将是一个未定义的值。
+如果着色器静态地给gl_FragColor赋值，那么它就不会给gl_FragData的任何元素赋值。如果着色器静态地给gl_FragData的任何元素赋值，那么它就不会给gl_FragColor赋值。也就是说，着色器不会同时给gl_FragColor和gl_FragData变量都赋值。
+适用范围:片元着色器
+}}
+gl_MaxCombinedTextureImageUnits{{
+类型:内建变量
+声明:const mediump int gl_MaxCombinedTextureImageUnits >= 8
+支持版本:OpenGL ES
+描述:gl_MaxVaryingVectors 表示在 vertex Shader和fragment Shader总共最多支持多少个纹理单元. 这个值的大小取决于 OpenGL ES 在某设备上的具体实现, 不过最低不能小于 8 个.
+适用范围:顶点着色器和片元着色器
+}}
+gl_MaxDrawBuffers{{
+类型:内建变量
+声明:const mediump int gl_MaxDrawBuffers = 1
+支持版本:OpenGL ES
+描述:gl_MaxDrawBuffers 表示可用的drawBuffers数,在OpenGL ES 2.0中这个值为1, 在将来的版本可能会有所变化.
+适用范围:顶点着色器和片元着色器
+}}
+gl_MaxFragmentUniformVectors{{
+类型:内建变量
+声明:const mediump int gl_MaxFragmentUniformVectors >= 16
+支持版本:OpenGL ES
+描述:gl_MaxFragmentUniformVectors 表示在 fragment Shader(片元着色器)中可用的最大uniform vectors数,这个值的大小取决于 OpenGL ES 在某设备上的具体实现, 不过最低不能小于 16 个.
+适用范围:片元着色器
+}}
+gl_MaxTextureImageUnits{{
+类型:内建变量
+声明:const mediump int gl_MaxTextureImageUnits >= 8
+支持版本:OpenGL ES
+描述:gl_MaxTextureImageUnits 表示在 fragment Shader(片元着色器)中能访问的最大纹理单元数,这个值的大小取决于 OpenGL ES 在某设备上的具体实现, 不过最低不能小于 8 个.
+适用范围:片元着色器
+}}
+gl_MaxVaryingVectors{{
+类型:内建变量
+声明:const mediump int gl_MaxVaryingVectors >= 8
+支持版本:OpenGL ES
+描述:gl_MaxVaryingVectors 表示在vertex shader(顶点着色器)中可用的最大varying vectors数. 这个值的大小取决于 OpenGL ES 在某设备上的具体实现, 不过最低不能小于 8 个.
+适用范围:顶点着色器
+}}
+gl_MaxVertexAttribs{{
+类型:内建变量
+声明:const mediump int gl_MaxVertexAttribs>=8
+支持版本:OpenGL ES
+描述:gl_MaxVertexAttribs 表示在vertex shader(顶点着色器)中可用的最大attributes数.这个值的大小取决于 OpenGL ES 在某设备上的具体实现, 不过最低不能小于 8 个.
+适用范围:顶点着色器
+}}
+gl_MaxVertexTextureImageUnits{{
+类型:内建变量
+声明:const mediump int gl_MaxVertexTextureImageUnits >= 0
+支持版本:OpenGL ES
+描述:gl_MaxVertexTextureImageUnits 表示在vertex shader(顶点着色器)中可用的最大纹理单元数(贴图). 这个值的大小取决于 OpenGL ES 在某设备上的具体实现, 甚至可以一个都没有(无法获取顶点纹理)
+适用范围:顶点着色器
+}}
+gl_MaxVertexUniformVectors{{
+类型:内建变量
+声明:const mediump int gl_MaxVertexUniformVectors >= 128
+支持版本:OpenGL ES
+描述:gl_MaxVertexUniformVectors 表示在vertex shader(顶点着色器)中可用的最大uniform vectors数. 这个值的大小取决于 OpenGL ES 在某设备上的具体实现, 不过最低不能小于 128 个.
+适用范围:顶点着色器
+}}
+gl_ClipVertex{{
+类型:内建变量
+声明:vec4 gl_ClipVertex; 
+支持版本:未查及
+描述:如果启用了Clip Plane功能，gl_ClipVertex可以放入用来与Clip Plane平面做测试用的位置
+适用范围:顶点着色器
+}}

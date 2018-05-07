@@ -10,6 +10,12 @@
     <height>780</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>1040</width>
@@ -31,13 +37,13 @@
       </property>
       <widget class="QTabWidget" name="tabWidget">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>1</number>
        </property>
        <property name="tabBarAutoHide">
         <bool>false</bool>
@@ -46,7 +52,6 @@
         <attribute name="title">
          <string>Tab 1</string>
         </attribute>
-        <layout class="QGridLayout" name="gridLayout_2"/>
        </widget>
        <widget class="QWidget" name="tab_2">
         <attribute name="title">
@@ -100,16 +105,6 @@
     <addaction name="separator"/>
     <addaction name="actionComment"/>
    </widget>
-   <widget class="QMenu" name="menu_File">
-    <property name="title">
-     <string>文档(&amp;v)</string>
-    </property>
-    <addaction name="actionSearch"/>
-    <addaction name="actionOpenGLAPI"/>
-    <addaction name="separator"/>
-    <addaction name="actionPrevious"/>
-    <addaction name="actionNext"/>
-   </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>风格(&amp;S)</string>
@@ -117,7 +112,6 @@
     <addaction name="actionTheme"/>
     <addaction name="actionBackground"/>
     <addaction name="separator"/>
-    <addaction name="actionHighlight"/>
     <addaction name="actionZoomIn"/>
     <addaction name="actionZoomOut"/>
    </widget>
@@ -128,6 +122,17 @@
     <addaction name="actionInstruction"/>
     <addaction name="actionAbout"/>
     <addaction name="actionAboutQt"/>
+   </widget>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>文档(&amp;V)</string>
+    </property>
+    <addaction name="actionSearch"/>
+    <addaction name="actionJumpRow"/>
+    <addaction name="actionOpenGLAPI"/>
+    <addaction name="separator"/>
+    <addaction name="actionPrevious"/>
+    <addaction name="actionNext"/>
    </widget>
    <addaction name="menu_F"/>
    <addaction name="menu_E"/>
@@ -151,12 +156,16 @@
    <addaction name="actionCut"/>
    <addaction name="actionCopy"/>
    <addaction name="actionPaste"/>
+   <addaction name="actionSelectAll"/>
    <addaction name="separator"/>
    <addaction name="actionUndo"/>
    <addaction name="actionRedo"/>
+   <addaction name="actionZoomIn"/>
+   <addaction name="actionZoomOut"/>
    <addaction name="separator"/>
    <addaction name="actionSearch"/>
    <addaction name="actionOpenGLAPI"/>
+   <addaction name="actionJumpRow"/>
    <addaction name="actionComment"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
@@ -172,6 +181,9 @@
    <property name="text">
     <string>新建文件(&amp;N)...</string>
    </property>
+   <property name="toolTip">
+    <string>新建文件</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
    </property>
@@ -183,6 +195,9 @@
    </property>
    <property name="text">
     <string>打开文件(&amp;O)...</string>
+   </property>
+   <property name="toolTip">
+    <string>打开文件</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -196,6 +211,9 @@
    <property name="text">
     <string>保存(&amp;S)</string>
    </property>
+   <property name="toolTip">
+    <string>保存</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
    </property>
@@ -208,6 +226,9 @@
    <property name="text">
     <string>另存为(&amp;A)...</string>
    </property>
+   <property name="toolTip">
+    <string>另存为</string>
+   </property>
   </action>
   <action name="actionSaveAll">
    <property name="icon">
@@ -216,6 +237,9 @@
    </property>
    <property name="text">
     <string>全部保存(&amp;G)</string>
+   </property>
+   <property name="toolTip">
+    <string>全部保存</string>
    </property>
   </action>
   <action name="actionClose">
@@ -226,6 +250,9 @@
    <property name="text">
     <string>关闭(&amp;C)</string>
    </property>
+   <property name="toolTip">
+    <string>关闭</string>
+   </property>
   </action>
   <action name="actionCloseAll">
    <property name="icon">
@@ -235,6 +262,9 @@
    <property name="text">
     <string>全部关闭(&amp;H)</string>
    </property>
+   <property name="toolTip">
+    <string>全部关闭</string>
+   </property>
   </action>
   <action name="actionPrint">
    <property name="icon">
@@ -243,6 +273,9 @@
    </property>
    <property name="text">
     <string>打印(&amp;P)...</string>
+   </property>
+   <property name="toolTip">
+    <string>打印</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -256,6 +289,9 @@
    <property name="text">
     <string>退出(&amp;X)</string>
    </property>
+   <property name="toolTip">
+    <string>退出</string>
+   </property>
   </action>
   <action name="actionUndo">
    <property name="icon">
@@ -264,6 +300,9 @@
    </property>
    <property name="text">
     <string>撤销(&amp;U)</string>
+   </property>
+   <property name="toolTip">
+    <string>撤销</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Z</string>
@@ -277,6 +316,9 @@
    <property name="text">
     <string>恢复(&amp;R)</string>
    </property>
+   <property name="toolTip">
+    <string>恢复</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Y</string>
    </property>
@@ -288,6 +330,9 @@
    </property>
    <property name="text">
     <string>剪切(&amp;T)</string>
+   </property>
+   <property name="toolTip">
+    <string>剪切</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+X</string>
@@ -301,6 +346,9 @@
    <property name="text">
     <string>复制(&amp;P)</string>
    </property>
+   <property name="toolTip">
+    <string>复制</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+C</string>
    </property>
@@ -312,6 +360,9 @@
    </property>
    <property name="text">
     <string>粘贴(&amp;P)</string>
+   </property>
+   <property name="toolTip">
+    <string>粘贴</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+V</string>
@@ -325,6 +376,9 @@
    <property name="text">
     <string>全选(&amp;A)</string>
    </property>
+   <property name="toolTip">
+    <string>全选</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+A</string>
    </property>
@@ -336,6 +390,9 @@
    </property>
    <property name="text">
     <string>代码块注释/取消注释(&amp;Z)...</string>
+   </property>
+   <property name="toolTip">
+    <string>代码块注释/取消注释</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+/</string>
@@ -349,6 +406,9 @@
    <property name="text">
     <string>查找(&amp;F)...</string>
    </property>
+   <property name="toolTip">
+    <string>查找</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+F</string>
    </property>
@@ -361,6 +421,9 @@
    <property name="text">
     <string>主题(&amp;T)...</string>
    </property>
+   <property name="toolTip">
+    <string>主题</string>
+   </property>
   </action>
   <action name="actionBackground">
    <property name="icon">
@@ -370,14 +433,8 @@
    <property name="text">
     <string>背景图片(&amp;B)</string>
    </property>
-  </action>
-  <action name="actionHighlight">
-   <property name="icon">
-    <iconset resource="resource.qrc">
-     <normaloff>:/icons/highlight.png</normaloff>:/icons/highlight.png</iconset>
-   </property>
-   <property name="text">
-    <string>增加高亮词(&amp;H)...</string>
+   <property name="toolTip">
+    <string>背景图片</string>
    </property>
   </action>
   <action name="actionInstruction">
@@ -388,6 +445,9 @@
    <property name="text">
     <string>说明书(&amp;I)</string>
    </property>
+   <property name="toolTip">
+    <string>说明书</string>
+   </property>
   </action>
   <action name="actionAbout">
    <property name="icon">
@@ -396,6 +456,9 @@
    </property>
    <property name="text">
     <string>关于(&amp;A)</string>
+   </property>
+   <property name="toolTip">
+    <string>关于</string>
    </property>
   </action>
   <action name="actionAboutQt">
@@ -406,6 +469,9 @@
    <property name="text">
     <string>关于Qt(&amp;Q)</string>
    </property>
+   <property name="toolTip">
+    <string>关于Qt</string>
+   </property>
   </action>
   <action name="actionNext">
    <property name="icon">
@@ -414,6 +480,9 @@
    </property>
    <property name="text">
     <string>下一个文档(&amp;N)</string>
+   </property>
+   <property name="toolTip">
+    <string>下一个文档</string>
    </property>
    <property name="shortcut">
     <string>PgDown</string>
@@ -427,6 +496,9 @@
    <property name="text">
     <string>前一个文档(&amp;P)</string>
    </property>
+   <property name="toolTip">
+    <string>前一个文档</string>
+   </property>
    <property name="shortcut">
     <string>PgUp</string>
    </property>
@@ -439,6 +511,9 @@
    <property name="text">
     <string>打印预览(&amp;V)</string>
    </property>
+   <property name="toolTip">
+    <string>打印预览</string>
+   </property>
   </action>
   <action name="actionPDFExport">
    <property name="icon">
@@ -447,6 +522,9 @@
    </property>
    <property name="text">
     <string>导出PDF文件(&amp;E)</string>
+   </property>
+   <property name="toolTip">
+    <string>导出PDF文件</string>
    </property>
   </action>
   <action name="actionZoomIn">
@@ -457,6 +535,9 @@
    <property name="text">
     <string>增大字体(&amp;U)
 </string>
+   </property>
+   <property name="toolTip">
+    <string>增大字体</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+=</string>
@@ -471,6 +552,9 @@
     <string>减小字体(&amp;D)
 </string>
    </property>
+   <property name="toolTip">
+    <string>减小字体</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+-</string>
    </property>
@@ -483,8 +567,26 @@
    <property name="text">
     <string>OpenGL着色器API文档查询(&amp;L)</string>
    </property>
+   <property name="toolTip">
+    <string>着色器API文档查询</string>
+   </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionJumpRow">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/icons/Jump.png</normaloff>:/icons/Jump.png</iconset>
+   </property>
+   <property name="text">
+    <string>行跳转(&amp;T)</string>
+   </property>
+   <property name="toolTip">
+    <string>行跳转</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
    </property>
   </action>
  </widget>

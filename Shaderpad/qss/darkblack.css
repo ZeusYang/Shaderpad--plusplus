@@ -130,6 +130,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #242629,stop:1 
 
 .QToolButton::menu-indicator{
 image:None;
+background:transparent;
 }
 
 QToolButton#btnMenu,QPushButton#btnMenu_Min,QPushButton#btnMenu_Max,QPushButton#btnMenu_Close{
@@ -665,9 +666,17 @@ QDialog QListWidget{
 background:transparent;
 }
 
-QDialog QLineEdit,QComboBox,QPushButton{
+QMenuBar::item,QMenuBar,QMenu,QDialog QLineEdit,QComboBox,QPushButton{
 background-color:rgba(36,38,41,100);
 }
+
+QMenu{
+background-color:rgba(255,0,0,100);
+}
+
+/*QMenu::item{
+background-color:rgba(255,255,255,0);
+}*/
 
 *:disabled{
 background:#1F2026;

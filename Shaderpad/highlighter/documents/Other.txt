@@ -323,4 +323,65 @@ layout{{
 layout(location = 0) in vec3 attrib_position;   
 这里就是显式设定了该变量的位置值(location)。
 }}
-
+points{{
+几何着色器的图元类型之一.
+例:
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 3)out;
+几何着色器支持的图元类型包括:points,lines,triangles,line_adjacency,triangle_strip,triangles_adjacency.
+}}
+lines{{
+几何着色器的图元类型之一.
+例:
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 3)out;
+几何着色器支持的图元类型包括:points,lines,triangles,line_adjacency,triangle_strip,triangles_adjacency.
+}}
+lines_adjacency{{
+几何着色器的图元类型之一.
+例:
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 3)out;
+几何着色器支持的图元类型包括:points,lines,triangles,line_adjacency,triangle_strip,triangles_adjacency.
+}}
+triangles{{
+几何着色器的图元类型之一.
+例:
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 3)out;
+几何着色器支持的图元类型包括:points,lines,triangles,line_adjacency,triangle_strip,triangles_adjacency.
+}}
+triangle_strip{{
+几何着色器的图元类型之一.
+例:
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 3)out;
+几何着色器支持的图元类型包括:points,lines,triangles,line_adjacency,triangle_strip,triangles_adjacency.
+}}
+triangles_adjacency{{
+几何着色器的图元类型之一.
+例:
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 3)out;
+几何着色器支持的图元类型包括:points,lines,triangles,line_adjacency,triangle_strip,triangles_adjacency.
+}}
+max_vertices{{
+用于几何着色器中指定输出的最大顶点数，例:
+layout (triangles) in;
+layout (triangle_strip, max_vertices = 30)out;
+max_vertices也有上限,它的最大值是与设备实现相关的.
+}}
+stream{{
+布局限定符,可以全局设置,或者给接口块设置，或者给单一的输出变量设置.
+用于几何着色器中声明输出的顶点数据流,每个stream流都要设置一个从0开始的数字,可用流的最大值是与设备实现相关的.
+}}
+location{{
+用layout指定位置.
+不再需要查询输入变量(attribute)的location的方式,可以使用layout去指定位置
+}}
+rgba32f{{
+32位浮点数的rgba格式.
+}}
+imageBuffer{{
+图像数据缓冲.
+}}

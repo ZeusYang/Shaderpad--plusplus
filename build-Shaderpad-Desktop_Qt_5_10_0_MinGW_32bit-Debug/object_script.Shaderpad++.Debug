@@ -9,6 +9,7 @@ INPUT(
 ./debug\documentdialog.o
 ./debug\queryword.o
 ./debug\templatedialog.o
+./debug\jumpdialog.o
 ./debug\qrc_resource.o
 ./debug\moc_mainwindow.o
 ./debug\moc_textchild.o
@@ -17,4 +18,5 @@ INPUT(
 ./debug\moc_searchdialog.o
 ./debug\moc_documentdialog.o
 ./debug\moc_templatedialog.o
+./debug\moc_jumpdialog.o
 );
