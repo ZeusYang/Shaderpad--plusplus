@@ -27,7 +27,6 @@ void QueryWord::loadHeadFromFile(const QString &path)
             context = QString::fromStdString(record);
             match[head].insert(context);
         }
-        //std::cout << "\n";
     }
 }
 
@@ -54,5 +53,5 @@ QString QueryWord::queryTargetWord(const QString &target)
     file.close();
     int index = context.indexOf(target+"{{");
     int endIndex = context.indexOf("}}",index);
-    return context.mid(index,endIndex-index+1);
+    return context.mid(index,endIndex-index+2);
 }

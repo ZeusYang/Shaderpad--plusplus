@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QPainter>
 #include <QPrintPreviewDialog>
+#include <QStandardPaths>
 #include <QFileInfo>
 #include <QRegularExpression>
 #include <QStringListModel>
@@ -192,7 +193,8 @@ void MainWindow::closeCurrentPage(int index)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this);
+    QString fileName = QFileDialog::getOpenFileName(this,QString(),
+                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
     if(!fileName.isEmpty()){
         TextChild *existing = findTextChild(fileName);
         if(existing){//文件已经存在
@@ -475,7 +477,8 @@ void MainWindow::on_actionPrintView_triggered()
 
 void MainWindow::on_actionPDFExport_triggered()
 {
-    QString fileName = QFileDialog::getSaveFileName(this,tr("导出PDF文件"),QString(),"*.pdf");
+    QString fileName = QFileDialog::getSaveFileName(this,tr("导出PDF文件"),
+                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation),"*.pdf");
     if(!fileName.isEmpty()&& activeTextChild()){
         //补上后缀为空的情况
         if(QFileInfo(fileName).suffix().isEmpty())
