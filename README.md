@@ -1,34 +1,40 @@
-#Development log:
+This is a editor for glsl coding. 
 
-2018.4.26:
+![图片](https://github.com/ZeusYang/Shaderpad--plusplus/blob/master/screenshot/1.jpg)
 
-Began this project. 
+Shaderpad++使用说明
 
-Collect some qss files and icons for stylesheet.
+这是一个针对着色器程序的多文档代码编辑器，形式上有点仿照Notepad++.
 
-Finish some basic file operations including newfile,openfile,save,saveAs,close,closeAll, exit,redo,undo,paste,cut,select all and so on,
+本编辑器主要的功能有常见编辑器的功能、glsl代码高亮、glsl关键词和内置变量自动补齐提示、glsl关键词和内置变量简略说明查询、设置风格主题等.
 
-Therefore, we could edit the file for basic demand.
+菜单栏有如下功能:
 
-2018.4.27
+1、文件操作，包括常见的文件操作，如新建、打开和保存等其他操作，还有打印、预览和导出PDF文件功能.
 
-continue 111 finish some basic demand for the editor. Print，print review, export pdf file, change the theme and font.
+1.1、这里需要特别说明的是，新建文件操作会弹出一个窗口有几个着色器选项可供选择，选择相应的选项会设置文档内容为相应着色器的模板.
 
+2、编辑操作，有常见的编辑操作，如剪切、复制、粘贴、撤销、恢复等操作，还有区块代码注释功能，将需要注释的代码块选中，然后按快捷键ctrl+/即可，取消操作一样.
 
-Todo:
+3、文档操作，有查找、行跳转、着色器API文档查询、前一个文档、后一个文档这些功能。
 
-- code comment
+3.1、查找支持常见的各种需求，也支持正则表达式，快捷键为ctrl+F；
 
-- basic shader code highlight
+3.2、行跳转用于将光标快速跳转到指定行，快捷键为F2，输入指定行号即可快速跳转；
 
-- provide several choices to change the theme
+3.3、着色器API文档查询，快捷键为F1，此功能用于查询glsl相关内建变量和内置关键词的简单说明，对于想要查询的词，点击光标至目标词的位置，然后按F1可快速查询，弹出相应的窗口.在查询窗口，也可直接输入相关词，进行查询.
 
-- change the current page by the shortcut
+3.3、前一个文档、后一个文档，这是一个多文档编辑器，如果想快速切换至相邻左右的文档，按快捷键PageUp和PageDn.
 
-- search and replace
+4、风格菜单，此菜单包含主题、背景图片、增大字体、减小字体的功能.
 
-- code template
+4.1、主题菜单项，点击此菜单项弹出设置窗口，可以设置主题、背景透明度、代码字型、代码字号，主题目前有6个选项，可以设置控件的风格，其余不再赘述.
 
-...
-OpenGL着色器API文档查询
-\b\#((define)|(undef)|(if)|(ifdef)|(ifndef)|(else)|(elif)|(endif)|(error)|(pragma)|(extension)|(version)|(line))\b
+4.2、背景图片，此菜单项用于设置主窗体的背景图片，目前有7个选项可供选择.
+
+4.3、增大字体、减小字体，这是设置代码字号的快捷键，按ctrl+=和ctrl+-快捷键可快速设置代码的字号.
+状态栏：
+
+右下角显示当前文档长度、总行数、当前所在行、当前所在列、选中内容的长度信息.
+
+左下角是临时信息显示区域，文档的打开、保存等操作成功与否会在此显示.
