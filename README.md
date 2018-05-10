@@ -1,4 +1,4 @@
-This is a editor for glsl coding. 
+This is a editor for glsl coding and it's developed using Qt5.
 
 ![图片](https://github.com/ZeusYang/Shaderpad--plusplus/blob/master/screenshot/1.jpg)
 
