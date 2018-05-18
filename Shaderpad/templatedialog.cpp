@@ -33,7 +33,7 @@ void TemplateDialog::on_pushButton_clicked()
 
 void TemplateDialog::on_pushButtonSure_clicked()
 {
-    static const QString categories[] = {"vertex","fragment","geometry","compute","empty"};
+    static const QString categories[] = {"vertex","fragment","geometry","compute","tesc","tese","empty"};
     QString type = categories[ui->listWidget->currentRow()];
     QFile file(":/template/"+type);
     file.open(QFile::ReadOnly);
@@ -48,7 +48,7 @@ void TemplateDialog::on_pushButtonSure_clicked()
 
 void TemplateDialog::on_listWidget_currentRowChanged(int currentRow)
 {
-    static const QString postFix[] = {".vert",".frag",".geom",".comp",""};
+    static const QString postFix[] = {".vert",".frag",".geom",".comp",".tesc",".tese",""};
     ui->pLineEditPost->setText(postFix[currentRow]);
 }
 

@@ -28,9 +28,13 @@ public:
     ~MainWindow();
 
     QAbstractItemModel* loadModelCompletionFromFile(const QString& path);//从文件加载自动补齐文本
+
+    void openFile(const QString &fileName);//打开指定文件
+
 protected:
     void paintEvent(QPaintEvent *event);
-
+    void dragEnterEvent(QDragEnterEvent *event);//拖动进入事件
+    void dropEvent(QDropEvent *event);//放下事件
 private slots:
     void on_actionNew_triggered();
 

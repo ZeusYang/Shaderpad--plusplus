@@ -14,6 +14,7 @@ class TemplateDialog : public QDialog
 public:
     explicit TemplateDialog(QWidget *parent = 0);
     ~TemplateDialog();
+    QString curDir;//存储当前默认目录
 signals:
     void createNewFile(QString path,QString context);
 
@@ -29,7 +30,6 @@ private slots:
 private:
     Ui::TemplateDialog *ui;
     QString curPath;
-    QString curDir;
 };
 
 #endif // TEMPLATEDIALOG_H

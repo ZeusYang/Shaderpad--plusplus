@@ -43,21 +43,11 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>-1</number>
        </property>
        <property name="tabBarAutoHide">
         <bool>false</bool>
        </property>
-       <widget class="QWidget" name="tab">
-        <attribute name="title">
-         <string>Tab 1</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="tab_2">
-        <attribute name="title">
-         <string>Tab 2</string>
-        </attribute>
-       </widget>
       </widget>
      </widget>
     </item>

@@ -63,8 +63,6 @@ public:
     QGridLayout *gridLayout;
     QSplitter *splitter;
     QTabWidget *tabWidget;
-    QWidget *tab;
-    QWidget *tab_2;
     QMenuBar *menuBar;
     QMenu *menu_F;
     QMenu *menu_E;
@@ -250,12 +248,6 @@ public:
         sizePolicy.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
         tabWidget->setSizePolicy(sizePolicy);
         tabWidget->setTabBarAutoHide(false);
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QStringLiteral("tab_2"));
-        tabWidget->addTab(tab_2, QString());
         splitter->addWidget(tabWidget);
 
         gridLayout->addWidget(splitter, 0, 0, 1, 1);
@@ -348,7 +340,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(-1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -533,8 +525,6 @@ public:
 #ifndef QT_NO_SHORTCUT
         actionJumpRow->setShortcut(QApplication::translate("MainWindow", "F2", nullptr));
 #endif // QT_NO_SHORTCUT
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Tab 1", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Tab 2", nullptr));
         menu_F->setTitle(QApplication::translate("MainWindow", "\346\226\207\344\273\266(&F)", nullptr));
         menu_E->setTitle(QApplication::translate("MainWindow", "\347\274\226\350\276\221(&E)", nullptr));
         menu_2->setTitle(QApplication::translate("MainWindow", "\351\243\216\346\240\274(&S)", nullptr));

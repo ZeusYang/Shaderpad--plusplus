@@ -24,6 +24,10 @@
 #include <QPixmap>
 #include <QCompleter>
 #include <QHBoxLayout>
+#include <QDragEnterEvent>
+#include <QUrl>
+#include <QMimeData>
+#include <QTextStream>
 #include <QTextBlock>
 //#include <iostream>
 //#include <QDebug>
@@ -36,11 +40,11 @@ MainWindow::MainWindow(QWidget *parent) :
     setWindowTitle(tr("Shaderpad++"));
     setWindowState(Qt::WindowMaximized);
     ui->tabWidget->setTabsClosable(true);
+    //启动拖放
+    this->setAcceptDrops(true);
     //点击叉号关闭文档页面
     connect(ui->tabWidget,&QTabWidget::tabCloseRequested,
             this,&MainWindow::closeCurrentPage);
-    delete ui->tab;
-    delete ui->tab_2;
     //创建间隔期动作并在其中设置间隔器
     actionSeparator = new QAction(this);
     actionSeparator->setSeparator(true);
@@ -72,7 +76,7 @@ MainWindow::MainWindow(QWidget *parent) :
     bgimageDlg->setWindowModality(Qt::WindowModal);
     connect(bgimageDlg,&BgImageDialog::ImageChanged,this,&MainWindow::changeBgImage);
 
-   //查找对话框
+    //查找对话框
     searchDlg = new SearchDialog(this);
     searchDlg->setModal(false);
     connect(searchDlg,&SearchDialog::searchFindSignal,this,&MainWindow::searchFind);
@@ -158,12 +162,12 @@ QAbstractItemModel* MainWindow::loadModelCompletionFromFile(const QString& path)
         if (!line.isEmpty())words << line.trimmed();
         //tmp.push_back(line.trimmed().toStdString());
     }
-//    std::sort(tmp.begin(),tmp.end());
-//    auto it = std::unique(tmp.begin(),tmp.end());
-//    tmp.erase(it,tmp.end());
-//    for(uint x = 0;x < tmp.size();++x){
-//        std::cout << tmp[x] << std::endl;
-//    }
+    //    std::sort(tmp.begin(),tmp.end());
+    //    auto it = std::unique(tmp.begin(),tmp.end());
+    //    tmp.erase(it,tmp.end());
+    //    for(uint x = 0;x < tmp.size();++x){
+    //        std::cout << tmp[x] << std::endl;
+    //    }
     QStringListModel *ret = new QStringListModel(words, glslCompletion);
     return ret;
 }
@@ -174,6 +178,47 @@ void MainWindow::paintEvent(QPaintEvent *event)
     //画背景图片
     QPainter painter(this);
     painter.drawPixmap(0,0,width(),height(),QPixmap(bgImage));
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)//拖动进入事件
+{
+    if(event->mimeData()->hasUrls())//数据包中是否包含URL
+        event->acceptProposedAction();//接收动作
+    else
+        event->ignore();//没有则忽略
+}
+
+void MainWindow::dropEvent(QDropEvent *event)
+{
+    const QMimeData *mimeData = event->mimeData();//获取MIME数据
+    if(mimeData->hasUrls()){//若数据包中含有URL
+        QList<QUrl> urlList = mimeData->urls();
+        //将其中第一个URL表示为本地文件路径
+        QString fileName = urlList.at(0).toLocalFile();
+        if(!fileName.isEmpty()){
+            openFile(fileName);
+        }
+    }
+}
+
+void MainWindow::openFile(const QString &fileName)
+{
+    TextChild *existing = findTextChild(fileName);
+    if(existing){//文件已经存在
+        setActiveSubWindow(existing);
+        return;
+    }
+    //没有打开过，则新建子窗口
+    existing = createTextChild();
+    if(existing->loadFile(fileName)){
+        ui->tabWidget->addTab(existing,existing->currentName());
+        setActiveSubWindow(existing);
+        ui->statusBar->showMessage(tr("打开文件成功"),2000);
+        existing->show();
+    }
+    else{
+        existing->close();
+    }
 }
 
 void MainWindow::on_actionNew_triggered()
@@ -193,25 +238,9 @@ void MainWindow::closeCurrentPage(int index)
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this,QString(),
-                                                    QStandardPaths::writableLocation(QStandardPaths::DesktopLocation));
+    QString fileName = QFileDialog::getOpenFileName(this,QString(),templateDlg->curDir);//curDir为默认目录
     if(!fileName.isEmpty()){
-        TextChild *existing = findTextChild(fileName);
-        if(existing){//文件已经存在
-            setActiveSubWindow(existing);
-            return;
-        }
-        //没有打开过，则新建子窗口
-        existing = createTextChild();
-        if(existing->loadFile(fileName)){
-            ui->tabWidget->addTab(existing,existing->currentName());
-            setActiveSubWindow(existing);
-            ui->statusBar->showMessage(tr("打开文件成功"),2000);
-            existing->show();
-        }
-        else{
-            existing->close();
-        }
+        openFile(fileName);
     }
 }
 
@@ -442,9 +471,9 @@ void MainWindow::on_actionAboutQt_triggered()
 void MainWindow::on_actionAbout_triggered()
 {
     QMessageBox::about(this,tr("关于Shaderpad++"),
-                               tr("欢迎使用Shaderpad++ version1.0\n"
-                                  "有任何问题、改进的地方，可通过以下邮箱告诉我:\n"
-                                  "邮箱:1579148717@qq.com\n"));
+                       tr("欢迎使用Shaderpad++ version1.0\n"
+                          "有任何问题、改进的地方，可通过以下邮箱告诉我:\n"
+                          "邮箱:1579148717@qq.com\n"));
 }
 
 void MainWindow::printPreview(QPrinter *printer)
@@ -517,11 +546,11 @@ void MainWindow::changeTheme(QString theme, float alpha, QFont font)
         red = 36;green = 38;blue = 41;
     }
     QString fontAndAlpha = tr("QPlainTextEdit{"
-                           "background-color:rgba(%1,%2,%3,%4);"
-                           "font: %5pt \"%6\";"
-                           "color: rgba(200,200,200,255);"
-                           "}").arg(red).arg(green).arg(blue)
-                            .arg(alpha*255).arg(font.pointSize()).arg(font.family());
+                              "background-color:rgba(%1,%2,%3,%4);"
+                              "font: %5pt \"%6\";"
+                              "color: rgba(200,200,200,255);"
+                              "}").arg(red).arg(green).arg(blue)
+            .arg(alpha*255).arg(font.pointSize()).arg(font.family());
     //修改皮肤
     theme = ":/qss/" + theme + ".css";
     QApplication::setOverrideCursor(Qt::WaitCursor);
@@ -641,14 +670,14 @@ bool MainWindow::searchFind(QString target, QTextDocument::FindFlags options, bo
     //查找
     TextChild* child = activeTextChild();
     if(!regExp){
-         QTextCursor loc = child->document()->find(target,child->textCursor(),options);
-         if(!loc.isNull()){
-             child->setTextCursor(loc);
-         }
-         else{
-             QMessageBox::information(this,tr("提示"),tr("没有了"));
-             return false;
-         }
+        QTextCursor loc = child->document()->find(target,child->textCursor(),options);
+        if(!loc.isNull()){
+            child->setTextCursor(loc);
+        }
+        else{
+            QMessageBox::information(this,tr("提示"),tr("没有了"));
+            return false;
+        }
     }
     else{
         QRegularExpression pattern(target);

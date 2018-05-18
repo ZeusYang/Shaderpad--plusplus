@@ -180,5 +180,9 @@
         <file>template/vertex</file>
         <file>highlighter/documents/Other.txt</file>
         <file>icons/Jump.png</file>
+        <file>template/tesc</file>
+        <file>template/tese</file>
+        <file>icons/tesc.png</file>
+        <file>icons/tese.png</file>
     </qresource>
 </RCC>

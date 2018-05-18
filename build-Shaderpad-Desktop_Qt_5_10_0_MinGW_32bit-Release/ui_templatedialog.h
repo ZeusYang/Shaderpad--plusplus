@@ -85,11 +85,21 @@ public:
         __qlistwidgetitem3->setFont(font);
         __qlistwidgetitem3->setIcon(icon3);
         QIcon icon4;
-        icon4.addFile(QStringLiteral(":/icons/instruction.png"), QSize(), QIcon::Active, QIcon::Off);
+        icon4.addFile(QStringLiteral(":/icons/tesc.png"), QSize(), QIcon::Active, QIcon::On);
         QListWidgetItem *__qlistwidgetitem4 = new QListWidgetItem(listWidget);
-        __qlistwidgetitem4->setTextAlignment(Qt::AlignCenter);
         __qlistwidgetitem4->setFont(font);
         __qlistwidgetitem4->setIcon(icon4);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/icons/tese.png"), QSize(), QIcon::Active, QIcon::On);
+        QListWidgetItem *__qlistwidgetitem5 = new QListWidgetItem(listWidget);
+        __qlistwidgetitem5->setFont(font);
+        __qlistwidgetitem5->setIcon(icon5);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/icons/instruction.png"), QSize(), QIcon::Active, QIcon::Off);
+        QListWidgetItem *__qlistwidgetitem6 = new QListWidgetItem(listWidget);
+        __qlistwidgetitem6->setTextAlignment(Qt::AlignCenter);
+        __qlistwidgetitem6->setFont(font);
+        __qlistwidgetitem6->setIcon(icon6);
         listWidget->setObjectName(QStringLiteral("listWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
@@ -185,7 +195,7 @@ public:
 
         retranslateUi(TemplateDialog);
 
-        listWidget->setCurrentRow(0);
+        listWidget->setCurrentRow(-1);
 
 
         QMetaObject::connectSlotsByName(TemplateDialog);
@@ -206,7 +216,11 @@ public:
         QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
         ___qlistwidgetitem3->setText(QApplication::translate("TemplateDialog", "\350\256\241\347\256\227\347\235\200\350\211\262\345\231\250\347\250\213\345\272\217", nullptr));
         QListWidgetItem *___qlistwidgetitem4 = listWidget->item(4);
-        ___qlistwidgetitem4->setText(QApplication::translate("TemplateDialog", "\350\207\252\345\256\232\344\271\211\347\251\272\346\226\207\344\273\266", nullptr));
+        ___qlistwidgetitem4->setText(QApplication::translate("TemplateDialog", "\347\273\206\345\210\206\346\216\247\345\210\266\347\235\200\350\211\262\345\231\250\347\250\213\345\272\217", nullptr));
+        QListWidgetItem *___qlistwidgetitem5 = listWidget->item(5);
+        ___qlistwidgetitem5->setText(QApplication::translate("TemplateDialog", "\347\273\206\345\210\206\350\256\241\347\256\227\347\235\200\350\211\262\345\231\250\347\250\213\345\272\217", nullptr));
+        QListWidgetItem *___qlistwidgetitem6 = listWidget->item(6);
+        ___qlistwidgetitem6->setText(QApplication::translate("TemplateDialog", "\350\207\252\345\256\232\344\271\211\347\251\272\346\226\207\344\273\266", nullptr));
         listWidget->setSortingEnabled(__sortingEnabled);
 
         groupBox->setTitle(QApplication::translate("TemplateDialog", "\350\256\276\347\275\256", nullptr));

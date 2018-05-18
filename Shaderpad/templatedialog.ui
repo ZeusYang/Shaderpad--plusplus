@@ -38,7 +38,7 @@
       </sizepolicy>
      </property>
      <property name="currentRow">
-      <number>0</number>
+      <number>-1</number>
      </property>
      <item>
       <property name="text">
@@ -113,6 +113,38 @@
       <property name="icon">
        <iconset>
         <activeon>:/icons/theme.png</activeon>
+       </iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>细分控制着色器程序</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>幼圆</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="icon">
+       <iconset>
+        <activeon>:/icons/tesc.png</activeon>
+       </iconset>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>细分计算着色器程序</string>
+      </property>
+      <property name="font">
+       <font>
+        <family>幼圆</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="icon">
+       <iconset>
+        <activeon>:/icons/tese.png</activeon>
        </iconset>
       </property>
      </item>
